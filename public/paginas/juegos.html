@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html ng-app="ConsultorioVirtual" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultorio Virtual</title>
+    <!-- Links -->
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="icon" type="image/png" href="../images/icono.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+</head>
+<body>
+     <!-- Navbar -->
+     <nav class="w-full bg-purple-800 ">
+        <div class="nav-wrapper">
+          <a href="#" class="brand-logo right">correo</a>
+          <ul id="nav-mobile" class="left hide-on-med-and-down">
+            <li><a href="inicio.html">inicio</a></li>
+            <li><a href="">consultorio</a></li>
+            <li><a href="mi_espacio.html">mi espacio</a></li>
+            <li><a href="juegos.html">Entretenimiento</a></li>
+          </ul>
+        </div>
+      </nav>
+    <div ng-include="'views/barra.html'"></div>
+<div ng-include="'views/sub_barra_entretenimiento.html'"></div>
+<div class="container">
+    <div class="row">
+        <div class="col s12 center">
+            <h3 class="titulo">
+                <span>Juegos</span>
+            </h3>
+        </div>
+      
+        <!-- juegos -->
+        <div ng-repeat="dato in control.juegos | filter:control.buscar" class="col s12 slide-top">
+            <div class="card horizontal  hoverable col s12">
+                <div class="card-image">
+                    <i style="font-size: 15em;" class="large material-icons deep-orange-text">games</i>
+                </div>
+                <div class="card-stacked">
+                    <h5>LOVE PINS</h5>
+                    <div class="card-content">
+                        <span class="badge" data-badge-caption=""></span>
+                        <p class="deep-purple-text"><b> YAD.Com</b></p>
+                        <p>Love Pins es un juego en línea encantador. Ayuda a un novio a llegar hasta su enamorada evitando enemigos y trampas peligrosas. Tendrás que ir retirando las barreras en el orden adecuado para evitar que ataquen a los tortolitos.</p>
+                    </div>
+                    <div class="card-action">
+                        <a target="_blank" href="https://www.juegos.com/juego/love-pins">JUGAR</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-repeat="dato in control.juegos | filter:control.buscar" class="col s12 slide-top">
+            <div class="card horizontal  hoverable col s12">
+                <div class="card-image">
+                    <i style="font-size: 15em;" class="large material-icons deep-orange-text">games</i>
+                </div>
+                <div class="card-stacked">
+                    <h5>AJEDRES</h5>
+                    <div class="card-content">
+                        <span class="badge" data-badge-caption=""></span>
+                        <p class="deep-purple-text"><b> lichiss.org</b></p>
+                        <p>ichess es un servidor de ajedrez libre y gratuito y sin publicidad.</p>
+                    </div>
+                    <div class="card-action">
+                        <a target="_blank" href="https://lichess.org/                        ">JUGAR</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-repeat="dato in control.juegos | filter:control.buscar" class="col s12 slide-top">
+            <div class="card horizontal  hoverable col s12">
+                <div class="card-image">
+                    <i style="font-size: 15em;" class="large material-icons deep-orange-text">games</i>
+                </div>
+                <div class="card-stacked">
+                    <h5>DAMAS</h5>
+                    <div class="card-content">
+                        <span class="badge" data-badge-caption=""></span>
+                        <p class="deep-purple-text"><b> ajedrezeureka.com</b></p>
+                        <p>El clásico juego de las Damas contra el ordenador. Aquí puedes enfrentar y practicar el juego de las Damas con tu computadora o móvil.</p>
+                    </div>
+                    <div class="card-action">
+                        <a target="_blank" href="https://www.ajedrezeureka.com/damas/">JUGAR</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-repeat="dato in control.juegos | filter:control.buscar" class="col s12 slide-top">
+            <div class="card horizontal  hoverable col s12">
+                <div class="card-image">
+                    <i style="font-size: 15em;" class="large material-icons deep-orange-text">games</i>
+                </div>
+                <div class="card-stacked">
+                    <h5>SUDOKU</h5>
+                    <div class="card-content">
+                        <span class="badge" data-badge-caption=""></span>
+                        <p class="deep-purple-text"><b> sudoku-online</b></p>
+                        <p>El Sudoku es un rompecabezas de lógica y uno de los pasatiempos que más engancha.</p>
+                        <p>El objetivo es rellenar una cuadrícula de 9×9 celdas dividida en subcuadrículas de 3×3 con las cifras del 1 al 9 partiendo de algunos números ya dispuestos en algunas de las celdas.</p>
+                    </div>
+                    <div class="card-action">
+                        <a target="_blank" href="https://www.sudoku-online.org/">JUGAR</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-repeat="dato in control.juegos | filter:control.buscar" class="col s12 slide-top">
+            <div class="card horizontal  hoverable col s12">
+                <div class="card-image">
+                    <i style="font-size: 15em;" class="large material-icons deep-orange-text">games</i>
+                </div>
+                <div class="card-stacked">
+                    <h5>SOPA DE LETRAS</h5>
+                    <div class="card-content">
+                        <span class="badge" data-badge-caption=""></span>
+                        <p class="deep-purple-text"><b> buscapalabras.com</b></p>
+                        
+                    </div>
+                    <div class="card-action">
+                        <a target="_blank" href="https://buscapalabras.com.ar/jugar-sopa-de-letras.php">JUGAR</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-repeat="dato in control.juegos | filter:control.buscar" class="col s12 slide-top">
+            <div class="card horizontal  hoverable col s12">
+                <div class="card-image">
+                    <i style="font-size: 15em;" class="large material-icons deep-orange-text">games</i>
+                </div>
+                <div class="card-stacked">
+                    <h5>PREGUNTAS GENERALES</h5>
+                    <div class="card-content">
+                        <span class="badge" data-badge-caption=""></span>
+                        <p class="deep-purple-text"><b> juegos.net</b></p>
+                        <p>En este test, hemos añadido Preguntas tanto de arte, como de ciencia, historia, cine y televisión y mas.</p>
+                    </div>
+                    <div class="card-action">
+                        <a target="_blank" href="https://www.juegos.net/juego/preguntados">JUGAR</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-repeat="dato in control.juegos | filter:control.buscar" class="col s12 slide-top">
+            <div class="card horizontal  hoverable col s12">
+                <div class="card-image">
+                    <i style="font-size: 15em;" class="large material-icons deep-orange-text">games</i>
+                </div>
+                <div class="card-stacked">
+                    <h5>UNO ONLINE</h5>
+                    <div class="card-content">
+                        <span class="badge" data-badge-caption=""></span>
+                        <p class="deep-purple-text"><b>1001juegos.com</b></p>
+                        <p>Uno Online te permite jugar al popular juego de cartas UNO en tu navegador web. El objetivo del juego es ser el primero en quedarse sin cartas.</p>
+                    </div>
+                    <div class="card-action">
+                        <a target="_blank" href="https://www.1001juegos.com/juego/uno-online">JUGAR</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div ng-repeat="dato in control.juegos | filter:control.buscar" class="col s12 slide-top">
+            <div class="card horizontal  hoverable col s12">
+                <div class="card-image">
+                    <i style="font-size: 15em;" class="large material-icons deep-orange-text">games</i>
+                </div>
+                <div class="card-stacked">
+                    <h5>EL AHORCADO</h5>
+                    <div class="card-content">
+                        <span class="badge" data-badge-caption=""></span>
+                        <p class="deep-purple-text"><b>pasatiempos.elmundo.es</b></p>
+                    </div>
+                    <div class="card-action">
+                        <a target="_blank" href="http://pasatiempos.elmundo.es/ahorcado/ahorcado.html">JUGAR</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <h4 ng-show="(control.juegos | filter:control.buscar).length==0" class="center blue-grey-text bouncy-slide-down" style="padding-bottom: 100px" >No se encontraron datos</h4>
+    </div>
+</div>
+<div ng-include="'views/btn_menu.html'"></div>
+<div ng-include="'views/footer.html'"></div>
+
+</body>
+</html>

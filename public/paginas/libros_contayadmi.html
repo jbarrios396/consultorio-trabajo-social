@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app="ConsultorioVirtual" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultorio Virtual</title>
+    <!-- Links -->
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="icon" type="image/png" href="../images/icono.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+         <!-- Navbar -->
+         <nav class="w-full bg-purple-800 ">
+            <div class="nav-wrapper">
+              <a href="#" class="brand-logo right">correo</a>
+              <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="inicio.html">inicio</a></li>
+                <li><a href="">consultorio</a></li>
+                <li><a href="mi_espacio.html">mi espacio</a></li>
+                <li><a href="juegos.html">Entretenimiento</a></li>
+                <li><a href="chat_llamadas.html">llamadas</a></li>
+              </ul>
+            </div>
+          </nav>
+          <a href="biblioteca.html"
+          class="z-10 w-20 -mb-10 flex justify-center items-center p-1 pr-2 bg-red-400 border border-red-500 rounded-lg text-white">
+          <i class="material-icons" style="font-size: 20px;">arrow_back_ios</i>
+          Atras
+      </a>
+  <div ng-include="'views/barra.html'"></div>
+<div ng-include="'views/sub_barra_investigacion.html'"></div>
+<div class="container">
+  <div class="row">
+      <div class="col s12 center">
+          <h3 class="titulo">
+              <span>CIENCIAS CONTABLES Y ADMINISTRATIVAS</span>
+          </h3>
+      </div>
+      
+      <div class="col s12  ">
+        <h4 ui-sref="videos" class="card-panel   light-blue lighten-1 hoverable tam  waves-effect waves-block ">
+            <div class="white-text">
+                <i class="large material-icons">book</i>
+                <a href="libros_contaduria.html">CONTADURIA PUBLICA</a>
+            </div>
+        </h4>
+    </div>
+    <div class="col s12  ">
+      <h4 ui-sref="videos" class="card-panel   light-blue lighten-1 hoverable tam  waves-effect waves-block ">
+          <div class="white-text">
+              <i class="large material-icons">book</i>
+              <a href="libros_administracion.html">ADMINISTRACION DE EMPRESAS</a>
+          </div>
+      </h4>
+  </div>
+  
+      </body>
+      </html>

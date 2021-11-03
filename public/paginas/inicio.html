@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html ng-app="ConsultorioVirtual" lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Consultorio Virtual</title>
+    <!-- Links -->
+    <link
+      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+    <link rel="icon" type="image/png" href="../images/icono.png" />
+
+    <script src="../js/api.js"></script>
+    <script src="../js/inicio.js"></script>
+  </head>
+
+  <body>
+    <!-- Navbar -->
+    <nav class="w-full bg-purple-800 py-3">
+      <div
+        class="
+          flex flex-wrap
+          justify-center
+          md:justify-between
+          items-center
+          w-full
+          px-12
+          text-white
+        "
+      >
+        <div class="flex flex-wrap justify-center items-center gap-4">
+          <a
+            href="inicio.html"
+            class="w-auto h-12 rounded-sm flex justify-center items-center"
+            >Inicio</a
+          >
+          <a
+            href="./consultorio.html"
+            class="w-auto h-12 rounded-sm flex justify-center items-center"
+            >Consultorio</a
+          >
+          <a
+            href="mi_espacio.html"
+            class="w-auto h-12 rounded-sm flex justify-center items-center"
+            >Mi Espacio</a
+          >
+          <a
+            href="juegos.html"
+            class="w-auto h-12 rounded-sm flex justify-center items-center"
+            >Entretenimiento</a
+          >
+        </div>
+        <div class="flex items-center gap-5">
+          <h1 class="text-xl -mt-1" id="navMail"></h1>
+          <button
+            id="logout-button"
+            class="
+              material-icons-round
+              bg-red-500 bg-opacity-25
+              rounded-full
+              text-red-50
+              p-2
+              outline-none
+              focus:outline-none
+            "
+          >
+            logout
+          </button>
+        </div>
+      </div>
+    </nav>
+    <div class="flex flex-col w-full p-12 text-gray-800">
+      <h1 class="text-3xl" id="greeting">Bienvenido,</h1>
+      <div class="flex flex-wrap justify-center gap-4 items-center p-4">
+        <div
+          class="
+            w-1/3
+            h-32
+            flex flex-col
+            justify-around
+            items-center
+            bg-purple-800
+            text-2xl text-white
+            rounded-sm
+            shadow-md
+          "
+        >
+          <i class="material-icons" style="font-size: 50px"> group </i>
+          <a href="sobre_nosotros.html">¿Quienes Somos?</a>
+        </div>
+        <div
+          class="
+            w-1/3
+            h-32
+            flex flex-col
+            justify-around
+            items-center
+            bg-green-500
+            text-2xl text-white
+            rounded-sm
+            shadow-md
+          "
+        >
+          <i class="material-icons" style="font-size: 50px"> view_compact </i>
+          <a href="foros.html">Foros</a>
+        </div>
+        <div
+          class="
+            w-1/3
+            h-32
+            flex flex-col
+            justify-around
+            items-center
+            bg-yellow-500
+            text-2xl text-white
+            rounded-sm
+            shadow-md
+          "
+        >
+          <i class="material-icons" style="font-size: 50px"> games </i>
+          <a href="juegos.html">Juegos</a>
+        </div>
+        <div
+          class="
+            w-1/3
+            h-32
+            flex flex-col
+            justify-around
+            items-center
+            bg-blue-700
+            text-2xl text-white
+            rounded-sm
+            shadow-md
+          "
+        >
+          <i class="material-icons" style="font-size: 50px"> book </i>
+          <a href="biblioteca.html">Biblioteca</a>
+        </div>
+        <div
+          class="
+            w-1/3
+            h-32
+            flex flex-col
+            justify-around
+            items-center
+            bg-teal-800
+            text-2xl text-white
+            rounded-sm
+            shadow-md
+          "
+        >
+          <i class="material-icons" style="font-size: 50px"> movie </i>
+          <a href="videos.html">videos</a>
+        </div>
+        <div
+          class="
+            w-1/3
+            h-32
+            flex flex-col
+            justify-around
+            items-center
+            bg-orange-500
+            text-2xl text-white
+            rounded-sm
+            shadow-md
+          "
+        >
+          <i class="material-icons" style="font-size: 50px"> info_outline </i>
+          <a href="preguntas_frecuentes.html">preguntas frecuentes</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

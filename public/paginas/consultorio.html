@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat</title>
+
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+      rel="stylesheet"
+    />
+
+    <title>Consultorio</title>
+
+    <script src="../js/api.js"></script>
+    <script src="../socket.io/socket.io.js"></script>
+    <script defer src="../js/socket.events.js"></script>
+    <script defer src="../js/chat.js"></script>
+  </head>
+  <body class="w-screen h-screen overflow-hidden">
+    <div class="flex flex-col w-full h-full overflow-hidden">
+      <!-- NAVBAR -->
+      <div
+        class="flex gap-1 w-full justify-between p-4 flex-shrink-0"
+        style="background-color: #553c9a"
+      >
+        <div class="flex gap-2 items-center">
+          <button
+            id="goBack"
+            class="
+              bg-purple-500 bg-opacity-50
+              rounded-full
+              p-2
+              text-white text-xl
+              material-icons-round
+              outline-none
+              focus:outline-none
+            "
+          >
+            chevron_left
+          </button>
+          <h1 class="text-4xl -mt-1 text-white font-light" id="title">
+            Chat |
+          </h1>
+        </div>
+        <div class="flex gap-2 items-center">
+          <span class="text-white text-xl font-light">Salir</span>
+          <button
+            id="logoutBtn"
+            class="
+              bg-purple-500 bg-opacity-50
+              text-white
+              p-2
+              rounded-md
+              material-icons-round
+              outline-none
+              focus:outline-none
+            "
+          >
+            logout
+          </button>
+        </div>
+      </div>
+      <div class="mx-10 my-5 flex-grow flex gap-2 overflow-hidden">
+        <!-- USUARIOS -->
+        <div
+          class="
+            flex flex-col
+            h-full
+            flex-shrink-0
+            gap-1
+            w-80
+            rounded-lg
+            overflow-y-auto
+          "
+          id="usuarios"
+        >
+          <h1>Usuarios</h1>
+        </div>
+        <!-- CHAT -->
+        <div
+          id="chat"
+          class="
+            flex flex-col flex-grow
+            h-full
+            justify-end
+            gap-2
+            overflow-hidden
+            p-5
+            bg-gray-50
+            rounded-lg
+          "
+        >
+          <div
+            id="messages"
+            class="w-full flex-grow flex flex-col gap-2 overflow-y-auto"
+          >
+            <div
+              class="
+                w-full
+                h-full
+                flex flex-col
+                gap-5
+                items-center
+                justify-center
+              "
+            >
+              <i
+                class="material-icons-outlined text-gray-300"
+                style="font-size: 100px"
+              >
+                question_answer
+              </i>
+              <h1 class="text-2xl font-light text-gray-600">
+                Selecciona un Usuario para Chatear...
+              </h1>
+            </div>
+          </div>
+          <div class="w-full flex gap-1">
+            <input
+              id="msg"
+              class="
+                bg-white
+                p-2
+                rounded-md
+                border
+                transform
+                transition-all
+                duration-300
+                flex-grow
+                outline-none
+                focus:outline-none focus:bg-gray-50
+              "
+              placeholder="Mensaje..."
+              name="msg"
+            />
+            <button
+              id="sendBtn"
+              class="
+                bg-blue-500
+                text-white
+                rounded-md
+                p-2
+                material-icons-round
+                outline-none
+                focus:outline-none
+              "
+            >
+              send
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

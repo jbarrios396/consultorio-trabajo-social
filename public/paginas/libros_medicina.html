@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html ng-app="ConsultorioVirtual" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultorio Virtual</title>
+    <!-- Links -->
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="icon" type="image/png" href="../images/icono.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+         <!-- Navbar -->
+         <nav class="w-full bg-purple-800 ">
+            <div class="nav-wrapper">
+              <a href="#" class="brand-logo right">correo</a>
+              <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="inicio.html">inicio</a></li>
+                <li><a href="">consultorio</a></li>
+                <li><a href="mi_espacio.html">mi espacio</a></li>
+                <li><a href="juegos.html">Entretenimiento</a></li>
+                <li><a href="chat_llamadas.html">llamadas</a></li>
+              </ul>
+            </div>
+          </nav>
+          <a href="libros_salud.html"
+          class="z-10 w-20 -mb-10 flex justify-center items-center p-1 pr-2 bg-red-400 border border-red-500 rounded-lg text-white">
+          <i class="material-icons" style="font-size: 20px;">arrow_back_ios</i>
+          Atras
+      </a>
+  <div ng-include="'views/barra.html'"></div>
+<div ng-include="'views/sub_barra_investigacion.html'"></div>
+<div class="container">
+  <div class="row">
+      <div class="col s12 center">
+          <h3 class="titulo">
+              <span>MEDICINA</span>
+          </h3>
+      </div>
+      <div ng-repeat="dato in control.juegos | filter:control.buscar" class="col s12 slide-top">
+        <div class="card horizontal  hoverable col s12">
+            <div class="card-image">
+                <i style="font-size: 15em;" class="large material-icons blue-text">book</i>
+            </div>
+            <div class="card-stacked">
+                <h5>LA DOBLE HÉLICE</h5>
+                <div class="card-content">
+                    <span class="badge" data-badge-caption=""></span>
+                    <p class="deep-purple-text"><b>Weidenfeld & Nicholson </b></p>
+                </div>
+                <div class="card-action">
+                    <a target="_blank" href="https://cgrandola.files.wordpress.com/2008/04/jd-watson-la-doble-hc3a9lice.pdf">LEER</a>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div ng-repeat="dato in control.juegos | filter:control.buscar" class="col s12 slide-top">
+        <div class="card horizontal  hoverable col s12">
+            <div class="card-image">
+                <i style="font-size: 15em;" class="large material-icons blue-text">book</i>
+            </div>
+            <div class="card-stacked">
+                <h5>Manual de Anatomía Humana</h5>
+                <div class="card-content">
+                    <span class="badge" data-badge-caption=""></span>
+                    <p class="deep-purple-text"><b>Edwin Saldaña Ambulódegui</b></p>
+                </div>
+                <div class="card-action">
+                    <a target="_blank" href="https://infolibros.org/pdfview/191-manual-de-anatomia-humana-prof-edwin-saldana-ambulodegui/">LEER</a>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div ng-repeat="dato in control.juegos | filter:control.buscar" class="col s12 slide-top">
+        <div class="card horizontal  hoverable col s12">
+            <div class="card-image">
+                <i style="font-size: 15em;" class="large material-icons blue-text">book</i>
+            </div>
+            <div class="card-stacked">
+                <h5>Diccionario de anatomía e histología</h5>
+                <div class="card-content">
+                    <span class="badge" data-badge-caption=""></span>
+                    <p class="deep-purple-text"><b>Francisco Speroni</b></p>
+                </div>
+                <div class="card-action">
+                    <a target="_blank" href="https://infolibros.org/pdfview/192-diccionario-de-anatomia-e-histologia-francisco-speroni/">LEER</a>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div ng-repeat="dato in control.juegos | filter:control.buscar" class="col s12 slide-top">
+        <div class="card horizontal  hoverable col s12">
+            <div class="card-image">
+                <i style="font-size: 15em;" class="large material-icons blue-text">book</i>
+            </div>
+            <div class="card-stacked">
+                <h5>Neuroanatomía</h5>
+                <div class="card-content">
+                    <span class="badge" data-badge-caption=""></span>
+                    <p class="deep-purple-text"><b>Dr. Efrain Estrada Choque</b></p>
+                </div>
+                <div class="card-action">
+                    <a target="_blank" href="https://infolibros.org/pdfview/208-neuroanatomia-dr-efrain-estrada-choque/">LEER</a>
+                </div>
+            </div>
+        </div>
+      </div>
+      <div ng-repeat="dato in control.juegos | filter:control.buscar" class="col s12 slide-top">
+        <div class="card horizontal  hoverable col s12">
+            <div class="card-image">
+                <i style="font-size: 15em;" class="large material-icons blue-text">book</i>
+            </div>
+            <div class="card-stacked">
+                <h5>Protocolo para atención de infarto agudo
+                    de miocardio en urgencias</h5>
+                <div class="card-content">
+                    <span class="badge" data-badge-caption=""></span>
+                    <p class="deep-purple-text"><b></b></p>
+                </div>
+                <div class="card-action">
+                    <a target="_blank" href="https://www.redalyc.org/jatsRepo/4577/457750722018/457750722018.pdf">LEER</a>
+                </div>
+            </div>
+        </div>
+      </div>
+      </body>
+      </html>
+                              

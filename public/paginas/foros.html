@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html ng-app="ConsultorioVirtual" lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultorio Virtual</title>
+    <!-- Links -->
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="icon" type="image/png" href="../images/icono.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+</head>
+<body>
+            <!-- Navbar -->
+            <nav class="w-full bg-purple-800 ">
+                <div class="nav-wrapper">
+                  <a href="#" class="brand-logo right">correo</a>
+                  <ul id="nav-mobile" class="left hide-on-med-and-down">
+                    <li><a href="inicio.html">inicio</a></li>
+                    <li><a href="">consultorio</a></li>
+                    <li><a href="mi_espacio.html">mi espacio</a></li>
+                    <li><a href="juegos.html">Entretenimiento</a></li>
+                    <li><a href="chat_llamadas.html">llamadas</a></li>
+                  </ul>
+                </div>
+              </nav>
+    <div ng-include="'views/barra.html'"></div>
+<div ng-include="'views/sub_barra_investigacion.html'"></div>
+<div class="container">
+    <div class="row">
+        <div class="col s12 center">
+            <h3 class="titulo">
+                <span>Foros</span>
+            </h3>
+        </div>
+        <div class="col s12">
+            <div ng-repeat="dato in control.foros | filter: control.buscar" class="col s12">
+                <div class="card horizontal">
+                    <div class="card-image">
+                        <center>
+                            <i style="font-size: 220px" class="large material-icons lime-text accent-3">view_quilt</i>
+                        </center>
+                    </div>
+                    <div class="card-stacked">
+                        <div class="card-content">
+                            <h5 class="truncate"> {{dato.nombre}}<span class="badge" data-badge-caption="{{dato.fecha}}"></span></h5>
+                            <p><b class="deep-purple-text text-darken-2">{{dato.autor}}: </b> <span><span ng-bind-html="dato.desc"></span></span>
+                            </p>
+                            <span ng-if="dato.comentarios > 0" class="new badge deep-purple darken-2" data-badge-caption="Comentarios">{{dato.comentarios}}</span>
+                        </div>
+                        <div class="card-action">
+                            <a ui-sref="foros_detalle({cod:dato.id})">Ver más</a>
+                            <a ng-if="control.rol" href="" ng-click="control.eliminar_foro(dato)"><i class="material-icons right red-text">delete</i></a>
+                            <a ng-if="control.rol" ui-sref="editar_foro({cod:dato.id})" ><i class="material-icons right blue-text">mode_edit</i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h4 ng-show="(control.foros | filter:control.buscar).length==0" class="center blue-grey-text bouncy-slide-down" style="padding-bottom: 100px">No se encontraron datos</h4>
+        </div>
+    </div>
+</div>
+</div>
+<div ng-include="'views/btn_menu.html'"></div>
+<div ng-include="'views/footer.html'"></div>
+</body>
+</html>

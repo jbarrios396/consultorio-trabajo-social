@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html ng-app="ConsultorioVirtual"  lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultorio Virtual</title>
+    <!-- Links -->
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link rel="icon" type="image/png" href="../images/icono.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+</head>
+<body>
+          <!-- Navbar -->
+          <nav class="w-full bg-purple-800 ">
+            <div class="nav-wrapper">
+              <a href="#" class="brand-logo right">correo</a>
+              <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="inicio.html">inicio</a></li>
+                <li><a href="">consultorio</a></li>
+                <li><a href="mi_espacio.html">mi espacio</a></li>
+                <li><a href="juegos.html">Entretenimiento</a></li>
+                
+              </ul>
+            </div>
+          </nav>
+    <div ng-include="'views/barra.html'"></div>
+<div ng-include="'views/sub_barra_investigacion.html'"></div>
+<div class="container">
+    <div class="row">
+        <div class="col s12 center">
+            <h3 class="titulo">
+                <span>Biblioteca</span>
+            </h3>
+        </div>
+    
+      
+           <!-- categoria de libros -->         
+                </div>
+                <div class="col s4 m6 l4 ">
+                    <h4 ui-sref="libros_ingenieria" class=" card-panel blue darken-2 hoverable tam  waves-effect waves-block ">
+                        <div class="white-text">
+                            <i class="large material-icons">book</i>
+                            <a href="libros_ingenieria.html">INGENIERIA</a>
+                        </div>
+                    </h4>
+                </div>
+                <div class="col s4 m6 l4 ">
+                    <h4 ui-sref="juegos" class="card-panel  deep-purple darken-3 hoverable tam  waves-effect waves-block ">
+                        <div class="white-text">
+                            <i class="large material-icons">book</i>
+                            <a href="libros_socialesyhuma.html">CIENCIAS SOCIALES Y HUMANAS</a>
+                        </div>
+                    </h4>
+                </div>
+                <div class="col s4 m6 l4 ">
+                    <h4 ui-sref="libros" class="card-panel cyan hoverable tam  waves-effect waves-block ">
+                        <div class="white-text">
+                            <i class="large material-icons">book</i>
+                            <a href="libros_salud.html">CIENCIAS DE LA SALUD</a>
+                        </div>
+                    </h4>
+                </div>
+                <div class="col s12 m6 l4 ">
+                    <h4 ui-sref="videos" class="card-panel   green darken-3 hoverable tam  waves-effect waves-block ">
+                        <div class="white-text">
+                            <i class="large material-icons">book</i>
+                            <a href="libros_contayadmi.html">CIENCIAS CONTABLES Y ADMINISTRATIVAS</a>
+                        </div>
+                    </h4>
+                </div>
+                
+            <h4 class="center blue-grey-text bouncy-slide-down" style="padding-bottom: 100px" ng-show="(control.libros | filter: control.buscar).length==0">No se encontraron datos</h4>
+        </div>
+    </div>
+</div>
+<div ng-include="'views/btn_menu.html'"></div>
+<div ng-include="'views/footer.html'"></div>
+</body>
+</html>

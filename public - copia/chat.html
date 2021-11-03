@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat</title>
+
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+      rel="stylesheet"
+    />
+
+    <title>Document</title>
+
+    <script src="./js/api.js"></script>
+    <script src="./socket.io/socket.io.js"></script>
+    <script defer src="./js/socket.events.js"></script>
+    <script defer src="./js/chat.js"></script>
+  </head>
+  <body>
+    <div class="m-10 flex flex-col gap-2">
+      <div class="flex gap-1">
+        <h1 class="text-4xl font-light flex-grow" id="title">Chat |</h1>
+        <button
+          id="logoutBtn"
+          class="
+            bg-red-100
+            text-red-500
+            rounded-md
+            p-2
+            material-icons-round
+            outline-none
+            focus:outline-none
+          "
+        >
+          logout
+        </button>
+      </div>
+      <hr />
+      <div class="flex gap-2">
+        <!-- USUARIOS -->
+        <div class="flex flex-col gap-1 w-48 rounded-lg" id="usuarios">
+          <h1>Usuarios</h1>
+        </div>
+        <!-- CHAT -->
+        <div
+          id="chat"
+          class="flex flex-col gap-2 w-96 p-5 bg-gray-50 rounded-lg"
+        >
+          <div id="messages" class="w-full flex flex-col gap-2"></div>
+          <div class="w-full flex gap-1">
+            <input
+              id="msg"
+              class="
+                bg-white
+                p-2
+                rounded-md
+                border
+                transform
+                transition-all
+                duration-300
+                flex-grow
+                outline-none
+                focus:outline-none focus:bg-gray-50
+              "
+              placeholder="Mensaje..."
+              name="msg"
+            />
+            <button
+              id="sendBtn"
+              class="
+                bg-blue-500
+                text-white
+                rounded-md
+                p-2
+                material-icons-round
+                outline-none
+                focus:outline-none
+              "
+            >
+              send
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

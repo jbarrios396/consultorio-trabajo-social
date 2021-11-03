@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Consultorio Virtual</title>
+        <!-- Links -->
+        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+        <link rel="icon" type="image/png" href="../images/icono.png">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+    </head>
+    
+    <body>
+        <!-- Navbar -->
+        <nav class="w-full bg-purple-800 ">
+            <div class="nav-wrapper">
+              <a href="#" class="brand-logo right">correo</a>
+              <ul id="nav-mobile" class="left hide-on-med-and-down">
+                <li><a href="inicio.html">inicio</a></li>
+                <li><a href="">consultorio</a></li>
+                <li><a href="mi_espacio.html">mi espacio</a></li>
+                <li><a href="juegos.html">Entretenimiento</a></li>
+                <li><a href="chat_llamadas.html">llamadas</a></li>
+              </ul>
+            </div>
+          </nav>
+    <div ng-include="'views/barra.html'"></div>
+<div ng-include="'views/sub_barra_consultorio.html'"></div>
+<div class="container">
+    <div class="row">
+        <div class="col s12 center">
+            <h3 class="titulo">
+                Preguntas
+                <span>frecuentes</span>
+            </h3>
+        </div>
+        <div class="col s12 m6 center-align">
+            <a href="#modal2" class="btn btn-large deep-purple darken-2 waves-effect waves-light modal-trigger">Realizar pregunta</a>
+        </div>
+        <div class="col s12">
+            <div ng-repeat="dato in control.preguntas |  filter:control.buscar" class="col s12">
+                <blockquote class="card-panel">
+                    <h5>{{dato.titulo}}
+                        <span class="badge" data-badge-caption="{{dato.fecha}}"></span>
+                    </h5>
+                    <p style="font-style: italic;" class="blue-grey-text">
+                        <span ng-bind-html="dato.descripcion"></span>
+                    </p>
+                    <div>
+                        <span>
+                            <span ng-bind-html="dato.respuesta"></span>
+                        </span>
+                    </div>
+                    <div ng-if="control.rol" style="padding-bottom: 10px;">
+                        <a href="" ng-click="control.eliminar_pregunta(dato)">
+                            <i class="material-icons right red-text">delete</i>
+                        </a>
+                        <a class="modal-trigger" ng-click="control.form_responder=dato" href="#modal1">
+                            <i class="material-icons right blue-text">mode_edit</i>
+                        </a>
+                    </div>
+                </blockquote>
+            </div>
+            <h4 ng-show="(control.preguntas | filter:control.buscar).length==0" class="center blue-grey-text bouncy-slide-down" style="padding-bottom: 100px">No se encontraron datos</h4>
+        </div>
+    </div>
+</div>
+
+<form ng-submit="control.nueva_pregunta()" name="form_pregunta">
+    <div id="modal2" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <h4 class="titulo center">Realizar
+                <span>pregunta</span>
+            </h4>
+            <div input-field>
+                <select required ng-model="control.form_nueva_pregunta.titulo" material-select watch>
+                    <option disabled value="">SELECCIONAR</option>
+                    <option value="Pregunta personal">Personal</option>
+                    <option value="Pregunta familiar">Familiar</option>
+                    <option value="Pregunta curiosa">Curiosidad</option>
+                    <option value="Pregunta sobre Trabajo social">Trabajo social</option>
+                    <option value="Otro">Otro</option>
+                </select>
+            </div>
+            <div>
+                <trix-editor required placeholder="Realizar pregunta" angular-trix ng-model="control.form_nueva_pregunta.desc"></trix-editor>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="" ng-click="control.get_preguntas_frecuentes()" class="modal-action modal-close waves-effect btn-flat">Cancelar</a>
+            <button ng-disabled="form_pregunta.$invalid" type="submit" class="modal-action modal-close waves-effect btn-flat">Enviar</button>
+        </div>
+    </div>
+</form>
+<form ng-submit="control.responder_pregunta()">
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4 class="titulo center">Responder
+                <span>pregunta</span>
+            </h4>
+            <p style="font-style: italic;" class="blue-grey-text">
+                <span ng-bind-html="control.form_responder.descripcion"></span>
+            </p>
+            <div>
+                <trix-editor angular-trix ng-model="control.form_responder.respuesta"></trix-editor>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="" ng-click="control.get_preguntas_frecuentes()" class="modal-action modal-close waves-effect btn-flat">Cancelar</a>
+            <button type="submit" class="modal-action modal-close waves-effect btn-flat">Responder</button>
+        </div>
+    </div>
+</form>
+<div ng-include="'views/btn_menu.html'"></div>
+<div ng-include="'views/footer.html'"></div>
+</body>
+</html>

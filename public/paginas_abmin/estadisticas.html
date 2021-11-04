@@ -29,7 +29,10 @@
   <body class="w-screen h-screen overflow-hidden">
     <div class="flex flex-col w-full h-full overflow-hidden">
       <!-- Navbar -->
-      <nav class="w-full bg-purple-800 py-3 flex-shrink-0">
+      <nav
+        class="w-full bg-purple-800 py-3 flex-shrink-0"
+        style="background-color: #553c9a"
+      >
         <div
           class="
             flex flex-wrap
@@ -104,6 +107,7 @@
           <h1 class="text-2xl mb-5 font-light">Generar Historial de Chat</h1>
           <p class="font-medium -mb-2 text-gray-600">Usuario 1:</p>
           <input
+            id="us1"
             class="
               bg-white
               p-2
@@ -116,12 +120,14 @@
               outline-none
               focus:outline-none focus:bg-gray-50
             "
-            placeholder="@ Correo de Usuario 1"
+            placeholder="$ Id de Usuario 1"
           />
           <p class="font-medium -mb-2 text-gray-600">Usuario 2:</p>
           <input
+            id="us2"
             class="
               bg-white
+              outline-none
               p-2
               w-full
               rounded-md
@@ -129,12 +135,12 @@
               transform
               transition-all
               duration-300
-              outline-none
               focus:outline-none focus:bg-gray-50
             "
-            placeholder="@ Correo de Usuario 2"
+            placeholder="$ Id de Usuario 2"
           />
           <button
+            id="genButton"
             class="
               bg-blue-500
               p-2
@@ -147,10 +153,13 @@
             Generar
           </button>
         </div>
-        <div class="w-px h-full border rounded-full bg-gray-200 border-gray-200"></div>
+        <div
+          class="w-px h-full border rounded-full bg-gray-200 border-gray-200"
+        ></div>
         <!-- USUARIOS -->
         <div class="flex flex-col gap-2 flex-grow" id="usuarios"></div>
       </div>
     </div>
   </body>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </html>

@@ -1,15 +1,19 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
 
-const { validarCampos, validarJWT, tieneRole } = require('../middlewares');
+const { validarCampos, validarJWT } = require('../middlewares');
 
-const { emailExiste, existeUsuarioPorId } = require('../helpers/db-validators');
-
-const { mensajesGet, mensajesPost } = require('../controllers/mensajes');
+const {
+  mensajesGet,
+  mensajesPost,
+  historial,
+} = require('../controllers/mensajes');
 
 const router = Router();
 
 router.get('/', mensajesGet);
+
+router.get('/historial', validarJWT, historial);
 
 router.post(
   '/',

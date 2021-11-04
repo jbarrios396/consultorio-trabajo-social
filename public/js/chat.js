@@ -90,13 +90,60 @@ const cargarUsuarios = async () => {
     const item = document.createElement('div');
 
     item.innerHTML = `
-      <div class="flex items-center gap-2 p-3 w-full bg-gray-100 rounded-md" id="item-${
+      <div class="flex items-center gap-2 p-3 py-5 w-full bg-gray-100 rounded-md" id="item-${
         us.uid
       }">
         <div class="w-2.5 h-2.5 rounded-full ${
           activos.includes(us.uid) ? 'bg-green-400' : 'bg-red-400'
         }"> </div>
         <p>${us.nombre}</p>
+      </div>
+    `.trim();
+
+    usuarios.appendChild(item);
+
+    const el = document.getElementById('item-' + us.uid);
+
+    el.addEventListener('click', _ => {
+      selectedUser = us.uid;
+      chat.innerHTML = '';
+      cargarDesdeLaBD();
+    });
+  });
+
+  await cargarChatsWithAdmin();
+};
+
+const cargarChatsWithAdmin = async () => {
+  const usuarios = document.getElementById('usuarios');
+
+  const response = await (
+    await fetch(
+      `${url}buscar/extra/buscarChatsConAdmin?buscarChatsConAdmin=true&uid=${usuario.uid}`,
+      {
+        headers: { 'Content-Type': 'application/json', 'x-token': token },
+      }
+    )
+  ).json();
+
+  if (response.msg || response.erros) return console.log('Error');
+
+  response.admins.forEach(us => {
+    if (us.uid === usuario.uid) return;
+
+    const item = document.createElement('div');
+
+    item.innerHTML = `
+      <div class="flex items-center gap-2 p-3 w-full bg-gray-100 rounded-md" id="item-${
+        us.uid
+      }">
+        <div class="w-2.5 h-2.5 rounded-full ${
+          activos.includes(us.uid) ? 'bg-green-400' : 'bg-red-400'
+        }"> </div>
+        <div>
+          <p>${us.nombre}</p>
+          <p class="text-gray-400 text-sm">Administrador</p>
+        </div>
       </div>
     `.trim();
 

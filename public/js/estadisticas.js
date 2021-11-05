@@ -179,9 +179,9 @@ const addUser = async () => {
           transform transition-all duration-300
           focus:outline-none focus:bg-gray-50
         ">
-          <option value="USER_ROL" default>Trabajador Social</option>
-          <option value="PATIENT_ROL">Paciente</option>
-          <option value="ADMIN_ROL">Administrador</option>
+          <option value="USER_ROLE" default>Trabajador Social</option>
+          <option value="PATIENT_ROLE">Paciente</option>
+          <option value="ADMIN_ROLE">Administrador</option>
         </select>
       </div>
       `,

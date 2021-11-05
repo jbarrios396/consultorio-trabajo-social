@@ -1,28 +1,153 @@
 <!DOCTYPE html>
 <html ng-app="ConsultorioVirtual" lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Consultorio Virtual</title>
     <!-- Links -->
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <link rel="icon" type="image/png" href="../images/icono.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    
-</head>
-<body>
-     <!-- Navbar -->
-     <nav class="w-full bg-purple-800 ">
-        <div class="nav-wrapper">
-          <a href="#" class="brand-logo right">correo</a>
-          <ul id="nav-mobile" class="left hide-on-med-and-down">
-            <li><a href="inicio.html">inicio</a></li>
-            <li><a href="">consultorio</a></li>
-            <li><a href="mi_espacio.html">mi espacio</a></li>
-            <li><a href="juegos.html">Entretenimiento</a></li>
-          </ul>
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" type="image/png" href="../images/icono.png" />
+
+    <script src="../js/api.js"></script>
+    <script defer src="../js/miEspacio.js"></script>
+  </head>
+  <body class="w-screen h-screen overflow-hidden relative">
+    <!-- Decoracion 1-->
+    <div
+      class="
+        absolute
+        -top-10
+        -left-10
+        rounded-full
+        w-80
+        h-80
+        bg-opacity-25 bg-purple-500
+        z-0
+      "
+    ></div>
+
+    <!-- Decoracion 2-->
+    <div
+      class="
+        absolute
+        top-1/3
+        -right-48
+        rounded-full
+        w-80
+        h-96
+        transform
+        rotate-45
+        bg-opacity-10 bg-purple-500
+        z-0
+      "
+    ></div>
+
+    <!-- Decoracion 3-->
+    <div
+      class="
+        absolute
+        -bottom-20
+        left-1/4
+        rounded-full
+        w-80
+        h-52
+        transform rotate-12
+        bg-opacity-5 bg-purple-500
+        z-0
+      "
+    ></div>
+
+    <div class="flex flex-col w-full h-full overflow-hidden">
+      <!-- Navbar -->
+      <nav
+        class="w-full bg-purple-800 py-3 z-50 relative"
+        style="background-color: #553c9a"
+      >
+        <div
+          class="
+            flex flex-wrap
+            justify-center
+            md:justify-between
+            items-center
+            w-full
+            px-12
+            text-white
+          "
+        >
+          <div class="flex flex-wrap justify-center items-center gap-4">
+            <a
+              href="inicio.html"
+              class="w-auto h-12 rounded-sm flex justify-center items-center"
+              >Inicio</a
+            >
+            <a
+              href="./consultorio.html"
+              class="w-auto h-12 rounded-sm flex justify-center items-center"
+              >Consultorio</a
+            >
+            <a
+              href="mi_espacio.html"
+              class="w-auto h-12 rounded-sm flex justify-center items-center"
+              >Mi Espacio</a
+            >
+            <a
+              href="juegos.html"
+              class="w-auto h-12 rounded-sm flex justify-center items-center"
+              >Entretenimiento</a
+            >
+          </div>
+          <div class="flex items-center gap-5">
+            <h1 class="text-xl -mt-1" id="navMail"></h1>
+            <button
+              id="logout-button"
+              class="
+                material-icons-round
+                bg-red-500 bg-opacity-25
+                rounded-full
+                text-red-50
+                p-2
+                outline-none
+                focus:outline-none
+              "
+            >
+              logout
+            </button>
+          </div>
         </div>
       </nav>
 
+      <!-- Body -->
+      <div
+        class="
+          m-20
+          flex-grow
+          items-center
+          flex flex-col
+          gap-5
+          overflow-hidden
+          z-50
+          relative
+        "
+      >
+        <img
+          class="w-48 h-48 bg-gray-200 rounded-full"
+          id="profile-pic"
+          alt="profile-pic"
+        />
+        <h1 id="usName" class="text-4xl font-light text-gray-800">Nombre</h1>
+        <h2 id="usMail" class="text-2xl font-light text-gray-800">Correo</h2>
+        <h2 id="usRol" class="text-2xl font-light text-gray-800">Rol</h2>
+        <div class="flex-grow"></div>
+        <h2 id="usDate" class="text-2xl text-gray-400">Desde x</h2>
+      </div>
+    </div>
+  </body>
+</html>

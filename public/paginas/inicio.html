@@ -6,17 +6,15 @@
     <title>Consultorio Virtual</title>
     <!-- Links -->
     <link
-      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
       rel="stylesheet"
     />
+
     <link
       href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
       rel="stylesheet"
     />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/swiper/swiper-bundle.min.css"
-    />
+
     <link rel="icon" type="image/png" href="../images/icono.png" />
 
     <script src="../js/api.js"></script>
@@ -25,7 +23,7 @@
 
   <body>
     <!-- Navbar -->
-    <nav class="w-full bg-purple-800 py-3">
+    <nav class="w-full bg-purple-800 py-3" style="background-color: #553c9a">
       <div
         class="
           flex flex-wrap
@@ -61,14 +59,15 @@
         </div>
         <div class="flex items-center gap-5">
           <h1 class="text-xl -mt-1" id="navMail"></h1>
+
           <button
             id="logout-button"
             class="
-              material-icons-round
-              bg-red-500 bg-opacity-25
-              rounded-full
-              text-red-50
+              bg-purple-500 bg-opacity-50
+              text-white
               p-2
+              rounded-md
+              material-icons-round
               outline-none
               focus:outline-none
             "

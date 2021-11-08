@@ -2,7 +2,7 @@ const url = window.location.hostname.includes('localhost')
   ? 'http://localhost:8080/api/'
   : 'https://consultorio-trabajo-social.herokuapp.com/api/';
 
-const login = async data => {
+const login = async (data, swal) => {
   const response = await (
     await fetch(url + 'auth/login', {
       method: 'POST',
@@ -11,7 +11,8 @@ const login = async data => {
     })
   ).json();
 
-  if (response.errors) return console.log('LogIn Failed');
+  if (response.errors || response.msg)
+    return swal.fire('Error', 'Revise los datos e intente nuevamente', 'error');
 
   sessionStorage.setItem('token', response.token);
 

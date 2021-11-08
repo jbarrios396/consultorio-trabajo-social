@@ -112,13 +112,18 @@ const cargarUsuarios = async (search = '@') => {
           </div>
           <div class="flex flex-col flex-grow text-gray-500">
             <p class="text-xl text-gray-600">${us.nombre}</p>
-            <p>Correo: ${us.correo}</p>
+            <p>Correo: ${us.correo} ${
+      us.tel ? '| Telefono: ' + us.tel : ''
+    } </p>
             <p>Rol: ${us.rol
               .replace('_ROLE', '')
               .replace('PATIENT', 'Paciente')
               .replace('ADMIN', 'Administrador')
               .replace('USER', 'Trabajador Social')}</p>
           </div>
+          <button 
+            id="view-${us.uid}"
+            class="material-icons-outlined text-gray-400 p-3 rounded-full bg-transparent transform transition-all duration-200 ease-in outline-none focus:outline-none hover:text-yellow-500 hover:bg-yellow-200">info</button>
           <button 
             onclick="navigator.clipboard.writeText('${us.uid}')"         
             class="material-icons-round text-gray-400 p-3 rounded-full bg-transparent transform transition-all duration-200 ease-in outline-none focus:outline-none hover:text-blue-500 hover:bg-blue-200">copy</button>
@@ -129,6 +134,45 @@ const cargarUsuarios = async (search = '@') => {
       `.trim();
 
     usuarios.appendChild(item);
+    document.getElementById('view-' + us.uid).onclick = () => {
+      Swal.fire({
+        title: `
+          <div class="flex gap-1 items-center justify-center">
+            <i class="mt-1 material-icons-outlined">info</i>
+            <span>${us.nombre}</span>
+          </div>`,
+        html: `
+          <div class="relative flex items-center flex-col gap-1.5">
+              <img class="w-28 h-28 rounded-full" src="https://ui-avatars.com/api/?name=${
+                us.nombre
+              }&background=ACEEF3&color=041F60" />
+              <p class="text-xl">${us.correo}</p>
+              <p>${us.tel || ''}</p>
+              ${
+                us.text
+                  ? `<p class="mt-2"><span class="font-medium">Motivo:</span><br/>${us.text}</p>`
+                  : ''
+              }
+              <p class="mt-5 font-medium">${us.rol
+                .replace('_ROLE', '')
+                .replace('PATIENT', 'Paciente')
+                .replace('ADMIN', 'Administrador')
+                .replace('USER', 'Trabajador Social')}
+              </p>
+              <p class="text-gray-400 mt-10">
+              Usuario desde:
+              ${
+                new Date(us.createdAt).toLocaleDateString() +
+                ' ' +
+                tConv24(new Date(us.createdAt).toLocaleTimeString())
+              }</p>
+          </div>
+        `,
+        showConfirmButton: false,
+        showCloseButton: true,
+        focusConfirm: false,
+      });
+    };
   });
 
   document.getElementById('addButton').onclick = addUser;
@@ -151,7 +195,7 @@ const deleteUser = async uid => {
 
 const addUser = async () => {
   const { value: formValues } = await Swal.fire({
-    title: 'Multiple inputs',
+    title: 'Nuevo Usuario',
     html: `
       <div class="flex flex-col gap-2 items-start w-full p-2">
         <input id="swal-input1" name="correo" placeholder="Correo..." type="email" class="
@@ -167,6 +211,12 @@ const addUser = async () => {
           focus:outline-none focus:bg-gray-50
         ">
         <input id="swal-input2" name="password" placeholder="Contraseña..." type="password" autocomplete="new-password" class="
+          bg-white outline-none
+          p-2 w-full rounded-md border
+          transform transition-all duration-300
+          focus:outline-none focus:bg-gray-50
+        ">
+        <input id="swal-input-tel" name="tel" placeholder="Telefono..." type="phone" class="
           bg-white outline-none
           p-2 w-full rounded-md border
           transform transition-all duration-300
@@ -193,18 +243,22 @@ const addUser = async () => {
         [document.getElementById('swal-inputName').name]:
           document.getElementById('swal-inputName').value,
         [document.getElementById('swal-input2').name]:
+          document.getElementById('swal-input-tel').value,
+        [document.getElementById('swal-input-tel').name]:
           document.getElementById('swal-input2').value,
         [document.getElementById('rol-select').name]:
           document.getElementById('rol-select').value,
       };
     },
+    confirmButtonText: 'Añadir',
   });
 
   if (!formValues) return;
 
   let error;
+  const { tel, text, ...rest } = formValues;
 
-  if (Object.values(formValues).includes('', undefined, null) && !error)
+  if (Object.values(rest).includes('', undefined, null) && !error)
     error = await Swal.fire(
       'Alerta',
       'Debe Llenar Todos los Campos',
@@ -255,7 +309,17 @@ const generarHistorial = async () => {
 
   if (response.msg || response.errors) return console.log('Error');
 
-  downloadBlob(response, 'Historial.xlsx')
+  downloadBlob(response, 'Historial.xlsx');
+};
+
+const tConv24 = time24 => {
+  let ts = time24;
+  let H = +ts.substr(0, 2);
+  let h = H % 12 || 12;
+  h = h < 10 ? '0' + h : h; // leading 0 at the left for 1 digit hours
+  let ampm = H < 12 ? ' AM' : ' PM';
+  ts = h + ts.substr(2, 3) + ampm;
+  return ts;
 };
 
 if (!token) window.location = '../';

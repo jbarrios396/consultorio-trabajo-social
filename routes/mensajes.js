@@ -11,13 +11,14 @@ const {
 
 const router = Router();
 
-router.get('/', mensajesGet);
+router.get('/', validarJWT, mensajesGet);
 
 router.get('/historial', validarJWT, historial);
 
 router.post(
   '/',
   [
+    validarJWT,
     check('de', 'El remitente es obligatorio').not().isEmpty(),
     check('para', 'El destinatario es obligatorio').not().isEmpty(),
     check('msg', 'El mensaje es obligatorio').not().isEmpty(),

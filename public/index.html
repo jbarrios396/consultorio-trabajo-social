@@ -6,11 +6,12 @@
     <title>Consultorio Virtual</title>
     <!-- Links -->
     <link
-      href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css"
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
       rel="stylesheet"
     />
+
     <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
       rel="stylesheet"
     />
     <link
@@ -21,418 +22,329 @@
     <link rel="icon" type="image/png" href="images/icono.png" />
 
     <!-- Scripts -->
-    <script defer src="./js/index.js"></script>
-    <script type="module">
-      import Swiper from 'https://unpkg.com/swiper/swiper-bundle.esm.browser.min.js';
-
-      const swiper = new Swiper('.swiper-container', {
-        loop: true,
-        pagination: {
-          el: '.swiper-pagination',
-        },
-      });
-    </script>
-
+    <!-- <script defer src="./components/navbar.js"></script> -->
     <script src="./js/api.js"></script>
+    <script defer src="./js/includeHtml.js"></script>
   </head>
-
   <body>
     <!-- Navbar -->
-    <nav
-      class="w-full h-56 flex flex-col justify-start items-center bg-purple-800"
-    >
-      <div class="flex w-full border-solid border-b border-white">
-        <div class="h-40 w-full md:w-3/5 ml-12">
-          <img
-            class="object-contain h-full w-full"
-            src="images/LOGO-CONSULTORIO-VIRTUAL-TRABAJO-SOCIAL.png"
-            alt="Logo"
-          />
-        </div>
-        <div class="hidden h-40 w-2/5 md:block">
-          <img
-            class="object-cover h-full w-full"
-            src="images/BANNER-CONSULTORIO-VIRTUAL-TRABAJO-SOCIAL (1).png"
-            alt="Hojas"
-          />
-        </div>
-        <div class="h-40">
-          <img
-            class="object-contain h-full w-full"
-            src="images/logocurrnnuevo.png"
-            alt="Curn"
-          />
-        </div>
-      </div>
-      <div class="flex justify-start items-center h-full w-full px-12">
-        <button
-          id="openButton"
-          class="text-white text-md font-medium focus:outline-none"
-        >
-          Iniciar Sesion
-        </button>
-      </div>
-    </nav>
-
-    <!-- Login -->
-
-    <form
-      autocomplete="off"
-      id="loginForm"
-      style="backdrop-filter: blur(3px)"
-      class="
-        absolute
-        z-10
-        hidden
-        w-64
-        h-auto
-        shadow-md
-        border
-        rounded-lg
-        p-4
-        m-5
-        flex flex-col
-        justify-between
-        gap-3
-        bg-white bg-opacity-50
-      "
-    >
-      <div id="closeButton">
-        <span class="material-icons text-red-500"> close </span>
-      </div>
-      <div class="flex items-center gap-2">
-        <span class="material-icons text-gray-700"> person </span>
-        <input
-          ng-model="control.form_login.usuario"
-          placeholder="Correo"
-          id="usuario"
-          name="correo"
-          autocomplete=""
-          class="border rounded-md px-2 h-10 focus:outline-none"
-          required="true"
-        />
-      </div>
-      <div class="flex items-center gap-2">
-        <span class="material-icons text-gray-700"> lock </span>
-        <input
-          ng-model="control.form_login.clave"
-          placeholder="Contraseña"
-          id="clave"
-          name="password"
-          type="password"
-          autocomplete="new-password"
-          class="border rounded-md px-2 h-10 focus:outline-none"
-          required="true"
-        />
-      </div>
-      <button
-        type="submit"
-        form="loginForm"
-        class="text-white bg-orange-500 rounded-lg px-3 py-2 focus:outline-none"
-      >
-        INICIAR
-      </button>
-
-      <a
-        class="
-          text-white
-          bg-purple-800 bg-opacity-75
-          text-center
-          rounded-lg
-          px-3
-          py-1
-          text-xs
-          focus:outline-none
-        "
-        href="paginas/registro.html"
-        >REGISTRO</a
-      >
-    </form>
+    <include src="./components/navbar.html">Cargando NavBar...</include>
 
     <!-- Slideshow -->
-    <div class="swiper-container w-full" style="height: calc(100vh - 224px)">
-      <div class="swiper-wrapper">
-        <!-- Slides -->
-        <div class="swiper-slide">
-          <img
-            src="images/carusel/1.jpg"
-            class="object-contain h-full w-full absolute z-10"
-          />
-          <img
-            src="images/carusel/1.jpg"
-            style="filter: blur(5px)"
-            class="object-cover h-full w-full"
-          />
-        </div>
-        <div class="swiper-slide">
-          <img
-            src="images/carusel/2.jpg"
-            class="object-contain h-full w-full absolute z-10"
-          />
-          <img
-            src="images/carusel/2.jpg"
-            style="filter: blur(5px)"
-            class="object-cover h-full w-full"
-          />
-        </div>
-        <div class="swiper-slide">
-          <img
-            src="images/carusel/3.jpg"
-            class="object-contain h-full w-full absolute z-10"
-          />
-          <img
-            src="images/carusel/3.jpg"
-            style="filter: blur(5px)"
-            class="object-cover h-full w-full"
-          />
-        </div>
-        <div class="swiper-slide">
-          <img
-            src="images/carusel/4.jpg"
-            class="object-contain h-full w-full absolute z-10"
-          />
-          <img
-            src="images/carusel/4.jpg"
-            style="filter: blur(5px)"
-            class="object-cover h-full w-full"
-          />
-        </div>
-        <div class="swiper-slide">
-          <img
-            src="images/carusel/5.jpg"
-            class="object-contain h-full w-full absolute z-10"
-          />
-          <img
-            src="images/carusel/5.jpg"
-            style="filter: blur(5px)"
-            class="object-cover h-full w-full"
-          />
-        </div>
-        <div class="swiper-slide">
-          <img
-            src="images/carusel/6.jpg"
-            class="object-contain h-full w-full absolute z-10"
-          />
-          <img
-            src="images/carusel/6.jpg"
-            style="filter: blur(5px)"
-            class="object-cover h-full w-full"
-          />
-        </div>
-      </div>
-      <div class="absolute swiper-pagination"></div>
-    </div>
+    <include src="./components/slideBanner.html">Cargando Banner</include>
 
     <!-- Cards -->
     <div
       class="
+        bg-gradient-to-tl
+        from-gray-700
+        via-purple-900
+        to-blue-900
         flex flex-col
-        bg-gray-600
-        gap-4
+        gap-20
+        justify-between
         w-full
         p-12
-        justify-center
-        items-center
-        h-auto
-        md:h-screen md:flex-row
+        items-start
       "
     >
+      <h1 class="text-4xl text-white">Nosotros</h1>
       <div
         class="
-          flex flex-col
-          justify-start
-          items-center
-          w-full
-          md:w-1/3
-          h-full
-          p-4
-          rounded-md
-          shadow-md
-          border border-gray-700 border-opacity-0
-          transform
-          transition-all
-          duration-300
-          hover:shadow-lg hover:border-opacity-25 hover:scale-105
-        "
-      >
-        <h1 class="text-3xl text-white font-bold">Misión</h1>
-        <div class="w-full h-48">
-          <img class="object-contain w-full h-full" src="images/idea.png" />
-        </div>
-        <p class="text-justify text-white">
-          El consultorio virtual de Trabajo Social busca proporcionar las
-          tecnologías más innovadoras a medida de las necesidades personales,
-          familiares y vocacionales de los estudiantes del programa, con el
-          objetivo de incrementar su permanencia, retención, competitividad,
-          productividad y graduación.
-        </p>
-      </div>
-      <div
-        class="
-          flex flex-col
-          justify-start
-          items-center
-          w-full
-          md:w-1/3
-          h-full
-          p-4
-          rounded-md
-          shadow-md
-          border border-gray-700 border-opacity-0
-          transform
-          transition-all
-          duration-300
-          hover:shadow-lg hover:border-opacity-25 hover:scale-105
-        "
-      >
-        <h1 class="text-3xl text-white font-bold">Vision</h1>
-        <div class="w-full h-48">
-          <img class="object-contain w-full h-full" src="images/ver.png" />
-        </div>
-        <p class="text-justify text-white">
-          Estar comprometidos con los problemas de los estudiantes del programa
-          de Trabajo Social y sus respectivas familias, de forma transparente y
-          eficaz para convertirnos en un servicio social de confianza, que
-          camina con el cambio de la tecnología y la sociedad, dando a conocer
-          las posibilidades de ayuda psicosocial, familiar, vocacional y de
-          tecnologías innovadoras.
-        </p>
-      </div>
-      <div
-        class="
-          flex flex-col
-          justify-start
-          items-center
-          w-full
-          md:w-1/3
-          h-full
-          p-4
-          rounded-md
-          shadow-md
-          border border-gray-700 border-opacity-0
-          transform
-          transition-all
-          duration-300
-          hover:shadow-lg hover:border-opacity-25 hover:scale-105
-        "
-      >
-        <h1 class="text-3xl text-white font-bold">Objetivos</h1>
-        <div class="w-full h-48">
-          <img class="object-contain w-full h-full" src="images/vision.png" />
-        </div>
-        <p class="text-justify text-white">
-          - Proporcionar a los estudiantes y familias de la CURN el acceso
-          abierto y sencillo a los procesos de Consultas virtuales donde se
-          encuentre.
-          <br />
-          - Suministrar a los estudiantes servicios de apoyo personal y de
-          emprendimiento para mejoramiento de su calidad de vida.
-        </p>
-      </div>
-    </div>
-
-    <div class="w-full h-auto flex flex-col p-12 text-gray-700">
-      <h3 class="text-4xl text-gray-800">Conocenos</h3>
-      <h5 class="text-3xl">Tenemos mucho contenido para ti</h5>
-      <div
-        class="flex flex-row w-full mt-5 p-4 gap-4 justify-center text-center"
-      >
-        <div class="flex flex-col w-1/2 justify-center border rounded-md">
-          <h5 class="font-medium text-xl">Entretenimiento</h5>
-          <hr />
-          <div
-            class="w-full flex flex-wrap justify-center gap-4 items-center p-4"
-          >
-            <div class="w-1/3 h-20 flex flex-col justify-center items-center">
-              <img src="images/boton-de-reproduccion.png" />
-              <p>Videos</p>
-            </div>
-            <div
-              class="
-                w-1/3
-                h-20
-                flex flex-col
-                justify-center
-                items-center
-                overflow-hidden
-              "
-            >
-              <div class="flex-grow overflow-hidden">
-                <img
-                  src="images/rompecabezas.png"
-                  class="w-full h-full object-contain"
-                />
-              </div>
-              <p class="flex-shrink-0">Juegos</p>
-            </div>
-            <div class="w-1/3 h-20 flex flex-col justify-center items-center">
-              <img src="images/pizarra.png" />
-              <p>Tutoriales</p>
-            </div>
-            <div class="w-1/3 h-20 flex flex-col justify-center items-center">
-              <img src="images/libros.png" />
-              <p>Libros</p>
-            </div>
-          </div>
-        </div>
-        <div class="flex flex-col w-1/2 justify-center border rounded-md">
-          <h5 class="font-medium text-xl">Consultoria Virtual</h5>
-          <hr />
-          <div
-            class="w-full flex flex-wrap justify-center gap-4 items-center p-4"
-          >
-            <div class="w-1/3 h-20 flex flex-col justify-center items-center">
-              <img src="images/chico.png" />
-              <p>Indivudual</p>
-            </div>
-            <div class="w-1/3 h-20 flex flex-col justify-center items-center">
-              <img src="images/pareja.png" />
-              <p>Pareja</p>
-            </div>
-            <div class="w-1/3 h-20 flex flex-col justify-center items-center">
-              <img src="images/familia.png" />
-              <p>Familiar</p>
-            </div>
-            <div class="w-1/3 h-20 flex flex-col justify-center items-center">
-              <img src="images/red.png" />
-              <p>Grupal</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <footer
-      class="
-        w-full
-        h-48
-        flex flex-col
-        p-4
-        justify-center
-        items-center
-        bg-purple-800
-      "
-    >
-      <div class="h-40 w-full md:w-3/5 ml-12">
-        <img
-          class="object-contain h-full w-full"
-          src="images/Logo - HD.png"
-          alt="Logo"
-        />
-      </div>
-
-      <div
-        class="
+          flex
           w-full
           h-auto
-          flex flex-col
-          justify-start
+          flex-grow flex-col
           items-center
-          bg-purple-800
+          gap-10
+          md:flex-row
         "
       >
-        <p class="text-justify text-white">Consultorio Virtual - CURN</p>
+        <div
+          class="
+            flex flex-col
+            justify-between
+            items-center
+            w-full
+            md:w-1/3
+            h-96
+            p-5
+            gap-3
+            rounded-md
+            shadow-md
+            border border-gray-400
+            transform
+            transition-all
+            duration-300
+            hover:shadow-lg hover:scale-105
+          "
+        >
+          <h1 class="text-3xl text-white font-medium">Misión</h1>
+          <div class="w-full h-40">
+            <img class="object-contain w-full h-full" src="images/idea.png" />
+          </div>
+          <p class="text-justify text-white">
+            El consultorio virtual de Trabajo Social busca proporcionar las
+            tecnologías más innovadoras a medida de las necesidades personales,
+            familiares y vocacionales de los estudiantes del programa, con el
+            objetivo de incrementar su permanencia, retención, competitividad,
+            productividad y graduación.
+          </p>
+        </div>
+        <div
+          class="
+            flex flex-col flex flex-col
+            justify-between
+            items-center
+            w-full
+            md:w-1/3
+            h-auto
+            p-5
+            gap-3
+            rounded-md
+            shadow-md
+            border border-gray-400
+            transform
+            transition-all
+            duration-300
+            hover:shadow-lg hover:scale-105
+          "
+        >
+          <h1 class="text-3xl text-white font-medium">Vision</h1>
+          <div class="w-full h-40">
+            <img class="object-contain w-full h-full" src="images/ver.png" />
+          </div>
+          <p class="text-justify text-white">
+            Estar comprometidos con los problemas de los estudiantes del
+            programa de Trabajo Social y sus respectivas familias, de forma
+            transparente y eficaz para convertirnos en un servicio social de
+            confianza, que camina con el cambio de la tecnología y la sociedad,
+            dando a conocer las posibilidades de ayuda psicosocial, familiar,
+            vocacional y de tecnologías innovadoras.
+          </p>
+        </div>
+        <div
+          class="
+            flex flex-col
+            justify-between
+            items-center
+            w-full
+            md:w-1/3
+            h-96
+            p-5
+            gap-3
+            rounded-md
+            shadow-md
+            border border-gray-400
+            transform
+            transition-all
+            duration-300
+            hover:shadow-lg hover:scale-105
+          "
+        >
+          <h1 class="text-3xl text-white font-medium">Objetivos</h1>
+          <div class="w-full h-40">
+            <img class="object-contain w-full h-full" src="images/vision.png" />
+          </div>
+          <p class="text-justify text-white">
+            - Proporcionar a los estudiantes y familias de la CURN el acceso
+            abierto y sencillo a los procesos de Consultas virtuales donde se
+            encuentre.
+            <br />
+            - Suministrar a los estudiantes servicios de apoyo personal y de
+            emprendimiento para mejoramiento de su calidad de vida.
+          </p>
+        </div>
       </div>
-    </footer>
+      <div></div>
+    </div>
+
+    <!-- Seccion 3 -->
+    <div class="w-full h-auto flex flex-col p-12 mb-20 text-gray-700">
+      <h3 class="text-4xl text-gray-800">Conocenos</h3>
+      <h5 class="text-2xl mb-10">Tenemos mucho contenido para ti</h5>
+      <div class="flex justify-between items-center pb-4 mb-5 w-full">
+        <h2
+          class="
+            flex-grow
+            text-center text-2xl
+            pb-2
+            mx-20
+            border-b border-gray-200
+          "
+        >
+          Entretenimiento
+        </h2>
+        <h2
+          class="
+            flex-grow
+            text-center text-2xl
+            pb-2
+            mx-20
+            border-b border-gray-200
+          "
+        >
+          Consultoria
+        </h2>
+      </div>
+      <div class="flex gap-5 justify-between">
+        <!-- Bloque 1 -->
+        <div class="flex-grow flex">
+          <!-- Fila 1 -->
+          <div class="flex w-full">
+            <!-- Columna 1 -->
+            <div class="flex flex-grow items-center gap-5 flex-col">
+              <!-- Item 1 -->
+              <div
+                class="
+                  flex flex-col
+                  bg-yellow-50
+                  w-36
+                  rounded-lg
+                  items-center
+                  gap-2
+                  p-5
+                "
+              >
+                <img src="images/boton-de-reproduccion.png" class="w-16 h-16" />
+                <p class="text-yellow-900">Videos</p>
+              </div>
+              <!-- Item 2 -->
+              <div
+                class="
+                  flex flex-col
+                  bg-blue-50
+                  w-36
+                  rounded-lg
+                  items-center
+                  gap-2
+                  p-5
+                "
+              >
+                <img src="images/pizarra.png" class="w-16 h-16" />
+                <p class="text-blue-900">Tutoriales</p>
+              </div>
+            </div>
+            <!-- Columna 2 -->
+            <div class="flex flex-grow gap-5 items-center flex-col">
+              <!-- Item 1 -->
+              <div
+                class="
+                  flex flex-col
+                  bg-pink-50
+                  w-36
+                  rounded-lg
+                  items-center
+                  gap-2
+                  p-5
+                "
+              >
+                <i
+                  class="material-icons-round text-pink-600 rounded-lg p-1"
+                  style="font-size: 3.25rem"
+                  >extension</i
+                >
+                <p class="text-pink-900">Juegos</p>
+              </div>
+              <!-- Item 2 -->
+              <div
+                class="
+                  flex flex-col
+                  bg-green-50
+                  w-36
+                  rounded-lg
+                  items-center
+                  gap-2
+                  p-5
+                "
+              >
+                <img src="images/libros.png" class="w-16 h-16" />
+                <p class="text-green-900">Libros</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Bloque 2 -->
+        <div class="flex-grow flex">
+          <!-- Fila 1 -->
+          <div class="flex w-full">
+            <!-- Columna 1 -->
+            <div class="flex items-center flex-grow gap-5 flex-col">
+              <!-- Item 1 -->
+              <div
+                class="
+                  flex flex-col
+                  border-4 border-blue-200 border-dotted
+                  bg-white
+                  w-36
+                  rounded-lg
+                  items-center
+                  gap-2
+                  p-5
+                "
+              >
+                <img src="images/chico.png" class="w-16 h-16" />
+                <p class="text-blue-900">Indivudual</p>
+              </div>
+              <!-- Item 2 -->
+              <div
+                class="
+                  flex flex-col
+                  border-4 border-green-200 border-dotted
+                  bg-white
+                  w-36
+                  rounded-lg
+                  items-center
+                  gap-2
+                  p-5
+                "
+              >
+                <img src="images/familia.png" class="w-16 h-16" />
+                <p class="text-green-900">Familiar</p>
+              </div>
+            </div>
+            <!-- Columna 2 -->
+            <div class="flex items-center flex-grow gap-5 flex-col">
+              <!-- Item 1 -->
+              <div
+                class="
+                  flex flex-col
+                  border-4 border-purple-200 border-dotted
+                  bg-white
+                  w-36
+                  rounded-lg
+                  items-center
+                  gap-2
+                  p-5
+                "
+              >
+                <img src="images/pareja.png" class="w-16 h-16" />
+                <p class="text-purple-900">Pareja</p>
+              </div>
+              <!-- Item 2 -->
+              <div
+                class="
+                  flex flex-col
+                  border-4 border-gray-300 border-dotted
+                  bg-white
+                  w-36
+                  rounded-lg
+                  items-center
+                  gap-2
+                  p-5
+                "
+              >
+                <img src="images/red.png" class="w-16 h-16" />
+                <p class="text-gray-800">Grupal</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Foot -->
+    <include src="./components/footer.html">Cargando Footer...</include>
   </body>
 </html>

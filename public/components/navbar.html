@@ -1,0 +1,103 @@
+<nav
+  class="w-full overflow-hidden h-28 bg-purple-800"
+  style="background-color: #553c9a"
+>
+  <div
+    class="
+      flex flex-wrap
+      justify-center
+      items-center
+      w-full
+      h-full
+      overflow-hidden
+      text-white
+      md:justify-between
+    "
+  >
+    <div
+      class="
+        flex flex-wrap
+        h-full
+        py-3
+        overflow-hidden
+        justify-center
+        items-center
+        gap-4
+      "
+    >
+      <img
+        class="object-contain h-full"
+        src="../images/LOGO-CONSULTORIO-VIRTUAL-TRABAJO-SOCIAL.png"
+        alt="Logo"
+      />
+      <img
+        class="object-cover h-full"
+        src="../images/BANNER-CONSULTORIO-VIRTUAL-TRABAJO-SOCIAL (1).png"
+        alt="Hojas"
+      />
+    </div>
+    <div class="flex items-center gap-5 h-full">
+      <div class="flex flex-col gap-1">
+        <button
+          onclick="iniciarSesion()"
+          id="openButton"
+          class="
+            flex
+            items-center
+            justify-between
+            gap-2
+            rounded-full
+            text-red-50
+            p-2
+            outline-none
+            focus:outline-none
+          "
+        >
+          Iniciar Sesión
+          <i
+            class="
+              bg-purple-500 bg-opacity-25
+              rounded-full
+              p-1
+              material-icons-round
+            "
+            >person</i
+          >
+        </button>
+        <button
+          onclick="registrarUsuario()"
+          id="registryButton"
+          class="
+            flex
+            items-center
+            justify-between
+            gap-2
+            rounded-full
+            text-red-50
+            p-2
+            outline-none
+            focus:outline-none
+          "
+        >
+          Registrarse
+          <i
+            class="
+              bg-purple-500 bg-opacity-25
+              rounded-full
+              p-1
+              material-icons-round
+            "
+            >person_add</i
+          >
+        </button>
+      </div>
+      <img
+        class="object-contain h-full"
+        src="../images/logocurrnnuevo.png"
+        alt="Curn"
+      />
+    </div>
+  </div>
+</nav>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="./navbar.js"></script>

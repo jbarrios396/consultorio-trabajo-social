@@ -19,7 +19,8 @@
           if (script.src) {
             if (!script.src.includes('https')) {
               const { origin } = window.location;
-              const folder = './components/navbar.html'
+
+              const folder = filePath //'./components/navbar.html'
                 .split('/')
                 .map(dir => {
                   if (['.', '..'].includes(dir)) return null;

@@ -17,25 +17,27 @@
           s.defer = script.defer;
 
           if (script.src) {
-            if (!script.src.includes('https')) {
-              const { origin } = window.location;
+            // if (!script.src.includes('https')) {
+            //   const { origin } = window.location;
 
-              const folder = filePath //'./components/navbar.html'
-                .split('/')
-                .map(dir => {
-                  if (['.', '..'].includes(dir)) return null;
+            //   const folder = filePath
+            //     .split('/')
+            //     .map(dir => {
+            //       if (['.', '..'].includes(dir)) return null;
 
-                  if (dir.includes('.html')) return null;
+            //       if (dir.includes('.html')) return null;
 
-                  return dir;
-                })
-                .join('/');
+            //       console.log(dir);
+            //       return dir;
+            //     })
+            //     .join('/');
 
-              const newPath =
-                origin + folder + script.src.replace(origin + '/', '');
+            //   const newPath =
+            //     origin + folder + script.src.replace(origin + '/', '');
 
-              s.src = newPath;
-            } else s.src = script.src;
+            //   s.src = newPath;
+            // } else
+            s.src = script.src;
           } else s.appendChild(document.createTextNode(script.innerText));
 
           document.body.appendChild(s);

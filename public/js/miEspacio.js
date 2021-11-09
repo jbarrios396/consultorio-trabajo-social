@@ -1,5 +1,3 @@
-const token = sessionStorage.getItem('token');
-
 const main = async () => {
   //Validar Token
   const response = await (
@@ -17,10 +15,7 @@ const main = async () => {
     return (window.location = '../');
   }
 
-  const { correo, nombre, rol, createdAt } = response.usuario;
-
-  document.getElementById('navMail').innerHTML = correo;
-  document.getElementById('logout-button').onclick = logout;
+  const { correo, nombre, rol, createdAt, tel } = response.usuario;
 
   //User HTML References
   document.getElementById(
@@ -29,6 +24,11 @@ const main = async () => {
 
   document.getElementById('usName').innerHTML = nombre;
   document.getElementById('usMail').innerHTML = 'Correo: ' + correo;
+  if (tel) {
+    const t = document.getElementById('usTel');
+    t.classList.remove('hidden');
+    t.innerHTML = 'Telefono: ' + tel;
+  }
   document.getElementById('usRol').innerHTML =
     'Rol: ' +
     rol
@@ -39,7 +39,7 @@ const main = async () => {
   document.getElementById('usDate').innerHTML =
     'Usuario desde: ' +
     new Date(createdAt).toLocaleDateString() +
-    ' ' +
+    ' - ' +
     tConv24(new Date(createdAt).toLocaleTimeString());
 };
 

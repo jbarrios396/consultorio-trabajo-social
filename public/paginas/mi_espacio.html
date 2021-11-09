@@ -18,6 +18,9 @@
 
     <script src="../js/api.js"></script>
     <script defer src="../js/miEspacio.js"></script>
+
+    <script defer src="../js/includeHtml.js"></script>
+    <script defer src="../components/loggedNavbar/loggedNavbar.js"></script>
   </head>
   <body class="w-screen h-screen overflow-hidden relative">
     <!-- Decoracion 1-->
@@ -59,70 +62,18 @@
         rounded-full
         w-80
         h-52
-        transform rotate-12
+        transform
+        rotate-12
         bg-opacity-5 bg-purple-500
         z-0
       "
     ></div>
 
-    <div class="flex flex-col w-full h-full overflow-hidden">
+    <div class="relative flex flex-col w-full h-full overflow-hidden">
       <!-- Navbar -->
-      <nav
-        class="w-full bg-purple-800 py-3 z-50 relative"
-        style="background-color: #553c9a"
+      <include src="../components/loggedNavbar/loggedNavbar.html"
+        >Cargando Navbar...</include
       >
-        <div
-          class="
-            flex flex-wrap
-            justify-center
-            md:justify-between
-            items-center
-            w-full
-            px-12
-            text-white
-          "
-        >
-          <div class="flex flex-wrap justify-center items-center gap-4">
-            <a
-              href="inicio.html"
-              class="w-auto h-12 rounded-sm flex justify-center items-center"
-              >Inicio</a
-            >
-            <a
-              href="./consultorio.html"
-              class="w-auto h-12 rounded-sm flex justify-center items-center"
-              >Consultorio</a
-            >
-            <a
-              href="mi_espacio.html"
-              class="w-auto h-12 rounded-sm flex justify-center items-center"
-              >Mi Espacio</a
-            >
-            <a
-              href="juegos.html"
-              class="w-auto h-12 rounded-sm flex justify-center items-center"
-              >Entretenimiento</a
-            >
-          </div>
-          <div class="flex items-center gap-5">
-            <h1 class="text-xl -mt-1" id="navMail"></h1>
-            <button
-              id="logout-button"
-              class="
-                material-icons-round
-                bg-red-500 bg-opacity-25
-                rounded-full
-                text-red-50
-                p-2
-                outline-none
-                focus:outline-none
-              "
-            >
-              logout
-            </button>
-          </div>
-        </div>
-      </nav>
 
       <!-- Body -->
       <div
@@ -144,6 +95,7 @@
         />
         <h1 id="usName" class="text-4xl font-light text-gray-800">Nombre</h1>
         <h2 id="usMail" class="text-2xl font-light text-gray-800">Correo</h2>
+        <h2 id="usTel" class="text-2xl font-light text-gray-800 hidden">tel</h2>
         <h2 id="usRol" class="text-2xl font-light text-gray-800">Rol</h2>
         <div class="flex-grow"></div>
         <h2 id="usDate" class="text-2xl text-gray-400">Desde x</h2>

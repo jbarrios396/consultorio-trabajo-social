@@ -2,6 +2,8 @@ const url = window.location.hostname.includes('localhost')
   ? 'http://localhost:8080/api/'
   : 'https://consultorio-trabajo-social.herokuapp.com/api/';
 
+const token = sessionStorage.getItem('token');
+
 const login = async (data, swal) => {
   const response = await (
     await fetch(url + 'auth/login', {
@@ -16,9 +18,7 @@ const login = async (data, swal) => {
 
   sessionStorage.setItem('token', response.token);
 
-  if (response.usuario.rol === 'ADMIN_ROLE')
-    window.location = 'paginas_abmin/inicio_abmin.html';
-  else window.location = 'paginas/inicio.html';
+  window.location = 'paginas/inicio.html';
 };
 
 const logout = async () => {

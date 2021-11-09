@@ -21,51 +21,18 @@
     <script src="../socket.io/socket.io.js"></script>
     <script defer src="../js/socket.events.js"></script>
     <script defer src="../js/chat.js"></script>
+
+    <script defer src="../js/includeHtml.js"></script>
+    <script defer src="../components/loggedNavbar/loggedNavbar.js"></script>
   </head>
   <body class="w-screen h-screen overflow-hidden">
     <div class="flex flex-col w-full h-full overflow-hidden">
       <!-- NAVBAR -->
-      <div
-        class="flex gap-1 w-full justify-between p-4 flex-shrink-0"
-        style="background-color: #553c9a"
+
+      <include src="../components/loggedNavbar/loggedNavbar.html"
+        >Cargando Navbar...</include
       >
-        <div class="flex gap-2 items-center">
-          <button
-            id="goBack"
-            class="
-              bg-purple-500 bg-opacity-50
-              rounded-full
-              p-2
-              text-white text-xl
-              material-icons-round
-              outline-none
-              focus:outline-none
-            "
-          >
-            chevron_left
-          </button>
-          <h1 class="text-4xl -mt-1 text-white font-light" id="title">
-            Chat |
-          </h1>
-        </div>
-        <div class="flex gap-2 items-center">
-          <span class="text-white text-xl font-light">Salir</span>
-          <button
-            id="logoutBtn"
-            class="
-              bg-purple-500 bg-opacity-50
-              text-white
-              p-2
-              rounded-md
-              material-icons-round
-              outline-none
-              focus:outline-none
-            "
-          >
-            logout
-          </button>
-        </div>
-      </div>
+
       <div class="mx-10 my-5 flex-grow flex gap-2 overflow-hidden">
         <!-- USUARIOS -->
         <div

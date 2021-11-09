@@ -7,7 +7,7 @@
         const object = document.createElement('div');
         object.innerHTML = content;
 
-        i.insertAdjacentElement('afterend', object);
+        i.insertAdjacentElement('afterend', object.firstChild);
 
         const scripts = object.getElementsByTagName('script');
 

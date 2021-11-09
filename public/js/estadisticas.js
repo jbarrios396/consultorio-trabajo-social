@@ -1,4 +1,3 @@
-const token = sessionStorage.getItem('token');
 let socket;
 let activos = [];
 let usuario;

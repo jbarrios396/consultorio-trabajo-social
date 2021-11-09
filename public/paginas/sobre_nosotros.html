@@ -1,163 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Consultorio Virtual</title>
+    <!-- Links -->
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Consultorio Virtual</title>
-        <!-- Links -->
-        <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-        <link rel="icon" type="image/png" href="../images/icono.png">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-    
-    </head>
-    
-    <body>
-        <!-- Navbar -->
-        <nav class="w-full bg-purple-800 ">
-            <div class="nav-wrapper">
-              <a href="#" class="brand-logo right">correo</a>
-              <ul id="nav-mobile" class="left hide-on-med-and-down">
-                <li><a href="inicio.html">inicio</a></li>
-                <li><a href="">consultorio</a></li>
-                <li><a href="mi_espacio.html">mi espacio</a></li>
-                <li><a href="juegos.html">Entretenimiento</a></li>
-                
-              </ul>
-            </div>
-          </nav>
-                
-        <div ng-include="'views/barra.html'"></div>
-<div class="container">
-    <div class="row">
-        <div class="col s12 center">
-            <h3 class="titulo ">
-                ¿Quiénes <span>somos?</span>
-            </h3>
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" type="image/png" href="../images/icono.png" />
+
+    <script src="../js/api.js"></script>
+
+    <script defer src="../js/includeHtml.js"></script>
+    <script defer src="../components/loggedNavbar/loggedNavbar.js"></script>
+  </head>
+
+  <body class="h-screen w-screen overflow-hidden">
+    <div class="flex flex-col w-full h-full overflow-hidden">
+      <!-- Navbar -->
+      <include src="../components/loggedNavbar/loggedNavbar.html"
+        >Cargando Navbar...</include
+      >
+
+      <!-- Info -->
+      <div
+        class="
+          w-full
+          flex flex-col
+          gap-10
+          flex-grow
+          p-12
+          overflow-y-auto
+          text-xl text-justify
+        "
+      >
+        <h1 class="text-3xl text-gray-800">¿Quienes Somos?</h1>
+        <p>
+          El consultorio virtual de Trabajo Social de la CURN es un espacio que
+          permite la interacción con los estudiantes y visitantes. Es una
+          estrategia de atención individual, familiar y social, pensada con un
+          conjunto de actores, herramientas, y recursos que se unen con el
+          propósito de realizar las consultas sociales, solicitadas por las
+          personas interesadas de la Corporación Universitaria Rafael Núñez –
+          CURN.
+        </p>
+        <p class="font-medium">
+          ¡Les damos la bienvenida a este espacio virtual y esperamos que sea de
+          gran apoyo!
+        </p>
+
+        <!-- Objetivos -->
+        <div class="flex gap-5">
+          <img src="../images/bandera.png" class="w-28 h-28" />
+          <div>
+            <p class="text-2xl font-medium text-gray-800">Objetivos</p>
+            <ul class="mt-2 list-disc list-inside">
+              <li>
+                Proporcionar a los estudiantes y familias de la CURN el acceso
+                abierto y sencillo a los procesos de consultas virtuales donde
+                se encuentre.
+              </li>
+              <li>
+                Suministrar a los estudiantes servicios de apoyo personal y de
+                emprendimiento para el mejoramiento de su calidad de vida.
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="col s12 justificado">
-            <p class="justificado" style="font-size: 1.3em">
-                El consultorio virtual de Trabajo Social de la CURN es un espacio que permite la interacción con los estudiantes y visitantes. Es una estrategia de atención individual, familiar y social, pensada con un conjunto de actores, herramientas, y recursos que
-                se unen con el propósito de realizar las consultas sociales, solicitadas por las personas interesadas de la Corporación Universitaria Rafael Núñez – CURN.
-                <br>
-                <div class="col s12 center">
-                <b>¡Les damos la bienvenida a este espacio virtual y esperamos que sea de gran apoyo!</b>
-            </div>
+
+        <!-- Mision -->
+        <div class="flex gap-5">
+          <img src="../images/idea.png" class="w-28 h-28" />
+          <div>
+            <p class="text-2xl font-medium text-gray-800">Misión</p>
+            <p class="mt-2">
+              El consultorio virtual de Trabajo Social busca proporcionar las
+              tecnologías más innovadoras a medida de las necesidades
+              personales, familiares y vocacionales de los estudiantes del
+              programa, con el objetivo de incrementar su permanencia,
+              retención, competitividad, productividad y graduación.
             </p>
+          </div>
         </div>
-        <div class="col s12 card-panel" style="padding-top:20px;padding-bottom:20px; ">
-            <div ng-show="control.objetivos" class="col s12 slide-top">
-                <div class="w-full h-48">
-                    <img class="object-contain w-full h-full center" src="../images/bandera.png">
-                </div>
-                <div class="col s12 m9">
-                    <p style="font-size: 1.3em" class="deep-purple-text">
-                        <b>OBJETIVOS</b>
-                    </p>
-                    <ul style="font-size: 1.3em">
-                        <li>
-                            <p class="justificado">
-                                - Proporcionar a los estudiantes y familias de la CURN el acceso abierto y sencillo a los procesos de Consultas virtuales donde se encuentre.
-                            </p>
-                        </li>
-                        <li>
-                            <p class="justificado">
-                                - Suministrar a los estudiantes servicios de apoyo personal y de emprendimiento para mejoramiento de su calidad de vida.
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div ng-show="control.mision" class="col s12 slide-top">
-                <div class="w-full h-48">
-                    <img class="object-contain w-full h-full" src="../images/idea.png">
-                </div>
-                <div class="col s12 m9">
-                    <p style="font-size: 1.3em" class="deep-purple-text">
-                        <b>MISIÓN</b>
-                    </p>
-                    <ul style="font-size: 1.3em">
-                        <li>
-                            <p class="justificado">
-                                El consultorio virtual de Trabajo Social busca proporcionar las tecnologías más innovadoras a medida de las necesidades personales, familiares y vocacionales de los estudiantes del programa, con el objetivo de incrementar su permanencia, retención, competitividad,
-                                productividad y graduación.
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div ng-show="control.vision" class="col s12 slide-top">
-                <div class="w-full h-48">
-                    <img class="object-contain w-full h-full" src="../images/vision.png">
-                </div>
-                <div class="col s12 m9">
-                    <p style="font-size: 1.3em" class="deep-purple-text">
-                        <b>VISIÓN</b>
-                    </p>
-                    <ul style="font-size: 1.3em">
-                        <li>
-                            <p class="justificado">
-                                Estar comprometidos con los problemas de los estudiantes del programa de Trabajo Social y sus respectivas familias, de forma transparente y eficaz para convertirnos en un servicio social de confianza, que camina con el cambio de la tecnología y la sociedad,
-                                dando a conocer las posibilidades de ayuda psicosocial, familiar, vocacional y de tecnologías innovadoras.
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <div ng-show="control.servicio" class="col s12 slide-top">
-                <p style="font-size: 1.3em" class="deep-purple-text">
-                    <b>SERVICIOS DE APOYO</b>
-                </p>
-                <ul style="font-size: 1.3em">
-                    <li>
-                        <p class="justificado">
-                            Desde el al programa de Trabajo Social de la Corporación Universitaria Rafael Núñez se crea la propuesta de innovación: “Consultorio virtual de Trabajo Social”, ofreciendo desde un espacio virtual, a través de interacción con la población estudiantil
-                            de la CURN y a sus respectivas familias, los siguientes servicios:
-                        </p>
-                    </li>
-                </ul>
-                <p style="font-size: 1.2em" class="deep-purple-text"><b>ÁREA DE FORTALECIMIENTO PERSONAL</b></p>
-                <ul style="font-size: 1.2em; padding-left: 30px">
-                    <li>
-                        <b class="deep-purple-text">1.	ORIENTACIÓN   INDIVIDUAL SISTÉMICA</b><br>
-                        <p class="justificado">
-                            En el desarrollo de un individuo, la familia se convierte en el grupo más importante para alcanzar desde el desarrollo psicológico, el aprendizaje de las interacciones emocionales y el mantenimiento de la autoestima. Desde este ámbito se reconoce la importancia
-                            de la familia como núcleo de apoyo al estudiante y en este sentido se establecen las estrategias de fortalecimiento familiar desde el consultorio.
-                        </p>
-                    </li>
-                    <li>
-                        <b class="deep-purple-text">2.	ORIENTACIÓN FAMILIAR SISTÉMICA</b><br>
-                        <p class="justificado">
-                            Se ofrece al estudiante desde este espacio la posibilidad de recibir orientación personal en temáticas que quiera conocer o sobre problemáticas que requiera resolver en su vida académica o familiar.
-                        </p>
-                    </li>
-                    <li>
-                        <b class="deep-purple-text">3.	ORIENTACIÓN DE PAREJA</b><br>
-                        <p class="justificado">
-                            La relación de pareja es de alguna forma la más importante relación para el crecimiento de cada uno de sus miembros. Desde este espacio se busca apoyar a los individuos a desarrollar habilidades en las relaciones de pareja, ya sea para comunicarse claramente,
-                            resolver problemas y/o tener una proyección interna, independiente de su familia de origen.
-                        </p>
-                    </li>
 
-                </ul>
-                <p style="font-size: 1.2em" class="deep-purple-text"><b>ÁREA DE EMPRENDIMIENTO E INNOVACIÓN</b></p>
-                <p class="justificado" style="font-size: 1.2em">
-                    Se pretende apoyar a estudiantes y visitantes en el reconocimiento de sus potencialidades y habilidades para realizar la mejor elección en sus proyectos personales y académicos.
-                </p>
-                <ul style="font-size: 1.2em; padding-left: 30px">
-                    <li>
-                        <b class="deep-purple-text">1.Orientación vocacional individual</b><br>
-                        <b class="deep-purple-text">2.Talleres de orientación vocacional</b><br>
-                        <b class="deep-purple-text">3.Talleres y asesoría dirigidos a familia</b><br>
-                    </li>
-
-                </ul>
-            </div>
+        <!-- Vision -->
+        <div class="flex gap-5">
+          <img
+            src="../images/vision.png"
+            class="w-28 h-28 filter contrast-75 saturate-200"
+          />
+          <div>
+            <p class="text-2xl font-medium text-gray-800">Visión</p>
+            <p class="mt-2">
+              Estar comprometidos con los problemas de los estudiantes del
+              programa de Trabajo Social y sus respectivas familias, de forma
+              transparente y eficaz para convertirnos en un servicio social de
+              confianza, que camina con el cambio de la tecnología y la
+              sociedad, dando a conocer las posibilidades de ayuda psicosocial,
+              familiar, vocacional y de tecnologías innovadoras.
+            </p>
+          </div>
         </div>
+
+        <h1 class="text-3xl text-gray-800">Servicios de Apoyo</h1>
+        <p class="-mt-8">
+          Desde el programa de Trabajo Social de la Corporación Universitaria
+          Rafael Núñez se crea la propuesta de innovación: “Consultorio virtual
+          de Trabajo Social”, ofreciendo desde un espacio virtual, a través de
+          interacción con la población estudiantil de la CURN y a sus
+          respectivas familias, los siguientes servicios:
+        </p>
+
+        <!-- Lista 1 -->
+        <p class="font-medium text-gray-700">
+          ÁREA DE FORTALECIMIENTO PERSONAL
+        </p>
+        <ol class="list-decimal -mt-8 ml-8">
+          <li class="mb-4">
+            <span class="font-medium text-gray-600">
+              Orientación Individual Sistémica
+            </span>
+            <br />
+            En el desarrollo de un individuo, la familia se convierte en el
+            grupo más importante para alcanzar desde el desarrollo psicológico,
+            el aprendizaje de las interacciones emocionales y el mantenimiento
+            de la autoestima. Desde este ámbito se reconoce la importancia de la
+            familia como núcleo de apoyo al estudiante y en este sentido se
+            establecen las estrategias de fortalecimiento familiar desde el
+            consultorio.
+          </li>
+
+          <li class="my-4">
+            <span class="font-medium text-gray-600">
+              Orientación Familiar Sistémica
+            </span>
+            <br />
+
+            Se ofrece al estudiante desde este espacio la posibilidad de recibir
+            orientación personal en temáticas que quiera conocer o sobre
+            problemáticas que requiera resolver en su vida académica o familiar.
+          </li>
+
+          <li class="mt-4">
+            <span class="font-medium text-gray-600">
+              Orientación De Pareja
+            </span>
+            <br />
+            La relación de pareja es de alguna forma la más importante relación
+            para el crecimiento de cada uno de sus miembros. Desde este espacio
+            se busca apoyar a los individuos a desarrollar habilidades en las
+            relaciones de pareja, ya sea para comunicarse claramente, resolver
+            problemas y/o tener una proyección interna, independiente de su
+            familia de origen.
+          </li>
+        </ol>
+
+        <!-- Lista 2 -->
+        <p class="font-medium text-gray-700">
+          ÁREA DE EMPRENDIMIENTO E INNOVACIÓN
+        </p>
+        <p class="-mt-8">
+          Se pretende apoyar a estudiantes y visitantes en el reconocimiento de
+          sus potencialidades y habilidades para realizar la mejor elección en
+          sus proyectos personales y académicos.
+        </p>
+        <ol class="list-decimal -mt-4 ml-8 font-medium text-gray-600">
+          <li class="mb-4">Orientación vocacional individual.</li>
+
+          <li class="my-4">Talleres de orientación vocacional.</li>
+
+          <li class="mt-4">Talleres y asesoría dirigidos a familia.</li>
+        </ol>
+      </div>
     </div>
-</div>
-<div ng-include="'views/footer.html'"></div>
-</body>
+  </body>
 </html>

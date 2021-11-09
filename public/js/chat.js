@@ -1,4 +1,3 @@
-const token = sessionStorage.getItem('token');
 let socket;
 let activos = [];
 let selectedUser;
@@ -28,14 +27,8 @@ const main = async () => {
 
   //Referencias HTML
   chat = document.getElementById('messages');
-  document.getElementById('title').innerHTML += ` ${nombre}`;
-  document.getElementById('logoutBtn').onclick = logout;
-  document.getElementById('sendBtn').onclick = enviarMensaje;
 
-  document.getElementById('goBack').onclick = () =>
-    usuario.rol === 'ADMIN_ROLE'
-      ? (window.location = '../paginas_abmin/inicio_abmin.html')
-      : (window.location = './inicio.html');
+  document.getElementById('sendBtn').onclick = enviarMensaje;
 
   //Conectar Socket
   await conectarSocket();
@@ -90,7 +83,7 @@ const cargarUsuarios = async () => {
     const item = document.createElement('div');
 
     item.innerHTML = `
-      <div class="flex items-center gap-2 p-3 py-5 w-full bg-gray-100 rounded-md" id="item-${
+      <div class="flex items-center gap-2 p-3 py-5 w-full bg-gray-100 rounded-md transform transition-all duration-150 hover:bg-gray-200" id="item-${
         us.uid
       }">
         <div class="w-2.5 h-2.5 rounded-full ${
@@ -134,7 +127,7 @@ const cargarChatsWithAdmin = async () => {
     const item = document.createElement('div');
 
     item.innerHTML = `
-      <div class="flex items-center gap-2 p-3 w-full bg-gray-100 rounded-md" id="item-${
+      <div class="flex items-center gap-2 p-3 w-full bg-gray-100 rounded-md transform transition-all duration-150 hover:bg-gray-200" id="item-${
         us.uid
       }">
         <div class="w-2.5 h-2.5 rounded-full ${

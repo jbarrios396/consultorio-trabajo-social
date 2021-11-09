@@ -1,5 +1,3 @@
-const token = sessionStorage.getItem('token');
-
 const main = async () => {
   //Validar Token
   const response = await (
@@ -18,13 +16,10 @@ const main = async () => {
   }
 
   const {
-    usuario: { correo, nombre, rol },
+    usuario: { nombre },
   } = response;
 
-  document.getElementById('navMail').innerHTML = correo;
   document.getElementById('greeting').innerHTML += ` ${nombre}`;
-
-  document.getElementById('logout-button').onclick = logout;
 };
 
 if (!token) window.location = '../';

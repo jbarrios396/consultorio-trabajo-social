@@ -21,75 +21,17 @@
     <script src="../js/socket.events.js"></script>
     <script src="../socket.io/socket.io.js"></script>
     <script defer src="../js/estadisticas.js"></script>
+
+    <script defer src="../js/includeHtml.js"></script>
+    <script defer src="../components/loggedNavbar/loggedNavbar.js"></script>
   </head>
 
   <body class="w-screen h-screen overflow-hidden">
     <div class="flex flex-col w-full h-full overflow-hidden">
       <!-- Navbar -->
-      <nav
-        class="w-full bg-purple-800 py-3 flex-shrink-0"
-        style="background-color: #553c9a"
+      <include src="../components/loggedNavbar/loggedNavbar.html"
+        >Cargando Navbar...</include
       >
-        <div
-          class="
-            flex flex-wrap
-            justify-center
-            md:justify-between
-            items-center
-            w-full
-            px-12
-            text-white
-          "
-        >
-          <div class="flex flex-wrap justify-center items-center gap-4">
-            <a
-              href="../paginas_abmin/inicio_abmin.html"
-              class="w-auto h-12 rounded-sm flex justify-center items-center"
-              >Inicio</a
-            >
-            <a
-              href="../paginas/consultorio.html"
-              class="w-auto h-12 rounded-sm flex justify-center items-center"
-              >Consultorio</a
-            >
-            <a class="w-auto h-12 rounded-sm flex justify-center items-center"
-              >Investigación</a
-            >
-            <a
-              href="../paginas/mi_espacio.html"
-              class="w-auto h-12 rounded-sm flex justify-center items-center"
-              >Mi Espacio</a
-            >
-            <a
-              href="juegos.html"
-              class="w-auto h-12 rounded-sm flex justify-center items-center"
-              >Entretenimiento</a
-            >
-            <a
-              href="estadisticas.html"
-              class="w-auto h-12 rounded-sm flex justify-center items-center"
-              >Estadisticas</a
-            >
-          </div>
-          <div class="flex items-center gap-5">
-            <h1 class="text-xl -mt-1" id="navMail"></h1>
-            <button
-              id="logout-button"
-              class="
-                material-icons-round
-                bg-red-500 bg-opacity-25
-                rounded-full
-                text-red-50
-                p-2
-                outline-none
-                focus:outline-none
-              "
-            >
-              logout
-            </button>
-          </div>
-        </div>
-      </nav>
       <div class="mx-10 my-5 flex-grow flex gap-5 overflow-hidden">
         <!-- CHAT -->
         <div

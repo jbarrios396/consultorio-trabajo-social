@@ -1,5 +1,10 @@
 const { Schema, model } = require('mongoose');
 
+const roles = {
+  values: ['ADMIN_ROLE', 'USER_ROLE', 'PATIENT_ROLE'],
+  message: '{VALUE} no es un rol valido.',
+};
+
 const UsuarioSchema = Schema(
   {
     nombre: {
@@ -20,7 +25,7 @@ const UsuarioSchema = Schema(
       type: String,
       required: true,
       default: 'PATIENT_ROLE',
-      emun: ['ADMIN_ROLE', 'USER_ROLE', 'PATIENT_ROLE'],
+      enum: roles,
     },
     tel: {
       type: String,

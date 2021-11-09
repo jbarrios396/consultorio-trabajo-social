@@ -6,24 +6,9 @@ let usuario;
 
 const main = async () => {
   //Validar Token
-  const response = await (
-    await fetch(url + 'auth/', {
-      headers: { 'Content-Type': 'application/json', 'x-token': token },
-    })
-  ).json();
+  usuario = await checkLogged();
 
-  if (response.msg) {
-    console.log('Validation Failed');
-
-    return (window.location = '../');
-  }
-
-  const {
-    usuario: { nombre, uid },
-  } = response;
-
-  console.log('Usuario:', uid);
-  usuario = response.usuario;
+  if (!usuario) return;
 
   //Referencias HTML
   chat = document.getElementById('messages');

@@ -1,82 +1,132 @@
 <!DOCTYPE html>
-<html ng-app="ConsultorioVirtual"  lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html ng-app="ConsultorioVirtual" lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Consultorio Virtual</title>
-    <!-- Links -->
-    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
-    <link rel="icon" type="image/png" href="../images/icono.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
-</head>
-<body>
-          <!-- Navbar -->
-          <nav class="w-full bg-purple-800 ">
-            <div class="nav-wrapper">
-              <a href="#" class="brand-logo right">correo</a>
-              <ul id="nav-mobile" class="left hide-on-med-and-down">
-                <li><a href="inicio.html">inicio</a></li>
-                <li><a href="">consultorio</a></li>
-                <li><a href="mi_espacio.html">mi espacio</a></li>
-                <li><a href="juegos.html">Entretenimiento</a></li>
-                
-              </ul>
+    <!-- Links -->
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" type="image/png" href="../images/icono.png" />
+
+    <script src="../js/api.js"></script>
+    <script defer src="../js/biblioteca.js"></script>
+
+    <script defer src="../js/includeHtml.js"></script>
+    <script defer src="../components/loggedNavbar/loggedNavbar.js"></script>
+  </head>
+  <body class="relative h-screen w-screen overflow-hidden">
+    <!-- Navbar -->
+    <include src="../components/loggedNavbar/loggedNavbar.html"
+      >Cargando Navbar...
+    </include>
+
+    <div
+      class="
+        flex flex-col
+        w-full
+        h-full
+        overflow-y-auto
+        p-12
+        gap-5
+        text-gray-800
+      "
+    >
+      <h1 class="text-3xl">Biblioteca</h1>
+
+      <!-- Bar -->
+      <div id="bar" class="flex gap-1 items-center justify-between w-full">
+        <input
+          id="search"
+          name="search"
+          placeholder="Busqueda..."
+          type="text"
+          class="
+            bg-white
+            outline-none
+            p-2
+            flex-grow
+            rounded-md
+            border
+            transform
+            transition-all
+            duration-300
+            focus:outline-none focus:bg-gray-50
+          "
+        />
+        <select
+          id="facultad"
+          class="
+            bg-white
+            p-2
+            border
+            flex-shrink-0
+            rounded-md
+            outline-none
+            focus:outline-none
+          "
+        >
+          <option value="soc" default>Ciencias Sociales y Humanas</option>
+          <option value="ing">Ingeniería</option>
+          <option value="sal">Ciencias de la Salud</option>
+          <option value="adm">Ciencias Contables y Administrativas</option>
+        </select>
+        <button
+          id="searchButton"
+          class="
+            bg-yellow-500
+            p-2
+            material-icons-round
+            text-white
+            rounded-md
+            flex-shrink-0
+            focus:outline-none
+          "
+        >
+          search
+        </button>
+      </div>
+
+      <!-- Items -->
+      <div id="books" class="flex flex-col gap-3">
+        <div
+          class="
+            p-3
+            flex flex-col
+            justify-between
+            w-80
+            h-36
+            gap-2
+            rounded-lg
+            shadow-md
+            border
+          "
+        >
+          <div class="flex items-start justify-between gap-2 w-full h-2/3">
+            <i
+              class="material-icons-round text-green-500"
+              style="font-size: 40px"
+              >bookmark</i
+            >
+            <div class="h-full flex flex-col flex-grow overflow-hidden">
+              <h1 class="font-medium text-xl h-auto text-gray-700">
+                LA DOBLE HÉLICE
+              </h1>
+              <p class="truncate flex-shrink-0">Weidenfeld & Nicholson</p>
             </div>
-          </nav>
-    <div ng-include="'views/barra.html'"></div>
-<div ng-include="'views/sub_barra_investigacion.html'"></div>
-<div class="container">
-    <div class="row">
-        <div class="col s12 center">
-            <h3 class="titulo">
-                <span>Biblioteca</span>
-            </h3>
+          </div>
+          <a class="font-medium text-blue-400">Leer</a>
         </div>
-    
-      
-           <!-- categoria de libros -->         
-                </div>
-                <div class="col s4 m6 l4 ">
-                    <h4 ui-sref="libros_ingenieria" class=" card-panel blue darken-2 hoverable tam  waves-effect waves-block ">
-                        <div class="white-text">
-                            <i class="large material-icons">book</i>
-                            <a href="libros_ingenieria.html">INGENIERIA</a>
-                        </div>
-                    </h4>
-                </div>
-                <div class="col s4 m6 l4 ">
-                    <h4 ui-sref="juegos" class="card-panel  deep-purple darken-3 hoverable tam  waves-effect waves-block ">
-                        <div class="white-text">
-                            <i class="large material-icons">book</i>
-                            <a href="libros_socialesyhuma.html">CIENCIAS SOCIALES Y HUMANAS</a>
-                        </div>
-                    </h4>
-                </div>
-                <div class="col s4 m6 l4 ">
-                    <h4 ui-sref="libros" class="card-panel cyan hoverable tam  waves-effect waves-block ">
-                        <div class="white-text">
-                            <i class="large material-icons">book</i>
-                            <a href="libros_salud.html">CIENCIAS DE LA SALUD</a>
-                        </div>
-                    </h4>
-                </div>
-                <div class="col s12 m6 l4 ">
-                    <h4 ui-sref="videos" class="card-panel   green darken-3 hoverable tam  waves-effect waves-block ">
-                        <div class="white-text">
-                            <i class="large material-icons">book</i>
-                            <a href="libros_contayadmi.html">CIENCIAS CONTABLES Y ADMINISTRATIVAS</a>
-                        </div>
-                    </h4>
-                </div>
-                
-            <h4 class="center blue-grey-text bouncy-slide-down" style="padding-bottom: 100px" ng-show="(control.libros | filter: control.buscar).length==0">No se encontraron datos</h4>
-        </div>
+      </div>
     </div>
-</div>
-<div ng-include="'views/btn_menu.html'"></div>
-<div ng-include="'views/footer.html'"></div>
-</body>
+  </body>
 </html>

@@ -4,21 +4,11 @@ let usuario;
 
 const main = async () => {
   //Validar Token
-  const response = await (
-    await fetch(url + 'auth/', {
-      headers: { 'Content-Type': 'application/json', 'x-token': token },
-    })
-  ).json();
+  usuario = await checkLogged();
 
-  if (response.msg) {
-    console.log('Validation Failed');
+  if (!usuario) return;
 
-    return (window.location = '../');
-  }
-
-  const {
-    usuario: { correo, uid, rol },
-  } = response;
+  const { rol, uid } = usuario;
 
   if (rol !== 'ADMIN_ROLE') {
     window.location = './inicio.html';
@@ -26,11 +16,7 @@ const main = async () => {
   }
 
   console.log('Usuario:', uid);
-  usuario = response.usuario;
 
-  //Referencias HTML
-  document.getElementById('navMail').innerHTML = correo;
-  document.getElementById('logout-button').onclick = logout;
   document.getElementById('genButton').onclick = generarHistorial;
 
   //Conectar Socket

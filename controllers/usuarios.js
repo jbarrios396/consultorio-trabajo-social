@@ -27,10 +27,13 @@ const usuariosPost = async (req, res = response) => {
   usuario.password = bcryptjs.hashSync(password, salt);
 
   // Guardar en BD
-  await usuario.save();
+  usuario.save((err, usuario) => {
+    if (err)
+      return res.status(400).json({ msg: err.message, errors: err.errors });
 
-  res.json({
-    usuario,
+    res.json({
+      usuario,
+    });
   });
 };
 
@@ -44,9 +47,12 @@ const usuariosPut = async (req, res = response) => {
     resto.password = bcryptjs.hashSync(password, salt);
   }
 
-  const usuario = await Usuario.findByIdAndUpdate(id, resto);
+  await Usuario.findByIdAndUpdate(id, resto, {}, (err, usuario) => {
+    if (err)
+      return res.status(400).json({ msg: err.message, errors: err.errors });
 
-  res.json(usuario);
+    res.json(usuario);
+  });
 };
 
 const usuariosPatch = (req, res = response) => {
@@ -57,9 +63,13 @@ const usuariosPatch = (req, res = response) => {
 
 const usuariosDelete = async (req, res = response) => {
   const { id } = req.params;
-  const usuario = await Usuario.findByIdAndUpdate(id, { estado: false });
 
-  res.json(usuario);
+  await Usuario.findByIdAndUpdate(id, { estado: false }, {}, (err, usuario) => {
+    if (err)
+      return res.status(400).json({ msg: err.message, errors: err.errors });
+
+    res.json(usuario);
+  });
 };
 
 module.exports = {

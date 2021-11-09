@@ -54,3 +54,23 @@ const downloadBlob = (blob, name = 'file.txt') => {
   // Remove link from body
   document.body.removeChild(link);
 };
+
+const checkLogged = async () => {
+  //Validar Token
+  const response = await (
+    await fetch(url + 'auth/', {
+      headers: {
+        'Content-Type': 'application/json',
+        'x-token': token,
+      },
+    })
+  ).json();
+
+  if (response.msg) {
+    console.log('Validation Failed');
+
+    return (window.location = '../');
+  }
+
+  return response.usuario;
+};

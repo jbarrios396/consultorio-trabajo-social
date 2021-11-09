@@ -16,6 +16,7 @@ class Server {
       buscar: '/api/buscar',
       usuarios: '/api/usuarios',
       mensajes: '/api/mensajes',
+      libros: '/api/libros',
     };
 
     // Conectar a base de datos
@@ -57,6 +58,7 @@ class Server {
     this.app.use(this.paths.buscar, require('../routes/buscar'));
     this.app.use(this.paths.usuarios, require('../routes/usuarios'));
     this.app.use(this.paths.mensajes, require('../routes/mensajes'));
+    this.app.use(this.paths.libros, require('../routes/libros'));
   }
 
   sockets() {

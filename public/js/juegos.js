@@ -112,3 +112,5 @@ juegos.forEach(({ nombre, link, pagina, descripcion }) => {
 
   contenedor.appendChild(j);
 });
+
+checkLogged();

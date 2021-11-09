@@ -1,21 +1,10 @@
 const main = async () => {
   //Validar Token
-  const response = await (
-    await fetch(url + 'auth/', {
-      headers: {
-        'Content-Type': 'application/json',
-        'x-token': token,
-      },
-    })
-  ).json();
+  const usuario = await checkLogged();
 
-  if (response.msg || response.errors) {
-    console.log('Validation Failed');
+  if (!usuario) return;
 
-    return (window.location = '../');
-  }
-
-  const { correo, nombre, rol, createdAt, tel } = response.usuario;
+  const { correo, nombre, rol, createdAt, tel } = usuario;
 
   //User HTML References
   document.getElementById(

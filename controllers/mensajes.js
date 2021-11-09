@@ -34,10 +34,13 @@ const mensajesPost = async (req, res = response) => {
   const mensaje = new Mensaje({ de, para, msg, fecha });
 
   // Guardar en BD
-  await mensaje.save();
+  mensaje.save((err, mensaje) => {
+    if (err)
+      return res.status(400).json({ msg: err.message, errors: err.errors });
 
-  res.json({
-    mensaje,
+    res.json({
+      mensaje,
+    });
   });
 };
 
@@ -77,15 +80,6 @@ const historial = async (req, res = response) => {
 
   deleteFile(filePath);
 };
-
-function fitToColumn(arrayOfArray) {
-  // get maximum character of each column
-  return arrayOfArray[0].map((a, i) => ({
-    wch: Math.max(
-      ...arrayOfArray.map(a2 => (a2[i] ? a2[i].toString().length : 0))
-    ),
-  }));
-}
 
 module.exports = {
   mensajesGet,

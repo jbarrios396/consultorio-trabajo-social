@@ -1,5 +1,7 @@
+let usuario;
+
 const main = async () => {
-  const usuario = await checkLogged();
+  usuario = await checkLogged();
 
   if (!usuario) return;
 
@@ -47,7 +49,21 @@ const search = async () => {
 
   document.getElementById('count').innerHTML = 'Resultados: ' + response.total;
 
+  
   cargarLibros(response.libros);
+};
+
+const deleteLibro = async uid => {
+  const response = await (
+    await fetch(`${url}libros/${uid}`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json', 'x-token': token },
+    })
+  ).json();
+
+  if (response.msg || response.errors) return console.log('Error');
+
+  cargarLibros();
 };
 
 const cargarLibros = async libros => {
@@ -55,7 +71,7 @@ const cargarLibros = async libros => {
 
   items.innerHTML = '';
 
-  libros.forEach(({ nombre, autor, link }) => {
+  libros?.forEach(({ nombre, autor, link, _id }) => {
     const libro = document.createElement('div');
 
     libro.className = `
@@ -84,7 +100,14 @@ const cargarLibros = async libros => {
           <p class="truncate flex-shrink-0">${autor}</p>
         </div>
       </div>
-      <a href="${link}" target="_blank" class="font-medium text-blue-400">Leer</a>
+      <div class="flex items-end justify-between gap-1">
+        <a href="${link}" target="_blank" class="font-medium text-blue-400 w-max">Leer</a>
+        ${
+          usuario.rol === 'ADMIN_ROLE'
+            ? `<button onclick="deleteLibro('${_id}')" class="material-icons-round text-gray-400 transform transition-all duration-200 ease-in outline-none focus:outline-none hover:text-red-500">delete</button>`
+            : ''
+        }
+      </div>
     `;
 
     items.appendChild(libro);
@@ -184,11 +207,3 @@ const addBook = async () => {
 };
 
 main();
-
-// Array.from(document.getElementsByTagName('select')).forEach(select => {
-//   const arrow = document.createElement('i');
-//   arrow.className = 'material-icons-round top-2 right-2 absolute';
-//   arrow.innerHTML = 'expand_more';
-
-//   select.after(arrow);
-// });

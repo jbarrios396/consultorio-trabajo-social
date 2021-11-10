@@ -64,11 +64,11 @@ const usuariosPatch = (req, res = response) => {
 const usuariosDelete = async (req, res = response) => {
   const { id } = req.params;
 
-  await Usuario.findByIdAndUpdate(id, { estado: false }, {}, (err, usuario) => {
+  await Usuario.findByIdAndDelete(id, {}, (err, usuario) => {
     if (err)
       return res.status(400).json({ msg: err.message, errors: err.errors });
 
-    res.json(usuario);
+    res.json({ usuario });
   });
 };
 

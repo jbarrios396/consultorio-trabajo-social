@@ -71,7 +71,9 @@ const cargarUsuarios = async (search = '@') => {
   ).json();
 
   if (response.msg || response.errors) return console.log('Error');
+
   Array.from(usuarios.children).forEach(item => item.remove());
+
   usuarios.innerHTML = `
     <div class="flex gap-1 items-center justify-between w-full">
         <h1 class="text-2xl mr-3 flex-shrink-0 font-light">Usuarios</h1>
@@ -253,9 +255,9 @@ const addUser = async () => {
         [document.getElementById('swal-inputName').name]:
           document.getElementById('swal-inputName').value,
         [document.getElementById('swal-input2').name]:
-          document.getElementById('swal-input-tel').value,
-        [document.getElementById('swal-input-tel').name]:
           document.getElementById('swal-input2').value,
+        [document.getElementById('swal-input-tel').name]:
+          document.getElementById('swal-input-tel').value,
         [document.getElementById('rol-select').name]:
           document.getElementById('rol-select').value,
       };

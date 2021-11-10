@@ -37,7 +37,19 @@ const librosPost = async (req, res = response) => {
   });
 };
 
+const librosDelete = async (req, res = response) => {
+  const { id } = req.params;
+
+  await Libro.findByIdAndDelete(id, (err, libro) => {
+    if (err)
+      return res.status(400).json({ msg: err.message, errors: err.errors });
+
+    res.json({ libro });
+  });
+};
+
 module.exports = {
   librosGet,
   librosPost,
+  librosDelete,
 };

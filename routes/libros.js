@@ -3,7 +3,11 @@ const { check } = require('express-validator');
 
 const { validarCampos, validarJWT, esAdminRole } = require('../middlewares');
 
-const { librosGet, librosPost } = require('../controllers/libros');
+const {
+  librosGet,
+  librosPost,
+  librosDelete,
+} = require('../controllers/libros');
 
 const router = Router();
 
@@ -22,5 +26,7 @@ router.post(
   ],
   librosPost
 );
+
+router.delete('/:id', [validarJWT, esAdminRole], librosDelete);
 
 module.exports = router;

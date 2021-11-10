@@ -59,6 +59,8 @@ const conectarSocket = async () => {
   socket.on('connect', conectado);
   socket.on('disconnect', desconectado);
   socket.on('usuarios-activos', usuariosActivos);
+
+  cargarUsuarios();
 };
 
 const cargarUsuarios = async (search = '@') => {
@@ -257,6 +259,19 @@ const addUser = async () => {
           transform transition-all duration-300
           focus:outline-none focus:bg-gray-50
         ">
+
+        <label for="gen-select">Genero:</label>
+        <select name="genero" id="gen-select" class="
+          bg-white outline-none
+          p-2 w-full rounded-md border
+          transform transition-all duration-300
+          focus:outline-none focus:bg-gray-50
+        ">
+          <option value="M" default>Masculino</option>
+          <option value="F">Femenino</option>
+          <option value="O">Otro</option>
+        </select>
+
         <label for="rol-select">Rol:</label>
         <select name="rol" id="rol-select" class="
           bg-white outline-none
@@ -283,6 +298,8 @@ const addUser = async () => {
           document.getElementById('swal-input-tel').value,
         [document.getElementById('rol-select').name]:
           document.getElementById('rol-select').value,
+        [document.getElementById('gen-select').name]:
+          document.getElementById('gen-select').value,
       };
     },
     confirmButtonText: 'Añadir',
@@ -322,7 +339,7 @@ const addUser = async () => {
     await fetch(`${url}usuarios/`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'x-token': token },
-      body: JSON.stringify(formValues),
+      body: JSON.stringify({ ...formValues, estudios: 'Profesional' }),
     })
   ).json();
 

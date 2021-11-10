@@ -10,11 +10,10 @@ const deleteFile = require('../helpers/deleteFile');
 
 const usuariosGet = async (req = request, res = response) => {
   const { limite = 5, desde = 0 } = req.query;
-  const query = { estado: true };
 
   const [total, usuarios] = await Promise.all([
-    Usuario.countDocuments(query),
-    Usuario.find(query).skip(Number(desde)).limit(Number(limite)),
+    Usuario.countDocuments(),
+    Usuario.find().skip(Number(desde)).limit(Number(limite)),
   ]);
 
   res.json({
@@ -24,12 +23,11 @@ const usuariosGet = async (req = request, res = response) => {
 };
 
 const usuariosPost = async (req, res = response) => {
-  const { nombre, correo, password, rol, text, tel } = req.body;
-  const usuario = new Usuario({ nombre, correo, password, rol, text, tel });
+  const usuario = new Usuario(req.body);
 
   // Encriptar la contraseña
   const salt = bcryptjs.genSaltSync();
-  usuario.password = bcryptjs.hashSync(password, salt);
+  usuario.password = bcryptjs.hashSync(req.body.password, salt);
 
   // Guardar en BD
   usuario.save((err, usuario) => {

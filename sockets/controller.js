@@ -22,6 +22,9 @@ const socketController = async (socket = new Socket(), io) => {
     io.emit('usuarios-activos', chatInfo.usuariosArr);
   });
 
+  //Sala del Usuario
+  socket.join(usuario.id);
+
   //Mensaje
   socket.on('enviar-mensaje', async ({ uid, msg }) => {
     if (!uid) return;

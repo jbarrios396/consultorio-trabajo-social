@@ -2,6 +2,31 @@ let socket;
 let activos = [];
 let usuario;
 
+// return a promise
+function copyToClipboard(textToCopy) {
+  // navigator clipboard api needs a secure context (https)
+  if (navigator.clipboard && window.isSecureContext) {
+    // navigator clipboard api method'
+    return navigator.clipboard.writeText(textToCopy);
+  } else {
+    // text area method
+    let textArea = document.createElement('textarea');
+    textArea.value = textToCopy;
+    // make the textarea out of viewport
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    textArea.style.top = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.focus();
+    textArea.select();
+    return new Promise((res, rej) => {
+      // here the magic happens
+      document.execCommand('copy') ? res() : rej();
+      textArea.remove();
+    });
+  }
+}
+
 const main = async () => {
   //Validar Token
   usuario = await checkLogged();
@@ -110,7 +135,7 @@ const cargarUsuarios = async (search = '@') => {
             id="view-${us.uid}"
             class="material-icons-outlined text-gray-400 p-3 rounded-full bg-transparent transform transition-all duration-200 ease-in outline-none focus:outline-none hover:text-yellow-500 hover:bg-yellow-200">info</button>
           <button 
-            onclick="navigator.clipboard.writeText('${us.uid}')"         
+            onclick="copyToClipboard('${us.uid}')"         
             class="material-icons-round text-gray-400 p-3 rounded-full bg-transparent transform transition-all duration-200 ease-in outline-none focus:outline-none hover:text-blue-500 hover:bg-blue-200">copy</button>
           <button onclick="deleteUser('${
             us.uid

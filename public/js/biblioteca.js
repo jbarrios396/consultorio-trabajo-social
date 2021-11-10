@@ -93,7 +93,7 @@ const cargarLibros = async libros => {
 
 const addBook = async () => {
   const { value: formValues } = await Swal.fire({
-    title: 'Nuevo Usuario',
+    title: 'Nuevo Libro',
     html: `
       <div class="flex flex-col relative gap-2 items-start w-full p-2">
         <input id="swal-inputName" name="nombre" placeholder="Nombre..." type="text" class="
@@ -116,7 +116,6 @@ const addBook = async () => {
         ">
         <label for="fac-select">Facultad:</label>
         <div class="
-          custom-select
           relative
           bg-white
           p-2
@@ -128,6 +127,7 @@ const addBook = async () => {
           <select name="facultad" id="fac-select" class="
             appearance-none
             relative
+            w-full
             truncate
             outline-none
             focus:outline-none
@@ -137,6 +137,9 @@ const addBook = async () => {
             <option value="sal">Ciencias de la Salud</option>
             <option value="adm">Ciencias Contables y Administrativas</option>
           </select>
+          <div class="pointer-events-none absolute top-2 right-1">
+            <i class="material-icons-round">expand_more</i>
+          </div>
         </div>
       </div>
       `,
@@ -157,8 +160,6 @@ const addBook = async () => {
   });
 
   if (!formValues) return;
-
-  return console.log(formValues);
 
   if (Object.values(formValues).includes('', undefined, null) && !error)
     return await Swal.fire(

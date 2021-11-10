@@ -29,7 +29,6 @@ const verificarJWT = async (token = '') => {
     const usuario = await Usuario.findById(uid);
 
     if (!usuario) return null;
-    if (!usuario.estado) return null;
 
     return usuario;
   } catch (error) {

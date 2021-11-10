@@ -145,7 +145,7 @@ const enviarMensaje = async () => {
 
   if (msg?.length === 0) return;
 
-  console.log(selectedUser);
+  console.log(socket);
   socket.emit('enviar-mensaje', {
     msg,
     uid: selectedUser,

@@ -1,7 +1,10 @@
 //Eventos
 const conectado = () => console.log('Conectado');
 
-const desconectado = () => socket.disconnect();
+const desconectado = () => {
+  socket.disconnect();
+  console.log('desconectado');
+};
 
 const recibirMensaje = mensaje => cargarMensaje(mensaje);
 

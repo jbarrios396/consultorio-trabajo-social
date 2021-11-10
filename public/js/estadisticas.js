@@ -102,7 +102,17 @@ const cargarUsuarios = async (search = '@') => {
             rounded-md
             flex-shrink-0
             focus:outline-none
-        ">add</button>  
+        ">add</button>
+        <button 
+            id="downloadButton"
+            class="
+            bg-green-500
+            p-2 material-icons-round
+            text-white
+            rounded-md
+            flex-shrink-0
+            focus:outline-none
+        ">file_download</button>   
     </div>`;
 
   response.results.forEach(us => {
@@ -188,8 +198,21 @@ const cargarUsuarios = async (search = '@') => {
   });
 
   document.getElementById('addButton').onclick = addUser;
+  document.getElementById('downloadButton').onclick = downloadUsers;
   document.getElementById('searchButton').onclick = () =>
     cargarUsuarios(document.getElementById('search')?.value || '@');
+};
+
+const downloadUsers = async () => {
+  const response = await (
+    await fetch(`${url}usuarios/tabla`, {
+      headers: { 'Content-Type': 'application/json', 'x-token': token },
+    })
+  ).blob();
+
+  if (response.msg || response.errors) return console.log('Error');
+
+  downloadBlob(response, 'Usuarios.xlsx');
 };
 
 const deleteUser = async uid => {

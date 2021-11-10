@@ -1,0 +1,13 @@
+/* .custom-select::after {
+  position: absolute;
+  right: 6px;
+  top: 3px;
+  font-size: 25px !important;
+  font-family: 'Material Icons Round';
+  content: 'expand_more';
+  color: black;
+  pointer-events: none;
+}
+.custom-select select {
+  width: calc(100% - 25px) !important;
+} */

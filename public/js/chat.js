@@ -17,6 +17,8 @@ const main = async () => {
 
   //Conectar Socket
   await conectarSocket();
+
+  cargarUsuarios();
 };
 
 const conectarSocket = async () => {

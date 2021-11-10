@@ -74,3 +74,15 @@ const checkLogged = async () => {
 
   return response.usuario;
 };
+
+const verificarURL = string => {
+  let url;
+
+  try {
+    url = new URL(string);
+  } catch (_) {
+    return false;
+  }
+
+  return url;
+};

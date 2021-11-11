@@ -4,7 +4,41 @@ const main = async () => {
 
   if (!usuario) return;
 
-  const { correo, nombre, rol, createdAt, tel } = usuario;
+  let {
+    correo,
+    nombre,
+    rol,
+    createdAt,
+    tel,
+    genero,
+    estado,
+    seguridad,
+    nacimiento,
+    ciudad,
+    carrera,
+    semestre,
+    ocupacion,
+    estudios,
+  } = usuario;
+
+  if (genero) {
+    switch (genero) {
+      case 'O':
+        genero = 'Otro';
+        break;
+
+      case 'M':
+        genero = 'Masculino';
+        break;
+
+      case 'F':
+        genero = 'Femenino';
+        break;
+
+      default:
+        break;
+    }
+  }
 
   //User HTML References
   document.getElementById(
@@ -12,12 +46,20 @@ const main = async () => {
   ).src = `https://ui-avatars.com/api/?name=${nombre}&background=ACEEF3&color=041F60&size=128`;
 
   document.getElementById('usName').innerHTML = nombre;
-  document.getElementById('usMail').innerHTML = 'Correo: ' + correo;
-  if (tel) {
-    const t = document.getElementById('usTel');
-    t.classList.remove('hidden');
-    t.innerHTML = 'Telefono: ' + tel;
-  }
+  document.getElementById('usMail').innerHTML += ' ' + correo;
+  document.getElementById('usTel').innerHTML += ' ' + (tel || '-');
+  document.getElementById('usGen').innerHTML += ' ' + (genero || '-');
+  document.getElementById('usEstado').innerHTML += ' ' + (estado || '-');
+  document.getElementById('usSeg').innerHTML += ' ' + (seguridad || '-');
+
+  document.getElementById('usFecha').innerHTML +=
+    ' ' + (nacimiento || '-') + ', ' + (ciudad || '-');
+
+  document.getElementById('usCar').innerHTML += ' ' + (carrera || '-');
+  document.getElementById('usSem').innerHTML += ' ' + (semestre || '-');
+  document.getElementById('usOcu').innerHTML += ' ' + (ocupacion || '-');
+  document.getElementById('usEstu').innerHTML += ' ' + (estudios || '-');
+
   document.getElementById('usRol').innerHTML =
     'Rol: ' +
     rol
@@ -25,6 +67,7 @@ const main = async () => {
       .replace('PATIENT', 'Paciente')
       .replace('ADMIN', 'Administrador')
       .replace('USER', 'Trabajador Social');
+
   document.getElementById('usDate').innerHTML =
     'Usuario desde: ' +
     new Date(createdAt).toLocaleDateString() +

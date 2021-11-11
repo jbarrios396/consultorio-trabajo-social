@@ -74,18 +74,47 @@ const tabla = async (_, res = response) => {
     createdAt: 'desc',
   });
 
-  const arr = usuarios.map(({ nombre, correo, rol, tel, text, createdAt }) => ({
-    Nombre: nombre,
-    Correo: correo,
-    Rol: rol
-      .replace('_ROLE', '')
-      .replace('PATIENT', 'Paciente')
-      .replace('ADMIN', 'Administrador')
-      .replace('USER', 'Trabajador Social'),
-    Telefono: tel,
-    Motivo: text,
-    'Fecha de Creación': new Date(createdAt).toLocaleString(),
-  }));
+  const arr = usuarios.map(
+    ({
+      correo,
+      nombre,
+      rol,
+      createdAt,
+      tel,
+      genero,
+      estado,
+      seguridad,
+      nacimiento,
+      ciudad,
+      carrera,
+      semestre,
+      ocupacion,
+      estudios,
+      motivo,
+      text,
+    }) => ({
+      Nombre: nombre,
+      Correo: correo,
+      Rol: rol
+        .replace('_ROLE', '')
+        .replace('PATIENT', 'Paciente')
+        .replace('ADMIN', 'Administrador')
+        .replace('USER', 'Trabajador Social'),
+      Telefono: tel,
+      Genero: genero,
+      'Estado Civil': estado,
+      'Seguridad Social': seguridad,
+      'Fecha de Nacimiento': nacimiento,
+      'Ciudad de Nacimiento': ciudad,
+      Carrera: carrera,
+      Semestre: semestre,
+      Ocupación: ocupacion,
+      Estudios: estudios,
+      Motivo: motivo,
+      Enteramiento: text,
+      'Fecha de Creación': new Date(createdAt).toLocaleString(),
+    })
+  );
 
   const filePath =
     __dirname + '/tempHistory' + new Date().getMilliseconds() + '.xlsx';
@@ -95,9 +124,17 @@ const tabla = async (_, res = response) => {
     { wch: 30 },
     { wch: 30 },
     { wch: 20 },
-    { wch: 30 },
+    { wch: 20 },
+    { wch: 10 },
+    { wch: 20 },
     { wch: 30 },
     { wch: 20 },
+    { wch: 30 },
+    { wch: 30 },
+    { wch: 10 },
+    { wch: 30 },
+    { wch: 30 },
+    { wch: 30 },
     { wch: 30 },
     { wch: 30 },
   ];

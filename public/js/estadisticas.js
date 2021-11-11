@@ -158,51 +158,80 @@ const cargarUsuarios = async (search = '@') => {
       `.trim();
 
     usuarios.appendChild(item);
-    document.getElementById('view-' + us.uid).onclick = () => {
-      Swal.fire({
-        title: `
-          <div class="flex gap-1 items-center justify-center">
-            <i class="mt-1 material-icons-outlined">info</i>
-            <span>${us.nombre}</span>
-          </div>`,
-        html: `
-          <div class="relative flex items-center flex-col gap-1.5">
-              <img class="w-28 h-28 rounded-full" src="https://ui-avatars.com/api/?name=${
-                us.nombre
-              }&background=ACEEF3&color=041F60" />
-              <p class="text-xl">${us.correo}</p>
-              <p>${us.tel || ''}</p>
-              ${
-                us.text
-                  ? `<p class="mt-2"><span class="font-medium">Motivo:</span><br/>${us.text}</p>`
-                  : ''
-              }
-              <p class="mt-5 font-medium">${us.rol
-                .replace('_ROLE', '')
-                .replace('PATIENT', 'Paciente')
-                .replace('ADMIN', 'Administrador')
-                .replace('USER', 'Trabajador Social')}
-              </p>
-              <p class="text-gray-400 mt-10">
-              Usuario desde:
-              ${
-                new Date(us.createdAt).toLocaleDateString() +
-                ' ' +
-                tConv24(new Date(us.createdAt).toLocaleTimeString())
-              }</p>
-          </div>
-        `,
-        showConfirmButton: false,
-        showCloseButton: true,
-        focusConfirm: false,
-      });
-    };
+    document.getElementById('view-' + us.uid).onclick = () => viewUser(us);
   });
 
   document.getElementById('addButton').onclick = addUser;
   document.getElementById('downloadButton').onclick = downloadUsers;
   document.getElementById('searchButton').onclick = () =>
     cargarUsuarios(document.getElementById('search')?.value || '@');
+};
+
+const viewUser = usuario => {
+  let { correo, nombre, rol, createdAt, tel, genero, text, motivo } = usuario;
+
+  if (genero) {
+    switch (genero) {
+      case 'O':
+        genero = 'Otro';
+        break;
+
+      case 'M':
+        genero = 'Masculino';
+        break;
+
+      case 'F':
+        genero = 'Femenino';
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  Swal.fire({
+    title: `
+      <div class="flex gap-1 items-center justify-center">
+        <i class="mt-1 material-icons-outlined">info</i>
+        <span>${nombre}</span>
+      </div>`,
+    html: `
+      <div class="relative flex items-center flex-col gap-1.5">
+          <img class="w-28 h-28 rounded-full" src="https://ui-avatars.com/api/?name=${nombre}&background=ACEEF3&color=041F60" />
+          <p class="text-xl">${correo}</p>
+          <p>${tel || ''}</p>
+          <p class="text-xl mt-3.5"><span class="font-medium">Genero:</span><br/>${genero}</p>
+          ${
+            text
+              ? `<p class="mt-2"><span class="font-medium">Motivo:</span><br/>${motivo}</p>`
+              : ''
+          }
+
+          ${
+            motivo
+              ? `<p class="mt-2"><span class="font-medium">Enteramiento:</span><br/>${text}</p>`
+              : ''
+          }
+
+          <p class="mt-5 font-medium">${rol
+            .replace('_ROLE', '')
+            .replace('PATIENT', 'Paciente')
+            .replace('ADMIN', 'Administrador')
+            .replace('USER', 'Trabajador Social')}
+          </p>
+          <p class="text-gray-400 mt-10">
+          Usuario desde:
+          ${
+            new Date(createdAt).toLocaleDateString() +
+            ' ' +
+            tConv24(new Date(createdAt).toLocaleTimeString())
+          }</p>
+      </div>
+    `,
+    showConfirmButton: false,
+    showCloseButton: true,
+    focusConfirm: false,
+  });
 };
 
 const downloadUsers = async () => {

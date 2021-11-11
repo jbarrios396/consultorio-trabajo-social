@@ -28,11 +28,11 @@
       class="
         absolute
         -top-10
-        -left-10
+        left-1/2
         rounded-full
         w-80
         h-80
-        bg-opacity-25 bg-purple-500
+        bg-opacity-20 bg-purple-500
         z-0
       "
     ></div>
@@ -79,24 +79,72 @@
       <div
         class="
           m-20
-          flex-grow
-          items-center
-          flex flex-col
-          gap-5
+          flex-grow flex flex-col
+          gap-12
           overflow-hidden
           z-50
           relative
         "
       >
-        <img
-          class="w-48 h-48 bg-gray-200 rounded-full"
-          id="profile-pic"
-          alt="profile-pic"
-        />
-        <h1 id="usName" class="text-4xl font-light text-gray-800">Nombre</h1>
-        <h2 id="usMail" class="text-2xl font-light text-gray-800">Correo</h2>
-        <h2 id="usTel" class="text-2xl font-light text-gray-800 hidden">tel</h2>
-        <h2 id="usRol" class="text-2xl font-light text-gray-800">Rol</h2>
+        <!-- Datos Basicos -->
+        <div class="flex gap-7">
+          <img
+            class="w-56 h-56 bg-gray-200 rounded-full"
+            id="profile-pic"
+            alt="profile-pic"
+          />
+          <div class="flex flex-col gap-2">
+            <h1 id="usName" class="text-4xl font-light text-gray-800">
+              Nombre
+            </h1>
+            <h2 id="usMail" class="text-2xl font-light text-gray-800">
+              Correo:
+            </h2>
+            <h2 id="usRol" class="text-2xl font-light text-gray-800">Rol:</h2>
+          </div>
+        </div>
+
+        <!-- Datos Opcionales -->
+        <div class="flex justify-between gap-5 w-full">
+          <!-- Columna 1 -->
+          <div class="flex flex-col gap-3">
+            <h2 id="usTel" class="text-2xl font-light text-gray-800">
+              Telefono:
+            </h2>
+            <h2 id="usGen" class="text-2xl font-light text-gray-800">
+              Genero:
+            </h2>
+            <h2 id="usEstado" class="text-2xl font-light text-gray-800">
+              Estado Civil:
+            </h2>
+            <h2 id="usSeg" class="text-2xl font-light text-gray-800">
+              Seguridad Social:
+            </h2>
+            <h2 id="usFecha" class="text-2xl font-light text-gray-800">
+              Nacimiento:
+            </h2>
+          </div>
+
+          <!-- Columna 2 -->
+          <div class="flex flex-col gap-3">
+            <h2 id="usCar" class="text-2xl font-light text-gray-800">
+              Carrera:
+            </h2>
+            <h2 id="usSem" class="text-2xl font-light text-gray-800">
+              Semestre:
+            </h2>
+            <h2 id="usOcu" class="text-2xl font-light text-gray-800">
+              Ocupación:
+            </h2>
+            <h2 id="usEstu" class="text-2xl font-light text-gray-800">
+              Estudios:
+            </h2>
+          </div>
+
+          <div></div>
+        </div>
+
+        <!-- Fecha -->
         <div class="flex-grow"></div>
         <h2 id="usDate" class="text-2xl text-gray-400">Desde x</h2>
       </div>

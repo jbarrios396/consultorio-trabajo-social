@@ -18,6 +18,7 @@ class Server {
       mensajes: '/api/mensajes',
       libros: '/api/libros',
       videos: '/api/videos',
+      preguntas: '/api/preguntas',
     };
 
     // Conectar a base de datos
@@ -61,6 +62,7 @@ class Server {
     this.app.use(this.paths.mensajes, require('../routes/mensajes'));
     this.app.use(this.paths.libros, require('../routes/libros'));
     this.app.use(this.paths.videos, require('../routes/videos'));
+    this.app.use(this.paths.preguntas, require('../routes/preguntas'));
   }
 
   sockets() {

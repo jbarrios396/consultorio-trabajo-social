@@ -70,7 +70,7 @@ const cargarUsuarios = async () => {
     const item = document.createElement('div');
 
     item.innerHTML = `
-      <div class="flex items-center gap-2 p-3 py-5 w-full bg-gray-100 rounded-md transform transition-all duration-150 hover:bg-gray-200" id="item-${
+      <div class="flex items-center gap-2 p-3 py-5 w-full bg-gray-100 rounded-md transform transition-all duration-150 hover:shadow-inner hover:bg-gray-200 hover:bg-opacity-80" id="item-${
         us.uid
       }">
         <div class="w-2.5 h-2.5 rounded-full ${

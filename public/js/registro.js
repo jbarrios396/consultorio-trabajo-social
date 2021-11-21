@@ -10,15 +10,11 @@ const registrarUsuario = async () => {
 
   let error;
 
-  const { tel, text, motivo, ocupacion, carrera, ciudad, nacimiento, ...rest } =
-    json;
+  // const { tel, text, motivo, ocupacion, carrera, ciudad, nacimiento, ...rest } =
+  //   json;
 
-  if (Object.values(rest).includes('', undefined, null) && !error)
-    error = await Swal.fire(
-      'Alerta',
-      'Debe Llenar Todos los Campos Obligatorios (*)',
-      'warning'
-    );
+  if (Object.values(json).includes('', undefined, null) && !error)
+    error = await Swal.fire('Alerta', 'Debe Llenar Todos los Campos', 'warning');
 
   if (
     !/^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
@@ -29,11 +25,7 @@ const registrarUsuario = async () => {
     error = await Swal.fire('Error', 'Email Invalido', 'error');
 
   if (json.password.length < 6 && !error)
-    error = await Swal.fire(
-      'Error',
-      'La Contraseña debe Tener Minimo 6 Caracteres',
-      'error'
-    );
+    error = await Swal.fire('Error', 'La Contraseña debe Tener Minimo 6 Caracteres', 'error');
 
   if (`${json.password}` !== `${json.confPassword}`)
     error = await Swal.fire('Error', 'Las Contraseñas no Coinciden.', 'error');
@@ -53,8 +45,7 @@ const registrarUsuario = async () => {
     })
   ).json();
 
-  if (response.msg || response.errors)
-    return Swal.fire('Error', 'No se Pudo Crear el Usuario', 'error');
+  if (response.msg || response.errors) return Swal.fire('Error', 'No se Pudo Crear el Usuario', 'error');
 
   await login({ correo: json.correo, password: json.password }, swal);
 };

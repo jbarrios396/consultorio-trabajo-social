@@ -38,105 +38,79 @@ const conectarSocket = async () => {
 const cargarUsuarios = async () => {
   const usuarios = document.getElementById('usuarios');
 
-  const response = await (
-    await fetch(
-      `${url}buscar/${
+  try {
+    let response = await Promise.all([
+      fetch(
+        `${url}buscar/${
+          {
+            ADMIN_ROLE: '@',
+            USER_ROLE: 'PATIENT',
+            PATIENT_ROLE: 'USER_ROLE',
+          }[usuario.rol]
+        }`,
         {
-          ADMIN_ROLE: '@',
-          USER_ROLE: 'PATIENT',
-          PATIENT_ROLE: 'USER_ROLE',
-        }[usuario.rol]
-      }`,
-      {
+          headers: { 'Content-Type': 'application/json', 'x-token': token },
+        }
+      ).catch(err => ({
+        msg: err,
+      })),
+      fetch(`${url}buscar/extra/buscarChatsConAdmin?buscarChatsConAdmin=true&uid=${usuario.uid}`, {
         headers: { 'Content-Type': 'application/json', 'x-token': token },
-      }
-    )
-  ).json();
+      }).catch(err => ({
+        msg: err,
+      })),
+    ]);
 
-  if (response.msg || response.erros) return console.log('Error');
+    const [{ results = [] }, { admins = [] }] = await Promise.all(response.map(res => res.json()));
 
-  Array.from(usuarios.children).forEach(item => item.remove());
-  usuarios.innerHTML = `<h1 class="text-2xl font-light">${
-    {
-      ADMIN_ROLE: 'Usuarios',
-      USER_ROLE: 'Pacientes',
-      PATIENT_ROLE: 'Trabajadores Sociales',
-    }[usuario.rol]
-  }</h1>`;
+    const users = results.filter(us => !admins.includes(us)).filter(us => us.uid !== usuario.uid);
 
-  response.results.forEach(us => {
-    if (us.uid === usuario.uid) return;
+    while (usuarios.hasChildNodes()) {
+      usuarios.removeChild(usuarios.lastChild);
+    }
 
-    const item = document.createElement('div');
+    console.log(usuarios.innerHTML);
 
-    item.innerHTML = `
-      <div class="flex items-center gap-2 p-3 py-5 w-full bg-gray-100 rounded-md transform transition-all duration-150 hover:shadow-inner hover:bg-gray-200 hover:bg-opacity-80" id="item-${
-        us.uid
-      }">
-        <div class="w-2.5 h-2.5 rounded-full ${
-          activos.includes(us.uid) ? 'bg-green-400' : 'bg-red-400'
-        }"> </div>
-        <p>${us.nombre}</p>
-      </div>
-    `.trim();
-
-    usuarios.appendChild(item);
-
-    const el = document.getElementById('item-' + us.uid);
-
-    el.addEventListener('click', _ => {
-      selectedUser = us.uid;
-      chat.innerHTML = '';
-      cargarDesdeLaBD();
-    });
-  });
-
-  await cargarChatsWithAdmin();
-};
-
-const cargarChatsWithAdmin = async () => {
-  const usuarios = document.getElementById('usuarios');
-
-  const response = await (
-    await fetch(
-      `${url}buscar/extra/buscarChatsConAdmin?buscarChatsConAdmin=true&uid=${usuario.uid}`,
+    usuarios.innerHTML = `<h1 class="text-3xl font-light">${
       {
-        headers: { 'Content-Type': 'application/json', 'x-token': token },
-      }
-    )
-  ).json();
+        ADMIN_ROLE: 'Usuarios',
+        USER_ROLE: 'Pacientes',
+        PATIENT_ROLE: 'Trabajadores Sociales',
+      }[usuario.rol]
+    }</h1>`;
 
-  if (response.msg || response.erros) return console.log('Error');
+    users.forEach(us => {
+      if (us.uid === usuario.uid) return;
 
-  response.admins.forEach(us => {
-    if (us.uid === usuario.uid) return;
+      const item = document.createElement('div');
 
-    const item = document.createElement('div');
-
-    item.innerHTML = `
-      <div class="flex items-center gap-2 p-3 w-full bg-gray-100 rounded-md transform transition-all duration-150 hover:bg-gray-200" id="item-${
-        us.uid
-      }">
-        <div class="w-2.5 h-2.5 rounded-full ${
-          activos.includes(us.uid) ? 'bg-green-400' : 'bg-red-400'
-        }"> </div>
-        <div>
-          <p>${us.nombre}</p>
-          <p class="text-gray-400 text-sm">Administrador</p>
+      item.innerHTML = `
+        <div class="flex items-center gap-2 p-3 w-full bg-gray-100 overflow-hidden rounded-md transform transition-all duration-150 hover:bg-gray-200" id="item-${
+          us.uid
+        }">
+          <div class="w-2.5 h-2.5 rounded-full flex-shrink-0 ${
+            activos.includes(us.uid) ? 'bg-green-400' : 'bg-red-400'
+          }"> </div>
+          <div class="flex-grow overflow-hidden">
+            <p class="text-xl truncate">${us.nombre}</p>
+            ${us.rol === 'ADMIN_ROLE' ? '<p class="text-gray-400 text-sm">Administrador</p>' : ''}
+          </div>
         </div>
-      </div>
-    `.trim();
+      `.trim();
 
-    usuarios.appendChild(item);
+      usuarios.appendChild(item);
 
-    const el = document.getElementById('item-' + us.uid);
+      const el = document.getElementById('item-' + us.uid);
 
-    el.addEventListener('click', _ => {
-      selectedUser = us.uid;
-      chat.innerHTML = '';
-      cargarDesdeLaBD();
+      el.addEventListener('click', _ => {
+        selectedUser = '' + us.uid;
+        chat.innerHTML = '';
+        cargarDesdeLaBD();
+      });
     });
-  });
+  } catch (error) {
+    return console.log('Error');
+  }
 };
 
 const enviarMensaje = async () => {

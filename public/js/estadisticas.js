@@ -141,7 +141,7 @@ const cargarUsuarios = async (search = '@') => {
     } </p>
             <p>Rol: ${us.rol
               .replace('_ROLE', '')
-              .replace('PATIENT', 'Paciente')
+              .replace('PATIENT', 'Usuario')
               .replace('ADMIN', 'Administrador')
               .replace('USER', 'Trabajador Social')}</p>
           </div>

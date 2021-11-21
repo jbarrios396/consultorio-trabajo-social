@@ -96,7 +96,7 @@ const cargarLibros = async libros => {
           <h1 class="font-medium text-xl h-auto text-gray-700">
             ${nombre}
           </h1>
-          <p class="truncate flex-shrink-0">${autor}</p>
+          <p class="truncate flex-shrink-0 ">${autor}</p>
         </div>
       </div>
       <div class="flex items-end justify-between gap-1">

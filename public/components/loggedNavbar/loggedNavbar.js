@@ -26,7 +26,7 @@ const initNav = async () => {
     const estadisticas = document.createElement('a');
 
     estadisticas.className = `
-      w-auto
+      w-auto text-xl
       p-3
       h-full 
       rounded-sm

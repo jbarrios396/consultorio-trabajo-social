@@ -11,7 +11,7 @@ const gens = {
 };
 
 const estados = {
-  values: ['Solter@', 'Casad@', 'Union Libre', ''],
+  values: ['Solter@', 'Casad@', 'Union Libre', 'Viud@'],
   message: '{VALUE} no es un estado valido.',
 };
 
@@ -29,7 +29,7 @@ const estudios = {
 };
 
 const seguridades = {
-  values: ['Contributiva', 'Subsidiada', ''],
+  values: ['Contributiva', 'Subsidiada'],
   message: '{VALUE} no es una seguridad social valida.',
 };
 

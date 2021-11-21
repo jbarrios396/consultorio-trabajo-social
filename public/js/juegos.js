@@ -82,7 +82,7 @@ juegos.forEach(({ nombre, link, pagina, descripcion }) => {
         >
         <div class="z-50 flex flex-col gap-1 h-full">
             <p class="text-3xl font-light text-pink-800">${nombre}</p>
-            <p>
+            <p class="text-xl">
                 ${descripcion}
             </p>
             <a

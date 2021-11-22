@@ -3,8 +3,8 @@
     flex flex-shrink-0
     justify-between
     w-full relative
-    h-20
-    px-12
+    h-auto md:h-20
+    px-1 py-2 sm:px-5 md:px-12 sm:py-0
     text-white
     z-50
     shadow-lg
@@ -13,13 +13,13 @@
   "
   style="background-color: #553c9a"
 >
-  <div class="flex flex-wrap justify-center items-center gap-2" id="navItems">
+  <div class="flex flex-wrap md:justify-center items-center md:gap-2" id="navItems">
     <a
       href="./inicio.html"
       class="
-        w-auto text-xl
-        p-3
-        h-full
+        w-auto md:text-xl
+        p-1 md:p-3
+        h-12 md:h-full
         rounded-sm
         flex 
         justify-center
@@ -35,9 +35,9 @@
     <a
       href="./consultorio.html"
       class="
-        w-auto text-xl
-        p-3
-        h-full
+        w-auto md:text-xl
+        p-1 md:p-3
+        h-12 md:h-full
         rounded-sm
         flex
         justify-center
@@ -53,9 +53,9 @@
     <a
       href="mi_espacio.html"
       class="
-        w-auto text-xl
-        p-3
-        h-full
+        w-auto md:text-xl
+        p-1 md:p-3
+        h-12 md:h-full
         rounded-sm
         flex
         justify-center
@@ -70,7 +70,7 @@
     >
   </div>
   <div class="flex items-center gap-5">
-    <h1 class="text-xl -mt-1" id="navMail"></h1>
+    <h1 class="text-xl -mt-1 hidden md:block" id="navMail"></h1>
 
     <button
       id="logout-button"

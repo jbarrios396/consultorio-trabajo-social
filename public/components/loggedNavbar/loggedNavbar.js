@@ -26,18 +26,18 @@ const initNav = async () => {
     const estadisticas = document.createElement('a');
 
     estadisticas.className = `
-      w-auto text-xl
-      p-3
-      h-full 
-      rounded-sm
-      flex
-      justify-center
-      items-center
-      transform
-      transition-all
-      duration-100
-      ease-in
-      hover:bg-opacity-10 hover:bg-black
+    w-auto md:text-xl
+    p-1 md:p-3
+    h-12 md:h-full
+    rounded-sm
+    flex
+    justify-center
+    items-center
+    transform
+    transition-all
+    duration-100
+    ease-in
+    hover:bg-opacity-10 hover:bg-black
     `;
 
     estadisticas.innerHTML = 'Estadisticas';

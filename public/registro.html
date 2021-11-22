@@ -25,7 +25,7 @@
       flex
       justify-center
       items-center
-      p-10
+      md:p-10
       bg-gradient-to-tl
       from-gray-700
       via-purple-600
@@ -42,7 +42,7 @@
         h-full
         bg-white bg-opacity-90
         shadow-xl
-        rounded-xl
+        md:rounded-xl
         flex flex-col
         text-gray-800
         gap-5
@@ -56,7 +56,7 @@
         <i class="material-icons-round">chevron_left</i>
         Atras
       </a>
-      <h1 class="text-4xl text-center">Formulario de Registro</h1>
+      <h1 class="text-4xl mt-8 md:m-0 text-center">Formulario de Registro</h1>
       <br />
       <p class="text-md text-gray-400">Todos los campos son obligatorios.</p>
       <div class="flex gap-5 w-full">
@@ -69,28 +69,28 @@
         />
       </div>
 
-      <div class="flex gap-5 w-full">
+      <div class="flex flex-col md:flex-row gap-5 w-full">
         <input
-          class="w-1/4 border border-gray-300 rounded-md p-2 bg-opacity-75 bg-white"
+          class="w-full md:w-1/4 border border-gray-300 rounded-md p-2 bg-opacity-75 bg-white"
           type="date"
           id="date"
           name="nacimiento"
           placeholder="Fecha de Nacimiento..."
         />
-        <select class="w-1/4 border border-gray-300 rounded-md p-2 bg-opacity-75 bg-white" id="gender" name="genero">
+        <select class="w-full md:w-1/4 border border-gray-300 rounded-md p-2 bg-opacity-75 bg-white" id="gender" name="genero">
           <option value="M">Masculino</option>
           <option value="F">Femenino</option>
           <option value="O">Otro</option>
         </select>
         <input
-          class="w-1/4 border border-gray-300 rounded-md p-2 bg-opacity-75 bg-white"
+          class="w-full md:w-1/4 border border-gray-300 rounded-md p-2 bg-opacity-75 bg-white"
           type="tel"
           id="tel"
           name="tel"
           placeholder="Telefono..."
         />
         <input
-          class="w-1/4 border border-gray-300 rounded-md p-2 bg-opacity-75 bg-white"
+          class="w-full md:w-1/4 border border-gray-300 rounded-md p-2 bg-opacity-75 bg-white"
           type="email"
           id="email"
           name="correo"
@@ -127,7 +127,7 @@
 
       <div class="flex gap-5 w-full">
         <select
-          class="w-1/2 border border-gray-300 rounded-md p-2 bg-opacity-75 bg-white"
+          class="w-full md:w-1/2 border border-gray-300 rounded-md p-2 bg-opacity-75 bg-white"
           id="security"
           name="seguridad"
         >
@@ -139,8 +139,8 @@
       <br />
       <h3 class="text-2xl">Escolaridad</h3>
 
-      <div class="flex gap-5 w-full">
-        <select class="w-1/2 border border-gray-300 rounded-md p-2 bg-opacity-75 bg-white" id="study" name="estudios">
+      <div class="flex flex-col md:flex-row gap-5 w-full">
+        <select class="w-full md:w-1/2 border border-gray-300 rounded-md p-2 bg-opacity-75 bg-white" id="study" name="estudios">
           <option value="Sin Estudio">Sin Estudio</option>
           <option value="Primaria Inconclusa">Primaria Inconclusa</option>
           <option value="Primaria Completada">Primaria Completada</option>
@@ -150,14 +150,14 @@
           <option value="Profesional">Profesional</option>
         </select>
         <input
-          class="w-1/2 border border-gray-300 rounded-md p-2 bg-opacity-75 bg-white"
+          class="w-full md:w-1/2 border border-gray-300 rounded-md p-2 bg-opacity-75 bg-white"
           type="text"
           id="profesion"
           name="carrera"
           placeholder="Carrera o Programa Academico..."
         />
         <select
-          class="w-1/8 border border-gray-300 rounded-md p-2 bg-opacity-75 bg-white"
+          class="w-full md:w-1/8 border border-gray-300 rounded-md p-2 bg-opacity-75 bg-white"
           id="semester"
           name="semestre"
         >

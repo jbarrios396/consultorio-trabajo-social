@@ -5,10 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Consultorio Virtual</title>
     <!-- Links -->
-    <link
-      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
-      rel="stylesheet"
-    />
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet" />
 
     <link
       href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp"
@@ -27,11 +24,9 @@
 
   <body class="relative h-screen w-screen">
     <!-- Navbar -->
-    <include src="../components/loggedNavbar/loggedNavbar.html"
-      >Cargando Navbar...</include
-    >
+    <include src="../components/loggedNavbar/loggedNavbar.html">Cargando Navbar...</include>
 
-    <div class="flex flex-col w-full p-12 text-gray-800">
+    <div class="flex flex-col w-full p-5 pb-28 md:p-12 text-gray-800">
       <h1 class="text-3xl" id="greeting">Bienvenido,</h1>
       <include src="../components/options.html">Cargando Opciones</include>
     </div>
@@ -40,14 +35,7 @@
       <p class="text-2xl text-gray-600">Preguntas Frecuentes</p>
       <a
         href="./preguntas_frecuentes.html"
-        class="
-          p-3
-          bg-gray-300
-          text-gray-600
-          rounded-full
-          shadow-lg
-          material-icons-round
-        "
+        class="p-3 bg-gray-300 text-gray-600 rounded-full shadow-lg material-icons-round"
         style="font-size: 40px"
         >question_mark</a
       >

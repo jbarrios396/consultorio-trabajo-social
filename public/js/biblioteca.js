@@ -168,14 +168,10 @@ const addBook = async () => {
     focusConfirm: false,
     preConfirm: () => {
       return {
-        [document.getElementById('swal-inputName').name]:
-          document.getElementById('swal-inputName').value,
-        [document.getElementById('swal-inputLink').name]:
-          document.getElementById('swal-inputLink').value,
-        [document.getElementById('swal-inputAutor').name]:
-          document.getElementById('swal-inputAutor').value,
-        [document.getElementById('fac-select').name]:
-          document.getElementById('fac-select').value,
+        [document.getElementById('swal-inputName').name]: document.getElementById('swal-inputName').value,
+        [document.getElementById('swal-inputLink').name]: document.getElementById('swal-inputLink').value,
+        [document.getElementById('swal-inputAutor').name]: document.getElementById('swal-inputAutor').value,
+        [document.getElementById('fac-select').name]: document.getElementById('fac-select').value,
       };
     },
     confirmButtonText: 'Añadir',
@@ -184,14 +180,9 @@ const addBook = async () => {
   if (!formValues) return;
 
   if (Object.values(formValues).includes('', undefined, null) && !error)
-    return await Swal.fire(
-      'Alerta',
-      'Debe Llenar Todos los Campos',
-      'warning'
-    ).then(addBook);
+    return await Swal.fire('Alerta', 'Debe Llenar Todos los Campos', 'warning').then(addBook);
 
-  if (!verificarURL(formValues.link))
-    return await Swal.fire('Error', 'Link no valido', 'error').then(addBook);
+  if (!verificarURL(formValues.link)) return await Swal.fire('Error', 'Link no valido', 'error').then(addBook);
 
   //AddUser
   const response = await (
@@ -202,8 +193,7 @@ const addBook = async () => {
     })
   ).json();
 
-  if (response.msg || response.errors)
-    return Swal.fire('Error', 'No se Pudo Añadir el Libro', 'error');
+  if (response.msg || response.errors) return Swal.fire('Error', 'No se Pudo Añadir el Libro', 'error');
 
   search();
 };

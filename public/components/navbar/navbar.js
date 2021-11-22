@@ -20,10 +20,8 @@ const iniciarSesion = async () => {
     focusConfirm: false,
     preConfirm: () => {
       return {
-        [document.getElementById('swal-input1').name]:
-          document.getElementById('swal-input1').value,
-        [document.getElementById('swal-input2').name]:
-          document.getElementById('swal-input2').value,
+        [document.getElementById('swal-input1').name]: document.getElementById('swal-input1').value,
+        [document.getElementById('swal-input2').name]: document.getElementById('swal-input2').value,
       };
     },
     confirmButtonText: 'Continuar',
@@ -34,11 +32,7 @@ const iniciarSesion = async () => {
   let error;
 
   if (Object.values(formValues).includes('', undefined, null) && !error)
-    error = await Swal.fire(
-      'Alerta',
-      'Debe Llenar Todos los Campos',
-      'warning'
-    );
+    error = await Swal.fire('Alerta', 'Debe Llenar Todos los Campos', 'warning');
 
   if (error) return iniciarSesion();
 

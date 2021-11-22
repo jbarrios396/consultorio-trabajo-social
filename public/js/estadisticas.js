@@ -123,9 +123,7 @@ const cargarUsuarios = async (search = '@') => {
     const item = document.createElement('div');
 
     item.innerHTML = `
-        <div class="flex items-center gap-2 p-3 w-full bg-gray-100 rounded-xl" id="item-${
-          us.uid
-        }">
+        <div class="flex items-center gap-2 p-3 w-full bg-gray-100 rounded-xl" id="item-${us.uid}">
           <div class="w-20 h-20 relative overflow-hidden">
             <img class="w-full h-full rounded-full object-cover" src="https://ui-avatars.com/api/?name=${
               us.nombre
@@ -136,9 +134,7 @@ const cargarUsuarios = async (search = '@') => {
           </div>
           <div class="flex flex-col flex-grow text-gray-500">
             <p class="text-xl text-gray-600">${us.nombre}</p>
-            <p>Correo: ${us.correo} ${
-      us.tel ? '| Telefono: ' + us.tel : ''
-    } </p>
+            <p>Correo: ${us.correo} ${us.tel ? '| Telefono: ' + us.tel : ''} </p>
             <p>Rol: ${us.rol
               .replace('_ROLE', '')
               .replace('PATIENT', 'Usuario')
@@ -201,17 +197,9 @@ const viewUser = usuario => {
           <p class="text-xl">${correo}</p>
           <p>${tel || ''}</p>
           <p class="text-xl mt-3.5"><span class="font-medium">Genero:</span><br/>${genero}</p>
-          ${
-            text
-              ? `<p class="mt-2"><span class="font-medium">Motivo:</span><br/>${motivo}</p>`
-              : ''
-          }
+          ${text ? `<p class="mt-2"><span class="font-medium">Motivo:</span><br/>${motivo}</p>` : ''}
 
-          ${
-            motivo
-              ? `<p class="mt-2"><span class="font-medium">Enteramiento:</span><br/>${text}</p>`
-              : ''
-          }
+          ${motivo ? `<p class="mt-2"><span class="font-medium">Enteramiento:</span><br/>${text}</p>` : ''}
 
           <p class="mt-5 font-medium">${rol
             .replace('_ROLE', '')
@@ -221,11 +209,7 @@ const viewUser = usuario => {
           </p>
           <p class="text-gray-400 mt-10">
           Usuario desde:
-          ${
-            new Date(createdAt).toLocaleDateString() +
-            ' ' +
-            tConv24(new Date(createdAt).toLocaleTimeString())
-          }</p>
+          ${new Date(createdAt).toLocaleDateString() + ' ' + tConv24(new Date(createdAt).toLocaleTimeString())}</p>
       </div>
     `,
     showConfirmButton: false,
@@ -317,18 +301,12 @@ const addUser = async () => {
     focusConfirm: false,
     preConfirm: () => {
       return {
-        [document.getElementById('swal-input1').name]:
-          document.getElementById('swal-input1').value,
-        [document.getElementById('swal-inputName').name]:
-          document.getElementById('swal-inputName').value,
-        [document.getElementById('swal-input2').name]:
-          document.getElementById('swal-input2').value,
-        [document.getElementById('swal-input-tel').name]:
-          document.getElementById('swal-input-tel').value,
-        [document.getElementById('rol-select').name]:
-          document.getElementById('rol-select').value,
-        [document.getElementById('gen-select').name]:
-          document.getElementById('gen-select').value,
+        [document.getElementById('swal-input1').name]: document.getElementById('swal-input1').value,
+        [document.getElementById('swal-inputName').name]: document.getElementById('swal-inputName').value,
+        [document.getElementById('swal-input2').name]: document.getElementById('swal-input2').value,
+        [document.getElementById('swal-input-tel').name]: document.getElementById('swal-input-tel').value,
+        [document.getElementById('rol-select').name]: document.getElementById('rol-select').value,
+        [document.getElementById('gen-select').name]: document.getElementById('gen-select').value,
       };
     },
     confirmButtonText: 'Añadir',
@@ -340,11 +318,7 @@ const addUser = async () => {
   const { tel, text, ...rest } = formValues;
 
   if (Object.values(rest).includes('', undefined, null) && !error)
-    error = await Swal.fire(
-      'Alerta',
-      'Debe Llenar Todos los Campos',
-      'warning'
-    );
+    error = await Swal.fire('Alerta', 'Debe Llenar Todos los Campos', 'warning');
 
   if (
     !/^(([^<>()\]\\.,;:\s@"]+(\.[^<>()\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
@@ -355,11 +329,7 @@ const addUser = async () => {
     error = await Swal.fire('Error', 'Email Invalido', 'error');
 
   if (formValues.password.length < 6 && !error)
-    error = await Swal.fire(
-      'Error',
-      'La Contraseña debe Tener Minimo 6 Caracteres',
-      'error'
-    );
+    error = await Swal.fire('Error', 'La Contraseña debe Tener Minimo 6 Caracteres', 'error');
 
   if (error) return addUser();
 
@@ -372,8 +342,7 @@ const addUser = async () => {
     })
   ).json();
 
-  if (response.msg || response.errors)
-    return Swal.fire('Error', 'No se Pudo Crear el Usuario', 'error');
+  if (response.msg || response.errors) return Swal.fire('Error', 'No se Pudo Crear el Usuario', 'error');
 
   cargarUsuarios();
 };

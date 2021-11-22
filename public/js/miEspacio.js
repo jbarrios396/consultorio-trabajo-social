@@ -52,8 +52,7 @@ const main = async () => {
   document.getElementById('usEstado').innerHTML += ' ' + (estado || '-');
   document.getElementById('usSeg').innerHTML += ' ' + (seguridad || '-');
 
-  document.getElementById('usFecha').innerHTML +=
-    ' ' + (nacimiento || '-') + ', ' + (ciudad || '-');
+  document.getElementById('usFecha').innerHTML += ' ' + (nacimiento || '-') + ', ' + (ciudad || '-');
 
   document.getElementById('usCar').innerHTML += ' ' + (carrera || '-');
   document.getElementById('usSem').innerHTML += ' ' + (semestre || '-');

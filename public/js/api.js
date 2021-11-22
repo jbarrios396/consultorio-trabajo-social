@@ -13,8 +13,7 @@ const login = async (data, swal) => {
     })
   ).json();
 
-  if (response.errors || response.msg)
-    return swal.fire('Error', 'Revise los datos e intente nuevamente', 'error');
+  if (response.errors || response.msg) return swal.fire('Error', 'Revise los datos e intente nuevamente', 'error');
 
   sessionStorage.setItem('token', response.token);
 

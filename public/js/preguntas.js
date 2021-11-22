@@ -53,11 +53,10 @@ const cargarPreguntas = async preguntas => {
 
   items.innerHTML = '';
 
-  preguntas?.forEach(
-    ({ texto, usuario: nombre, respuesta, administrador, _id }) => {
-      const pregunta = document.createElement('div');
+  preguntas?.forEach(({ texto, usuario: nombre, respuesta, administrador, _id }) => {
+    const pregunta = document.createElement('div');
 
-      pregunta.className = `
+    pregunta.className = `
       flex flex-col
       justify-between
       w-full
@@ -65,7 +64,7 @@ const cargarPreguntas = async preguntas => {
       gap-4
     `;
 
-      pregunta.innerHTML = `
+    pregunta.innerHTML = `
         <div class="flex-grow border shadow-md rounded-lg p-3">
             <h1 class="font-medium text-xl h-auto text-gray-700">
                 ${texto}
@@ -103,9 +102,8 @@ const cargarPreguntas = async preguntas => {
         }
     `;
 
-      items.appendChild(pregunta);
-    }
-  );
+    items.appendChild(pregunta);
+  });
 };
 
 const addPregunta = async () => {
@@ -124,8 +122,7 @@ const addPregunta = async () => {
     focusConfirm: false,
     preConfirm: () => {
       return {
-        [document.getElementById('swal-inputText').name]:
-          document.getElementById('swal-inputText').value,
+        [document.getElementById('swal-inputText').name]: document.getElementById('swal-inputText').value,
       };
     },
     confirmButtonText: 'Añadir',
@@ -134,11 +131,7 @@ const addPregunta = async () => {
   if (!formValues) return;
 
   if (Object.values(formValues).includes('', undefined, null))
-    return await Swal.fire(
-      'Alerta',
-      'Debe Llenar Todos los Campos',
-      'warning'
-    ).then(addPregunta);
+    return await Swal.fire('Alerta', 'Debe Llenar Todos los Campos', 'warning').then(addPregunta);
 
   //AddPregunta
   const response = await (
@@ -149,8 +142,7 @@ const addPregunta = async () => {
     })
   ).json();
 
-  if (response.msg || response.errors)
-    return Swal.fire('Error', 'No se Pudo Añadir la Pregunta', 'error');
+  if (response.msg || response.errors) return Swal.fire('Error', 'No se Pudo Añadir la Pregunta', 'error');
 
   search();
 
@@ -174,8 +166,7 @@ const responderPregunta = async (texto, _id = '') => {
     focusConfirm: false,
     preConfirm: () => {
       return {
-        [document.getElementById('swal-inputText').name]:
-          document.getElementById('swal-inputText').value,
+        [document.getElementById('swal-inputText').name]: document.getElementById('swal-inputText').value,
       };
     },
     confirmButtonText: 'Responder',
@@ -184,11 +175,7 @@ const responderPregunta = async (texto, _id = '') => {
   if (!formValues) return;
 
   if (Object.values(formValues).includes('', undefined, null))
-    return await Swal.fire(
-      'Alerta',
-      'Debe Llenar Todos los Campos',
-      'warning'
-    ).then(addPregunta);
+    return await Swal.fire('Alerta', 'Debe Llenar Todos los Campos', 'warning').then(addPregunta);
 
   //responderPregunta
   const response = await (
@@ -203,16 +190,11 @@ const responderPregunta = async (texto, _id = '') => {
     })
   ).json();
 
-  if (response.msg || response.errors)
-    return Swal.fire('Error', 'No se Pudo Responder la Pregunta', 'error');
+  if (response.msg || response.errors) return Swal.fire('Error', 'No se Pudo Responder la Pregunta', 'error');
 
   search();
 
-  Swal.fire(
-    'Respuesta Enviada',
-    'La Pregunta fue Respondida Satisfactoriamente.',
-    'success'
-  );
+  Swal.fire('Respuesta Enviada', 'La Pregunta fue Respondida Satisfactoriamente.', 'success');
 };
 
 main();

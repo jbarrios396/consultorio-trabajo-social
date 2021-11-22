@@ -33,7 +33,10 @@
 
       <div class="md:px-10 px-5 py-5 flex-grow flex flex-col md:flex-row gap-2 overflow-hidden overflow-y-auto">
         <!-- USUARIOS -->
-        <div class="flex flex-col h-96 md:h-full flex-shrink-0 gap-1 w-full md:w-80 rounded-lg overflow-y-auto" id="usuarios">
+        <div
+          class="flex flex-col h-96 md:h-full flex-shrink-0 gap-1 w-full md:w-80 rounded-lg overflow-y-auto"
+          id="usuarios"
+        >
           <h1 class="text-2xl">Usuarios</h1>
         </div>
         <!-- CHAT -->
@@ -44,8 +47,10 @@
             h-full
             justify-end
             gap-2
-            overflow-hidden flex-shrink-0
-            p-2 md:p-5
+            overflow-hidden
+            flex-shrink-0
+            p-2
+            md:p-5
             shadow-inner shadow-md
             bg-gradient-to-r
             from-gray-200
@@ -60,7 +65,7 @@
               <h1 class="text-2xl font-light text-gray-600 text-center">Selecciona un Usuario para Chatear...</h1>
             </div>
           </div>
-          <div class="w-full flex gap-1">
+          <form class="w-full flex gap-1" id="chatForm">
             <input
               id="msg"
               class="
@@ -78,13 +83,13 @@
               placeholder="Mensaje..."
               name="msg"
             />
-            <button
+            <input
               id="sendBtn"
               class="bg-blue-500 text-white rounded-md p-2 material-icons-round outline-none focus:outline-none"
-            >
-              send
-            </button>
-          </div>
+              type="submit"
+              value="send"
+            />
+          </form>
         </div>
       </div>
     </div>

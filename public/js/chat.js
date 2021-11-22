@@ -13,7 +13,11 @@ const main = async () => {
   //Referencias HTML
   chat = document.getElementById('messages');
 
-  document.getElementById('sendBtn').onclick = enviarMensaje;
+  document.getElementById('chatForm').onsubmit = e => {
+    e.preventDefault();
+
+    enviarMensaje();
+  };
 
   //Conectar Socket
   await conectarSocket();

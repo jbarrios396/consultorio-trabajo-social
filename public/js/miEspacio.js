@@ -64,7 +64,7 @@ const main = async () => {
     'Rol: ' +
     rol
       .replace('_ROLE', '')
-      .replace('PATIENT', 'Paciente')
+      .replace('PATIENT', 'Usuario')
       .replace('ADMIN', 'Administrador')
       .replace('USER', 'Trabajador Social');
 

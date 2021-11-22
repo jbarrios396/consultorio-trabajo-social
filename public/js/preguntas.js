@@ -13,7 +13,7 @@ const main = async () => {
 
   addButton.className = `
     bg-blue-500
-    p-2
+    p-2 flex-grow md:flex-grow-0
     material-icons-round
     text-white
     rounded-md
@@ -21,7 +21,7 @@ const main = async () => {
     focus:outline-none
   `;
 
-  document.getElementById('bar').appendChild(addButton);
+  document.getElementById('buttons').appendChild(addButton);
 
   await search();
 };
@@ -60,7 +60,8 @@ const cargarPreguntas = async preguntas => {
       flex flex-col
       justify-between
       w-full
-      ${respuesta ? 'h-40' : 'h-24'}
+      h-auto
+      ${respuesta ? 'md:h-40' : 'md:h-24'}
       gap-4
     `;
 
@@ -104,6 +105,8 @@ const cargarPreguntas = async preguntas => {
 
     items.appendChild(pregunta);
   });
+
+  items.innerHTML += '<br/><br/>';
 };
 
 const addPregunta = async () => {

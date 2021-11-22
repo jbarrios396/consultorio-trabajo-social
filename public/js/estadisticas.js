@@ -77,7 +77,7 @@ const cargarUsuarios = async (search = '@') => {
   Array.from(usuarios.children).forEach(item => item.remove());
 
   usuarios.innerHTML = `
-    <div class="flex gap-1 items-center justify-between w-full">
+    <div class="flex flex-col md:flex-row gap-1 md:items-center justify-between w-full">
         <h1 class="text-2xl mr-3 flex-shrink-0 font-light">Usuarios</h1>
         <input id="search" name="search" placeholder="Busqueda..." type="text" class="
           bg-white outline-none
@@ -85,36 +85,41 @@ const cargarUsuarios = async (search = '@') => {
           transform transition-all duration-300
           focus:outline-none focus:bg-gray-50
         ">
-        <button 
-            id="searchButton"
-            class="
-            bg-yellow-500
-            p-2 material-icons-round
-            text-white
-            rounded-md
-            flex-shrink-0
-            focus:outline-none
-        ">search</button>  
-        <button 
-            id="addButton"
-            class="
-            bg-blue-500
-            p-2 material-icons-round
-            text-white
-            rounded-md
-            flex-shrink-0
-            focus:outline-none
-        ">add</button>
-        <button 
-            id="downloadButton"
-            class="
-            bg-green-500
-            p-2 material-icons-round
-            text-white
-            rounded-md
-            flex-shrink-0
-            focus:outline-none
-        ">file_download</button>   
+        <div class="w-full md:w-auto flex gap-1 flex-shrink-0">
+          <button 
+              id="searchButton"
+              class="
+              flex-grow md:flex-grow-0
+              bg-yellow-500
+              p-2 material-icons-round
+              text-white
+              rounded-md
+              flex-shrink-0
+              focus:outline-none
+          ">search</button>  
+          <button 
+              id="addButton"
+              class="
+              flex-grow md:flex-grow-0
+              bg-blue-500
+              p-2 material-icons-round
+              text-white
+              rounded-md
+              flex-shrink-0
+              focus:outline-none
+          ">add</button>
+          <button 
+              id="downloadButton"
+              class="
+              flex-grow md:flex-grow-0
+              bg-green-500
+              p-2 material-icons-round
+              text-white
+              rounded-md
+              flex-shrink-0
+              focus:outline-none
+          ">file_download</button> 
+      </div>  
     </div>`;
 
   response.results.forEach(us => {
@@ -123,7 +128,9 @@ const cargarUsuarios = async (search = '@') => {
     const item = document.createElement('div');
 
     item.innerHTML = `
-        <div class="flex items-center gap-2 p-3 w-full bg-gray-100 rounded-xl" id="item-${us.uid}">
+        <div class="flex flex-col md:flex-row items-center gap-2 p-3 w-full bg-gray-100 rounded-xl overflow-hidden" id="item-${
+          us.uid
+        }">
           <div class="w-20 h-20 relative overflow-hidden">
             <img class="w-full h-full rounded-full object-cover" src="https://ui-avatars.com/api/?name=${
               us.nombre
@@ -141,15 +148,17 @@ const cargarUsuarios = async (search = '@') => {
               .replace('ADMIN', 'Administrador')
               .replace('USER', 'Trabajador Social')}</p>
           </div>
-          <button 
-            id="view-${us.uid}"
-            class="material-icons-outlined text-gray-400 p-3 rounded-full bg-transparent transform transition-all duration-200 ease-in outline-none focus:outline-none hover:text-yellow-500 hover:bg-yellow-200">info</button>
-          <button 
-            onclick="copyToClipboard('${us.uid}')"         
-            class="material-icons-round text-gray-400 p-3 rounded-full bg-transparent transform transition-all duration-200 ease-in outline-none focus:outline-none hover:text-blue-500 hover:bg-blue-200">copy</button>
-          <button onclick="deleteUser('${
-            us.uid
-          }')" class="material-icons-round text-gray-400 p-3 rounded-full bg-transparent transform transition-all duration-200 ease-in outline-none focus:outline-none hover:text-red-500 hover:bg-red-200">delete</button>
+          <div class="flex gap-1 justify-around w-full md:w-auto">
+              <button 
+                id="view-${us.uid}"
+                class="material-icons-outlined text-gray-400 p-3 rounded-full bg-transparent transform transition-all duration-200 ease-in outline-none focus:outline-none hover:text-yellow-500 hover:bg-yellow-200">info</button>
+              <button 
+               onclick="copyToClipboard('${us.uid}')"         
+               class="material-icons-round text-gray-400 p-3 rounded-full bg-transparent transform transition-all duration-200 ease-in outline-none focus:outline-none hover:text-blue-500 hover:bg-blue-200">copy</button>
+              <button onclick="deleteUser('${
+                us.uid
+              }')" class="material-icons-round text-gray-400 p-3 rounded-full bg-transparent transform transition-all duration-200 ease-in outline-none focus:outline-none hover:text-red-500 hover:bg-red-200">delete</button>
+          </div>
         </div>
       `.trim();
 

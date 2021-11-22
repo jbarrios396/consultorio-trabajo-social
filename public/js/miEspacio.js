@@ -43,7 +43,7 @@ const main = async () => {
   //User HTML References
   document.getElementById(
     'profile-pic'
-  ).src = `https://ui-avatars.com/api/?name=${nombre}&background=ACEEF3&color=041F60&size=128`;
+  ).src = `https://ui-avatars.com/api/?name=${nombre}&background=ACEEF3&color=041F60&size=256`;
 
   document.getElementById('usName').innerHTML = nombre;
   document.getElementById('usMail').innerHTML += ' ' + correo;

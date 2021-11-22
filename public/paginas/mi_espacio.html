@@ -39,11 +39,11 @@
       <include src="../components/loggedNavbar/loggedNavbar.html">Cargando Navbar...</include>
 
       <!-- Body -->
-      <div class="m-20 flex-grow flex flex-col gap-12 overflow-hidden z-50 relative">
+      <div class="p-10 md:p-20 flex-grow flex flex-col gap-12 overflow-hidden overflow-y-auto z-50 relative">
         <!-- Datos Basicos -->
-        <div class="flex gap-7">
-          <img class="w-56 h-56 bg-gray-200 rounded-full" id="profile-pic" alt="profile-pic" />
-          <div class="flex flex-col gap-2">
+        <div class="flex flex-col items-center md:items-start md:flex-row gap-7">
+          <img class="w-56 h-56 bg-gray-200 rounded-full object-cover" id="profile-pic" alt="profile-pic" />
+          <div class="flex flex-col gap-2 text-center md:text-left">
             <h1 id="usName" class="text-4xl font-light text-gray-800">Nombre</h1>
             <h2 id="usMail" class="text-2xl font-light text-gray-800">Correo:</h2>
             <h2 id="usRol" class="text-2xl font-light text-gray-800">Rol:</h2>
@@ -51,7 +51,7 @@
         </div>
 
         <!-- Datos Opcionales -->
-        <div class="flex justify-between gap-5 w-full">
+        <div class="flex flex-col md:flex-row justify-between gap-5 w-full">
           <!-- Columna 1 -->
           <div class="flex flex-col gap-3">
             <h2 id="usTel" class="text-2xl font-light text-gray-800">Telefono:</h2>
@@ -74,7 +74,7 @@
 
         <!-- Fecha -->
         <div class="flex-grow"></div>
-        <h2 id="usDate" class="text-2xl text-gray-400">Desde x</h2>
+        <h2 id="usDate" class="text-2xl text-gray-400 text-center md:text-left">Desde x</h2>
       </div>
     </div>
   </body>

@@ -10,8 +10,7 @@ const juegos = [
     nombre: 'Lichess',
     link: 'https://lichess.org/',
     pagina: 'lichess.org',
-    descripcion:
-      'ichess es un servidor de ajedrez libre y gratuito y sin publicidad.',
+    descripcion: 'ichess es un servidor de ajedrez libre y gratuito y sin publicidad.',
   },
   {
     nombre: 'DAMAS',
@@ -37,8 +36,7 @@ const juegos = [
     nombre: 'Preguntados',
     link: 'https://www.juegos.net/juego/preguntados',
     pagina: 'juegos.net',
-    descripcion:
-      'En este test, se ven preguntas tanto de arte, como de ciencia, historia, cine y televisión y mas.',
+    descripcion: 'En este test, se ven preguntas tanto de arte, como de ciencia, historia, cine y televisión y mas.',
   },
   {
     nombre: 'UNO Online',
@@ -66,18 +64,17 @@ juegos.forEach(({ nombre, link, pagina, descripcion }) => {
         relative
         flex
         w-full
-        items-center
+        md:items-center
         p-5
         z-50
-        gap-5
-        h-44
+        gap-5 overflow-hidden
+        h-auto md:h-44
         rounded-lg
         shadow-md
     "
     >
         <i
-            class="material-icons-round text-pink-100 transform -rotate-12 z-50"
-            style="font-size: 100px"
+            class="material-icons-round text-pink-100 transform -rotate-12 z-50 gamesIcon"
             >extension</i
         >
         <div class="z-50 flex flex-col gap-1 h-full">

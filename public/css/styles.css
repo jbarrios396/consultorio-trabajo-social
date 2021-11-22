@@ -7,6 +7,21 @@ body {
   overflow-y: auto;
 }
 
+.gamesIcon {
+  font-size: 40px;
+  width: 40px;
+  height: 40px;
+}
+
+@media (min-width: 768px) {
+  .gamesIcon {
+    font-size: 100px;
+  }
+}
+.searchSelect {
+  width: 300px;
+}
+
 /* .custom-select::after {
   position: absolute;
   right: 6px;

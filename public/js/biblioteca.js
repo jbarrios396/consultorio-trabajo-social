@@ -17,7 +17,7 @@ const main = async () => {
 
   addButton.className = `
     bg-blue-500
-    p-2
+    p-2 flex-grow md:flex-grow-0
     material-icons-round
     text-white
     rounded-md
@@ -25,7 +25,7 @@ const main = async () => {
     focus:outline-none
   `;
 
-  document.getElementById('bar').appendChild(addButton);
+  document.getElementById('buttons').appendChild(addButton);
 };
 
 const search = async () => {

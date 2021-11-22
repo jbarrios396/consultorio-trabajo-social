@@ -17,7 +17,7 @@ const main = async () => {
 
   addButton.className = `
     bg-blue-500
-    p-2
+    p-2 flex-grow md:flex-grow-0
     material-icons-round
     text-white
     rounded-md
@@ -25,7 +25,7 @@ const main = async () => {
     focus:outline-none
   `;
 
-  document.getElementById('bar').appendChild(addButton);
+  document.getElementById('buttons').appendChild(addButton);
 };
 
 const search = async () => {
@@ -72,7 +72,7 @@ const cargarVideos = async videos => {
     const libro = document.createElement('div');
 
     libro.className = `
-      p-3
+      p-3 
       flex flex-col
       justify-between
       w-80
@@ -139,12 +139,9 @@ const addVideo = async () => {
     focusConfirm: false,
     preConfirm: () => {
       return {
-        [document.getElementById('swal-inputName').name]:
-          document.getElementById('swal-inputName').value,
-        [document.getElementById('swal-inputLink').name]:
-          document.getElementById('swal-inputLink').value,
-        [document.getElementById('swal-inputTipo').name]:
-          document.getElementById('swal-inputTipo').value,
+        [document.getElementById('swal-inputName').name]: document.getElementById('swal-inputName').value,
+        [document.getElementById('swal-inputLink').name]: document.getElementById('swal-inputLink').value,
+        [document.getElementById('swal-inputTipo').name]: document.getElementById('swal-inputTipo').value,
       };
     },
     confirmButtonText: 'Añadir',
@@ -153,14 +150,9 @@ const addVideo = async () => {
   if (!formValues) return;
 
   if (Object.values(formValues).includes('', undefined, null))
-    return await Swal.fire(
-      'Alerta',
-      'Debe Llenar Todos los Campos',
-      'warning'
-    ).then(addVideo);
+    return await Swal.fire('Alerta', 'Debe Llenar Todos los Campos', 'warning').then(addVideo);
 
-  if (!verificarURL(formValues.link))
-    return await Swal.fire('Error', 'Link no valido', 'error').then(addVideo);
+  if (!verificarURL(formValues.link)) return await Swal.fire('Error', 'Link no valido', 'error').then(addVideo);
 
   //AddVideo
   const response = await (
@@ -171,8 +163,7 @@ const addVideo = async () => {
     })
   ).json();
 
-  if (response.msg || response.errors)
-    return Swal.fire('Error', 'No se Pudo Añadir el Video', 'error');
+  if (response.msg || response.errors) return Swal.fire('Error', 'No se Pudo Añadir el Video', 'error');
 
   search();
 };

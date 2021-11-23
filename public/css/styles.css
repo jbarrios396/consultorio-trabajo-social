@@ -16,6 +16,8 @@ body {
 @media (min-width: 768px) {
   .gamesIcon {
     font-size: 100px;
+    width: auto;
+    height: auto;
   }
 }
 .searchSelect {

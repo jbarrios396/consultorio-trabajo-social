@@ -10,7 +10,7 @@ const juegos = [
     nombre: 'Lichess',
     link: 'https://lichess.org/',
     pagina: 'lichess.org',
-    descripcion: 'ichess es un servidor de ajedrez libre y gratuito y sin publicidad.',
+    descripcion: 'ichess es un servidor de ajedrez libre, gratuito y sin publicidad.',
   },
   {
     nombre: 'DAMAS',

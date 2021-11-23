@@ -1,5 +1,7 @@
 const iniciarSesion = async () => {
   const { value: formValues } = await Swal.fire({
+    heightAuto: false,
+    icon: 'info',
     title: 'Iniciar Sesión',
     html: `
             <div class="flex flex-col gap-2 items-start w-full p-2">
@@ -24,7 +26,9 @@ const iniciarSesion = async () => {
         [document.getElementById('swal-input2').name]: document.getElementById('swal-input2').value,
       };
     },
+    showCancelButton: true,
     confirmButtonText: 'Continuar',
+    cancelButtonText: 'Cerrar',
   });
 
   if (!formValues) return;

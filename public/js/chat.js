@@ -76,19 +76,22 @@ const cargarUsuarios = async () => {
     console.log(usuarios.innerHTML);
 
     usuarios.innerHTML = `<h1 class="text-3xl font-light">${
-      {
-        ADMIN_ROLE: 'Usuarios',
-        USER_ROLE: 'Pacientes',
-        PATIENT_ROLE: 'Trabajadores Sociales',
-      }[usuario.rol]
+      // {
+      //   ADMIN_ROLE: 'Usuarios',
+      //   USER_ROLE: 'Pacientes',
+      //   PATIENT_ROLE: 'Trabajadores Sociales',
+      // }[usuario.rol]
+      'Chat'
     }</h1>`;
 
-    users.forEach(us => {
-      if (us.uid === usuario.uid) return;
+    users
+      .sort(a => (a.nombre.includes('Consultoría') ? -1 : 1))
+      .forEach((us, i, arr) => {
+        if (us.uid === usuario.uid) return;
 
-      const item = document.createElement('div');
+        const item = document.createElement('div');
 
-      item.innerHTML = `
+        item.innerHTML = `
         <div class="flex items-center gap-2 p-3 w-full bg-gray-100 overflow-hidden rounded-md transform transition-all duration-150 hover:bg-gray-200" id="item-${
           us.uid
         }">
@@ -100,18 +103,29 @@ const cargarUsuarios = async () => {
             ${us.rol === 'ADMIN_ROLE' ? '<p class="text-gray-400 text-sm">Administrador</p>' : ''}
           </div>
         </div>
+        ${
+          arr[i + 1]
+            ? (us.nombre.includes('Consultoría') && !arr[i + 1].nombre.includes('Consultoría')) ||
+              (us.rol === 'ADMIN_ROLE' && arr[i + 1].rol !== 'ADMIN_ROLE')
+              ? `
+        
+          <div class="w-full h-px border border-gray-200 rounded-full mt-3 mb-2" />
+        `
+              : ''
+            : ''
+        }
       `.trim();
 
-      usuarios.appendChild(item);
+        usuarios.appendChild(item);
 
-      const el = document.getElementById('item-' + us.uid);
+        const el = document.getElementById('item-' + us.uid);
 
-      el.addEventListener('click', _ => {
-        selectedUser = '' + us.uid;
-        chat.innerHTML = '';
-        cargarDesdeLaBD();
+        el.addEventListener('click', _ => {
+          selectedUser = '' + us.uid;
+          chat.innerHTML = '';
+          cargarDesdeLaBD();
+        });
       });
-    });
   } catch (error) {
     return console.log('Error');
   }

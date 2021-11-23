@@ -18,7 +18,7 @@ const buscarUsuarios = async (req, res = response) => {
   const regex = new RegExp(termino, 'i');
   const usuarios = await Usuario.find({
     $or: [{ nombre: regex }, { correo: regex }, { rol: regex }],
-  });
+  }).sort({ rol: 1 });
 
   res.json({
     results: usuarios,
@@ -28,8 +28,7 @@ const buscarUsuarios = async (req, res = response) => {
 const buscarChatsConAdmin = async (req, res = response) => {
   let { buscarChatsConAdmin, uid } = req.query;
 
-  if (buscarChatsConAdmin && uid)
-    buscarChatsConAdmin = JSON.parse(buscarChatsConAdmin);
+  if (buscarChatsConAdmin && uid) buscarChatsConAdmin = JSON.parse(buscarChatsConAdmin);
 
   const admins = await Usuario.find({ rol: 'ADMIN_ROLE' });
 

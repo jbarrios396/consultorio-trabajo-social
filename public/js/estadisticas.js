@@ -122,12 +122,14 @@ const cargarUsuarios = async (search = '@') => {
       </div>  
     </div>`;
 
-  response.results.forEach(us => {
-    if (us.uid === usuario.uid) return;
+  response.results
+    .sort(a => (a.nombre.includes('Consultoría') ? -1 : 1))
+    .forEach(us => {
+      if (us.uid === usuario.uid) return;
 
-    const item = document.createElement('div');
+      const item = document.createElement('div');
 
-    item.innerHTML = `
+      item.innerHTML = `
         <div class="flex flex-col md:flex-row items-center gap-2 p-3 w-full bg-gray-100 rounded-xl overflow-hidden" id="item-${
           us.uid
         }">
@@ -162,9 +164,9 @@ const cargarUsuarios = async (search = '@') => {
         </div>
       `.trim();
 
-    usuarios.appendChild(item);
-    document.getElementById('view-' + us.uid).onclick = () => viewUser(us);
-  });
+      usuarios.appendChild(item);
+      document.getElementById('view-' + us.uid).onclick = () => viewUser(us);
+    });
 
   document.getElementById('addButton').onclick = addUser;
   document.getElementById('downloadButton').onclick = downloadUsers;

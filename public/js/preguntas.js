@@ -51,7 +51,7 @@ const search = async () => {
 const cargarPreguntas = async preguntas => {
   const items = document.getElementById('preguntas');
 
-  items.innerHTML = '';
+  
 
   preguntas?.forEach(({ texto, usuario: nombre, respuesta, administrador, _id }) => {
     const pregunta = document.createElement('div');
@@ -60,8 +60,7 @@ const cargarPreguntas = async preguntas => {
       flex flex-col
       justify-between
       w-full
-      h-auto
-      ${respuesta ? 'md:h-40' : 'md:h-24'}
+      h-auto   
       gap-4
     `;
 

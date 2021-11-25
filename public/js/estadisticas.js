@@ -123,7 +123,7 @@ const cargarUsuarios = async (search = '@') => {
     </div>`;
 
   response.results
-    .sort(a => (a.nombre.includes('Consultoría') ? -1 : 1))
+    .sort(a => (a.nombre.includes('Asesoría') ? -1 : 1))
     .forEach(us => {
       if (us.uid === usuario.uid) return;
 

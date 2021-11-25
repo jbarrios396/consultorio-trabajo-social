@@ -81,11 +81,11 @@ const cargarUsuarios = async () => {
       //   USER_ROLE: 'Pacientes',
       //   PATIENT_ROLE: 'Trabajadores Sociales',
       // }[usuario.rol]
-      'Chat'
+      'Salas'
     }</h1>`;
 
     users
-      .sort(a => (a.nombre.includes('Consultoría') ? -1 : 1))
+      .sort(a => (a.nombre.includes('Asesoría') ? -1 : 1))
       .forEach((us, i, arr) => {
         if (us.uid === usuario.uid) return;
 
@@ -105,7 +105,7 @@ const cargarUsuarios = async () => {
         </div>
         ${
           arr[i + 1]
-            ? (us.nombre.includes('Consultoría') && !arr[i + 1].nombre.includes('Consultoría')) ||
+            ? (us.nombre.includes('Asesoría') && !arr[i + 1].nombre.includes('Asesoría')) ||
               (us.rol === 'ADMIN_ROLE' && arr[i + 1].rol !== 'ADMIN_ROLE')
               ? `
         

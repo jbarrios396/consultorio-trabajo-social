@@ -37,17 +37,22 @@ const registrarUsuario = async () => {
   if (error) return;
 
   //Registro
-  const response = await (
-    await fetch(`${url}usuarios/`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(json),
-    })
-  ).json();
+  try{
 
-  if (response.msg || response.errors) return Swal.fire('Error', 'No se Pudo Crear el Usuario', 'error');
+    const response = await (
+      await fetch(`${url}usuarios/`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Credentials": true },
+        body: JSON.stringify(json),
+      })
+    ).json();
 
-  await login({ correo: json.correo, password: json.password }, swal);
+    if (response.msg || response.errors) return Swal.fire('Error', 'No se Pudo Crear el Usuario', 'error');
+
+    await login({ correo: json.correo, password: json.password }, swal);
+  } catch(err){
+ 	console.log(err)
+  }
 };
 
 form.onsubmit = e => {

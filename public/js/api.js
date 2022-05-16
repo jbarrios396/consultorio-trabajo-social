@@ -1,6 +1,4 @@
-const url = window.location.hostname.includes('localhost')
-  ? 'http://localhost:8080/api/'
-  : 'https://consultorio-trabajo-social.herokuapp.com/api/';
+const url = 'http://site.curn.edu.co:8067/consultorio/api/';
 
 const token = sessionStorage.getItem('token');
 

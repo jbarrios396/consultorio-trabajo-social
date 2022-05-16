@@ -7,7 +7,6 @@ let usuario;
 const main = async () => {
   //Validar Token
   usuario = await checkLogged();
-
   if (!usuario) return;
 
   //Referencias HTML
@@ -26,11 +25,16 @@ const main = async () => {
 };
 
 const conectarSocket = async () => {
-  socket = io({
-    extraHeaders: {
-      'x-token': token,
-    },
-  });
+
+  socket = io(
+    'http://site.curn.edu.co:8067',
+    {
+      path: '/consultorio',
+      extraHeaders: {
+       'x-token': token,
+      },
+    }
+  );
 
   //Eventos
   socket.on('connect', conectado);
@@ -58,6 +62,7 @@ const cargarUsuarios = async () => {
       ).catch(err => ({
         msg: err,
       })),
+
       fetch(`${url}buscar/extra/buscarChatsConAdmin?buscarChatsConAdmin=true&uid=${usuario.uid}`, {
         headers: { 'Content-Type': 'application/json', 'x-token': token },
       }).catch(err => ({

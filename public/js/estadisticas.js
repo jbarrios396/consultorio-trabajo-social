@@ -49,11 +49,15 @@ const main = async () => {
 };
 
 const conectarSocket = async () => {
-  socket = io({
-    extraHeaders: {
-      'x-token': token,
-    },
-  });
+   socket = io(
+    'http://site.curn.edu.co:8067',
+    {
+      path: '/consultorio',
+      extraHeaders: {
+       'x-token': token,
+      },
+    }
+  );
 
   //Eventos
   socket.on('connect', conectado);

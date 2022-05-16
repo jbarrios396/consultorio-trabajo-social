@@ -1,4 +1,5 @@
 const url = 'http://site.curn.edu.co:8067/consultorio/api/';
+// const url = 'http://localhost:8080/api/';
 
 const token = sessionStorage.getItem('token');
 

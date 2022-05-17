@@ -1,6 +1,6 @@
 // const url = 'http://site.curn.edu.co:8067/consultorio/api/';
 // const url = 'http://localhost:8080/api/';
-const utl = 'https://consultorio-virtual2.herokuapp.com/api/'
+const url = 'https://consultorio-virtual2.herokuapp.com/api/'
 
 const token = sessionStorage.getItem('token');
 

@@ -78,7 +78,7 @@ const main = async () => {
 
   document.getElementById('saveButton').addEventListener('click', async () => {
     const updated = {
-      name: document.getElementById('usName').value,
+      nombre: document.getElementById('usName').value,
       correo: document.getElementById('usMail').value,
       tel: document.getElementById('usTel').value,
       genero: document.getElementById('usGen').value,

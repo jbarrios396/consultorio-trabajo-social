@@ -50,9 +50,10 @@ const main = async () => {
 
 const conectarSocket = async () => {
    socket = io(
-    'http://site.curn.edu.co:8067',
+    url,
+    //'http://site.curn.edu.co:8067',
     {
-      path: '/consultorio',
+    //  path: '/consultorio',
       extraHeaders: {
        'x-token': token,
       },

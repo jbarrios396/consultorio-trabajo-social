@@ -31,8 +31,7 @@ const usuariosPost = async (req, res = response) => {
 
   // Guardar en BD
   usuario.save((err, usuario) => {
-    if (err)
-      return res.status(400).json({ msg: err.message, errors: err.errors });
+    if (err) return res.status(400).json({ msg: err.message, errors: err.errors });
 
     res.json({
       usuario,
@@ -42,7 +41,7 @@ const usuariosPost = async (req, res = response) => {
 
 const usuariosPut = async (req, res = response) => {
   const { id } = req.params;
-  const { _id, password, google, correo, ...resto } = req.body;
+  const { _id, password, google, ...resto } = req.body;
 
   if (password) {
     // Encriptar la contraseña
@@ -51,8 +50,7 @@ const usuariosPut = async (req, res = response) => {
   }
 
   await Usuario.findByIdAndUpdate(id, resto, {}, (err, usuario) => {
-    if (err)
-      return res.status(400).json({ msg: err.message, errors: err.errors });
+    if (err) return res.status(400).json({ msg: err.message, errors: err.errors });
 
     res.json(usuario);
   });
@@ -62,8 +60,7 @@ const usuariosDelete = async (req, res = response) => {
   const { id } = req.params;
 
   await Usuario.findByIdAndDelete(id, {}, (err, usuario) => {
-    if (err)
-      return res.status(400).json({ msg: err.message, errors: err.errors });
+    if (err) return res.status(400).json({ msg: err.message, errors: err.errors });
 
     res.json({ usuario });
   });
@@ -116,8 +113,7 @@ const tabla = async (_, res = response) => {
     })
   );
 
-  const filePath =
-    __dirname + '/tempHistory' + new Date().getMilliseconds() + '.xlsx';
+  const filePath = __dirname + '/tempHistory' + new Date().getMilliseconds() + '.xlsx';
 
   const sheet = XLSX.utils.json_to_sheet(arr);
   sheet['!cols'] = [

@@ -307,11 +307,12 @@
                 });
             const { validate } = await res.json();
             (validate) 
-            ? window.location.replace(`${location.protocol}//${location.host}/paginas/inicio.html`)
+            ? window.location.replace(`${location.protocol}//${location.host}/consultorio/paginas/inicio.html`)
             : preguntarSesion()
         } catch (error) {
             //dejar pasar y entrar a login
-            console.error(error)
+            console.log("line 304",error)
+
         }
       }
     </script>

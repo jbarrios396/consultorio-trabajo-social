@@ -1,8 +1,8 @@
 // const url = 'http://site.curn.edu.co:8067/consultorio/api/';
 // const url = 'http://localhost:8080/api/';
-const url = 'https://consultorio-virtual2.herokuapp.com/api/'
-
-const token = sessionStorage.getItem('token');
+const url = `${location.origin}/api/`
+//import { tok} from '../js/biblioteca'
+const token = localStorage.getItem('x-token');
 
 const login = async (data, swal) => {
   const response = await (
@@ -16,15 +16,17 @@ const login = async (data, swal) => {
   if (response.errors || response.msg) return swal.fire('Error', 'Revise los datos e intente nuevamente', 'error');
 
   sessionStorage.setItem('token', response.token);
+  localStorage.setItem('x-token', response.token);
 
-  window.location = 'paginas/inicio.html';
+  window.location.replace( url+'paginas/inicio.html');
 };
 
 const logout = async () => {
   sessionStorage.removeItem('token');
+  localStorage.removeItem('x-token');
   window.location = '../';
   if (socket) socket.disconnect();
-};
+}; 
 
 const downloadBlob = (blob, name = 'file.txt') => {
   // Convert your blob into a Blob URL (a special url that points to an object in the browser's memory)
@@ -85,3 +87,13 @@ const verificarURL = string => {
 
   return url;
 };
+
+/*
+export {
+  login, 
+  logout,
+  downloadBlob, 
+  checkLogged, 
+  verificarURL
+}
+*/

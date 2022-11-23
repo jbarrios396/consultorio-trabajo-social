@@ -29,14 +29,35 @@ const usuariosPost = async (req, res = response) => {
   const salt = bcryptjs.genSaltSync();
   usuario.password = bcryptjs.hashSync(req.body.password, salt);
 
-  // Guardar en BD
-  usuario.save((err, usuario) => {
-    if (err) return res.status(400).json({ msg: err.message, errors: err.errors });
+  try {
+    // Guardar en BD
+    const usuarioGuardado = await usuario.save();
 
-    res.json({
-      usuario,
-    });
-  });
+    if (usuarioGuardado !== undefined) {
+      //------------------hacer el envio de correo-------------------------
+      const mailData = {
+        correo: usuario.correo,
+        asunto: "Registro Exitoso en Consultorio Virtual de Trabajo Social",
+        mensaje: "Hola Consultorio Virtual de Trabajo Social"
+      }
+
+      const emailSettingsCURN = {
+        "url": "ENDPOINT_NOTIFY/notificabasica",
+        "method": "POST",
+        "data": mailData
+      };
+      const msjMail = await axios(emailSettingsCURN);
+
+      res.json({
+        usuario,
+        msjMail
+      });
+    }
+
+  } catch (error) {
+    res.status(400).json({ msg: err.message, errors: err.errors });
+  }
+
 };
 
 const usuariosPut = async (req, res = response) => {

@@ -14,10 +14,12 @@ const validarJWT = async (req = request, res = response, next) => {
 
   try {
     jwt.verify(token, process.env.SECRETORPRIVATEKEY, async (err, data) => {
+      
+      console.log(err)
       if (err)
         return res.status(401).json({
-          msg: 'Token no válido',
-        });
+          msg: 'Token no válido'+err,
+        }); 
 
       // leer el usuario que corresponde al uid
       const usuario = await Usuario.findById(data.uid);
@@ -33,7 +35,7 @@ const validarJWT = async (req = request, res = response, next) => {
     });
   } catch (error) {
     res.status(401).json({
-      msg: 'Token no válido',
+      msg: 'Token no válido '+error
     });
   }
 };

@@ -227,4 +227,25 @@
     </form>
   </body>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    window.addEventListener("DOMContentLoaded", async (e) => {
+      try {
+          const token = window.localStorage.getItem("x-token")
+            const res = await fetch(`${location.origin}/api/auth/validateToken`,
+                {
+                    method: 'GET',
+                    headers: {
+                        'x-token': token,
+                        'Content-Type': 'application/json'
+                    }
+                });
+            const { validate } = await res.json();
+            if (validate) {
+                window.location.replace(`${location.origin}/paginas/inicio.html`)
+            }
+        } catch (error) {
+            //dejar pasar y entrar a login
+        }
+    });
+    </script>
 </html>

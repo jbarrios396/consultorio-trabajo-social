@@ -12,6 +12,7 @@ const generarJWT = (uid = '') => {
         expiresIn: '4h',
       },
       (err, token) => {
+        //console.log("------------------- ",token)
         if (!err) return resolve(token);
 
         console.log(err);

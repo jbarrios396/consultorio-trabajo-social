@@ -6,5 +6,7 @@ const main = async () => {
   document.getElementById('greeting').innerHTML += ` ${usuario.nombre}`;
 };
 
-if (!token) window.location = '../';
+
+const tokenStorage = localStorage.getItem('x-token');
+if (!tokenStorage) window.location = '../';
 else main();

@@ -12,6 +12,7 @@ const {
   usuariosDelete,
   tabla,
 } = require('../controllers/usuarios');
+const { enviarEmail } = require('../middlewares/emailSending');
 
 const router = Router();
 
@@ -38,6 +39,7 @@ router.post(
     check('correo', 'El correo no es válido').isEmail(),
     check('correo').custom(emailExiste),
     validarCampos,
+    enviarEmail,
   ],
   usuariosPost
 );

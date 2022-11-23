@@ -26,11 +26,10 @@
       </div>
     </div>
     <div class="flex items-center gap-5 h-full">
-      <div class="flex md:flex-col gap-1">
+      <div id="contentLogged" class="flex md:flex-col gap-1">
         <button
-          onclick="iniciarSesion()"
           id="openButton"
-          class="flex items-center justify-between gap-2 rounded-full text-red-50 p-2 outline-none focus:outline-none"
+            class="flex items-center justify-between gap-2 rounded-full text-red-50 p-2 outline-none focus:outline-none"
         >
           Iniciar Sesión
           <i class="bg-purple-500 bg-opacity-25 rounded-full p-1 material-icons-round">person</i>
@@ -50,3 +49,13 @@
   </div>
 </nav>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+
+    try{
+      document.getElementById("openButton").addEventListener('click', (e)=>{
+      window.location.replace(`${ location.origin}/access/login.html`)
+    })
+    }catch (error) {
+      console.log(error)
+    }
+</script>

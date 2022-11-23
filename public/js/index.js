@@ -5,8 +5,9 @@ const preguntarSesion = () => {
     html: `
     <div class="w-full flex items-center justify-center my-5 gap-2">
 
-        <button
-            onclick="iniciarSesion()"
+        
+        <a
+            href="./access/login.html"
             class="
                 bg-blue-500
                 p-2
@@ -18,7 +19,7 @@ const preguntarSesion = () => {
                 focus:outline-none"
             >
             Iniciar Sesión
-        </button>
+        </a>
         <a
             href="./registro.html"
             class="

@@ -40,6 +40,8 @@ const registrarUsuario = async () => {
   try{
 
     const response = await (
+      //--------------------------------------------------
+      //modificar ruta usuarios/ para registro y enviar el correo en eun middleware
       await fetch(`${url}usuarios/`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Credentials": true },

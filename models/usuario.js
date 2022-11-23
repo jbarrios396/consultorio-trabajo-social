@@ -51,6 +51,10 @@ const UsuarioSchema = Schema(
       type: String,
       required: [false, 'La contraseña es obligatoria'],
     },
+    google: {
+      type: Boolean,
+      default: false,
+    },
     rol: {
       type: String,
       required: false,

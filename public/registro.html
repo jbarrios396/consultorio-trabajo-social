@@ -231,7 +231,7 @@
     window.addEventListener("DOMContentLoaded", async (e) => {
       try {
           const token = window.localStorage.getItem("x-token")
-            const res = await fetch(`${location.origin}/api/auth/validateToken`,
+            const res = await fetch(`${location.protocol}//${location.host}/consultorio/api/auth/validateToken`,
                 {
                     method: 'GET',
                     headers: {

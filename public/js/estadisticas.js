@@ -219,7 +219,7 @@ const viewUser = usuario => {
 
           <p class="mt-5 font-medium">${rol
             .replace('_ROLE', '')
-            .replace('PATIENT', 'Paciente')
+            .replace('PATIENT', 'Usuario')
             .replace('ADMIN', 'Administrador')
             .replace('USER', 'Trabajador Social')}
           </p>

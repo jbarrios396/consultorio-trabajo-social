@@ -241,7 +241,7 @@
                 });
             const { validate } = await res.json();
             if (validate) {
-                window.location.replace(`${location.origin}/paginas/inicio.html`)
+                window.location.replace(`${location.host}/paginas/inicio.html`)
             }
         } catch (error) {
             //dejar pasar y entrar a login

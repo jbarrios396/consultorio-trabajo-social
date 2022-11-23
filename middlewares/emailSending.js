@@ -1,6 +1,6 @@
 
 const enviarEmail = (req, res, next) => {
-    const email = email = req.body?.email;
+    //const email = email = req.body?.email;
     next();
 }
 

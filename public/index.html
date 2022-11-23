@@ -293,32 +293,7 @@
     
     <script>
 
-window.addEventListener("DOMContentLoaded", async (e) => {
 
-  console.log("Holaaaa papus")
-
-    const token = window.localStorage.getItem("x-token");
-    const $contentLogged = document.getElementById("contentLogged");
-    try {
-        const res = await fetch(`${location.origin}/api/auth/validateToken`,
-            {
-                method: 'GET',
-                headers: {
-                    'x-token': token,
-                    'Content-Type': 'application/json'
-                }
-            });
-        const { validate } = await res.json();
-        if (validate) {
-          console.log($contentLogged,"-----")
-        }else{
-          
-        }
-          
-    } catch (error) {
-        console.error(error)
-    }
-    });
       const sessionQuestion = async()=>{
         try {
           const token = window.localStorage.getItem("x-token")
@@ -332,7 +307,7 @@ window.addEventListener("DOMContentLoaded", async (e) => {
                 });
             const { validate } = await res.json();
             (validate) 
-            ? window.location.replace(`${location.origin}/paginas/inicio.html`)
+            ? window.location.replace(`${location.protocol}//${location.host}/paginas/inicio.html`)
             : preguntarSesion()
         } catch (error) {
             //dejar pasar y entrar a login

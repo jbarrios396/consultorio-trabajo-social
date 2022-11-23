@@ -93,7 +93,7 @@
                     <input type="checkbox" value="remember-me"> Remember me
                 </label>
             </div>
-            
+
             <div id="g_id_onload"
                 data-client_id="601397821305-g3r3tol873g092t07fpog18o1rfsl180.apps.googleusercontent.com"
                 data-auto_prompt="false" 
@@ -135,7 +135,7 @@
           }).then((json)=>{
             
             localStorage.setItem('x-token', json.token)
-            location.replace(`${location.origin}/paginas/inicio.html`)
+            location.replace(`${location.protocol}//${ location.host}/access/login.html`)
           })
           .catch((error)=>{
             console.log(error)
@@ -158,7 +158,7 @@
                     });
                 const { validate } = await res.json();
                 if (validate) {
-                    window.location.replace(`${location.origin}/paginas/inicio.html`)
+                    window.location.replace(`${location.protocol}//${ location.host}/paginas/inicio.html`)
                 }
             } catch (error) {
                 //dejar pasar y entrar a login
@@ -182,7 +182,7 @@
             sessionStorage.setItem('token', response.token);
             localStorage.setItem('x-token', response.token);
 
-            window.location.replace(`${location.origin}/paginas/inicio.html`)
+            window.location.replace(`${location.protocol}//${ location.host}/access/login.html`)
             //borrar historial
         }
 

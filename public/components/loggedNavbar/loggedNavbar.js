@@ -4,7 +4,7 @@ const initNav = async () => {
     await fetch(url + 'auth/', {
       headers: {
         'Content-Type': 'application/json',
-        'x-token': token || sessionStorage.getItem('token'),
+        'x-token': token || localStorage.getItem('x-token'),
       },
     })
   ).json();

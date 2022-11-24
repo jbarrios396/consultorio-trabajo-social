@@ -50,15 +50,16 @@ const main = async () => {
 
 const conectarSocket = async () => {
    socket = io(
-    url,
+    `${location.protocol}//${location.host}`, //url
     //'http://site.curn.edu.co:8067',
     {
-    //  path: '/consultorio',
+      path: '/consultorio', 
       extraHeaders: {
        'x-token': token,
       },
     }
   );
+  console.log("------------- 62")
 
   //Eventos
   socket.on('connect', conectado);

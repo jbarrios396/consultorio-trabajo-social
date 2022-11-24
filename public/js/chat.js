@@ -26,10 +26,11 @@ const main = async () => {
 
 const conectarSocket = async () => {
 
+  console.log("linea socket 30 de chat.js")
   socket = io(
-    url,
+    `${location.protocol}//${location.host}`, //url
     {
-      //path: '/consultorio',
+      path: '/consultorio',
       extraHeaders: {
        'x-token': token,
       },

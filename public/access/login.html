@@ -135,7 +135,7 @@
           }).then((json)=>{
             
             localStorage.setItem('x-token', json.token)
-            location.replace(`${location.protocol}//${location.host}/consultorio/access/login.html`)
+            location.replace(`${location.protocol}//${location.host}/consultorio/paginas/inicio.html`)
           })
           .catch((error)=>{
             console.log(error)
